@@ -1,4 +1,8 @@
 {
-  "admin/test": "teste",
-  "store/test": "teste"
+  "admin/editor.image.title": "Imagem",
+  "admin/editor.image.description": "Exiba qualquer imagem",
+  "admin/editor.image.src.title": "Imagem",
+  "admin/editor.image.alt.title": "Texto alternativo",
+  "admin/editor.blockClass.title": "CSS Block Class",
+  "admin/editor.blockClass.description": "Adiciona um nome de classe extra para facilitar a estilização"
 }
