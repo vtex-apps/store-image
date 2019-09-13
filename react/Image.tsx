@@ -5,7 +5,7 @@ import { formatIOMessage } from 'vtex.native-types'
 
 import styles from './styles.css'
 
-interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth: string
   maxHeight: string
   blockClass: string
@@ -82,13 +82,13 @@ const messages = defineMessages({
 })
 
 Image.schema = {
-  title: messages.title,
-  description: messages.description,
+  title: messages.title.id,
+  description: messages.description.id,
   type: 'object',
   properties: {
     blockClass: {
-      title: 'admin/editor.blockClass.title',
-      description: 'admin/editor.blockClass.description',
+      title: messages.blockClassTitle.id,
+      description: messages.blockClassDescription.id,
       type: 'string',
       isLayout: true,
     },
