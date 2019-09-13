@@ -1,8 +1,8 @@
 {
   "vendor": "vtex",
-  "name": "image",
+  "name": "store-images",
   "version": "0.0.0",
-  "title": "VTEX Image",
+  "title": "VTEX Store Images",
   "description": "Set of VTEX components to handle images",
   "builders": {
     "react": "3.x",
