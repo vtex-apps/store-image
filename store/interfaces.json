@@ -1,5 +1,8 @@
 {
   "image-new": {
-    "component": "Image"
+    "component": "Image",
+    "content": {
+      "$ref": "app:vtex.image#/definitions/ImageNew"
+    }
   }
 }

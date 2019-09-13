@@ -1,0 +1,22 @@
+{
+  "definitions": {
+    "ImageNew": {
+      "properties": {
+        "src": {
+          "title": "admin/editor.image.src.title",
+          "$ref": "app:vtex.native-types#/definitions/url",
+          "default": ""
+        },
+        "link": {
+          "$ref": "app:vtex.native-types#/definitions/link",
+          "default": ""
+        },
+        "alt": {
+          "title": "admin/editor.image.alt.title",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": ""
+        }
+      }
+    }
+  }
+}
