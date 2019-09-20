@@ -4,5 +4,16 @@
   "admin/editor.image.src.title": "Imagem",
   "admin/editor.image.alt.title": "Texto alternativo",
   "admin/editor.blockClass.title": "CSS Block Class",
-  "admin/editor.blockClass.description": "Adiciona um nome de classe extra para facilitar a estilização"
+  "admin/editor.blockClass.description": "Adiciona um nome de classe extra para facilitar a estilização",
+  "admin/editor.image-list.title": "Lista de imagens",
+  "admin/editor.image-list.description": "Exiba uma lista de imagens",
+  "admin/editor.image-list.images.image.title": "Imagem",
+  "admin/editor.image-list.images.mobileImage.title": "Imagem para mobile",
+  "admin/editor.image-list.images.description.title": "Descrição alternativa para a imagem",
+  "admin/editor.image-list.images.link.url.title": "URL do link da imagem",
+  "admin/editor.image-list.images.link.openNewTab.title": "Abrir em uma nova aba",
+  "admin/editor.image-list.images.link.noFollow.title": "Link nofollow",
+  "admin/editor.image-list.images.link.title.title": "Título para a imagem",
+  "admin/editor.image-list.images.title": "Imagens",
+  "admin/editor.image-list.height.title": "Altura máxima de cada imagem (px)"
 }
