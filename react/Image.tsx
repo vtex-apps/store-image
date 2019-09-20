@@ -6,10 +6,10 @@ import { formatIOMessage } from 'vtex.native-types'
 import styles from './styles.css'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
-  maxWidth: string
-  maxHeight: string
-  blockClass: string
-  link: {
+  maxWidth?: string | number
+  maxHeight?: string | number
+  blockClass?: string
+  link?: {
     url: string
     noFollow: boolean
     openNewTab: boolean
