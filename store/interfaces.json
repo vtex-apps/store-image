@@ -4,5 +4,8 @@
     "content": {
       "$ref": "app:vtex.store-image#/definitions/Image"
     }
+  },
+  "image-list": {
+    "component": "ImageList"
   }
 }
