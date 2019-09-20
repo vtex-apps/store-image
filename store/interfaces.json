@@ -1,8 +1,8 @@
 {
-  "image-new": {
+  "image": {
     "component": "Image",
     "content": {
-      "$ref": "app:vtex.image#/definitions/ImageNew"
+      "$ref": "app:vtex.store-image#/definitions/ImageNew"
     }
   }
 }

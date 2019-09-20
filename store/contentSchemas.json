@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "ImageNew": {
+    "Image": {
       "properties": {
         "src": {
           "title": "admin/editor.image.src.title",
