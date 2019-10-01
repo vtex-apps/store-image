@@ -57,7 +57,7 @@ const ImageSlider: StorefrontFunctionComponent<Props> = ({
           alt={description}
           link={link}
           maxHeight={height}
-          shouldFillWidth
+          fullWidth
         />
       ))}
     </SliderLayout>
