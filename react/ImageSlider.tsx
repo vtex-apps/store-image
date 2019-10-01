@@ -203,28 +203,28 @@ ImageSlider.schema = {
       type: 'number',
     },
     sliderLayoutConfig: {
-      title: messages.sliderTitle,
+      title: messages.sliderTitle.id,
       properties: {
         infinite: {
           default: true,
-          title: messages.sliderInfinite,
+          title: messages.sliderInfinite.id,
           type: 'boolean',
         },
         showNavigationArrows: {
           default: 'always',
           enum: ['mobileOnly', 'desktopOnly', 'always', 'never'],
-          title: messages.sliderShowNavigation,
+          title: messages.sliderShowNavigation.id,
           type: 'string',
         },
         showPaginationDots: {
           default: 'always',
           enum: ['mobileOnly', 'desktopOnly', 'always', 'never'],
-          title: messages.sliderShowPaginationDots,
+          title: messages.sliderShowPaginationDots.id,
           type: 'string',
         },
         usePagination: {
           default: true,
-          title: messages.sliderUsePagination,
+          title: messages.sliderUsePagination.id,
           type: 'boolean',
         },
       },
