@@ -49,10 +49,7 @@ const ImageSlider: StorefrontFunctionComponent<Props> = ({
   const { isMobile } = useDevice()
 
   return (
-    <SliderLayout
-      siteEditorConfig={{ ...sliderLayoutConfig }}
-      itemsPerPage={sliderLayoutConfig.itemsPerPage}
-      totalItems={images.length}>
+    <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
       {images.map(({ link, image, mobileImage, description }, idx) => (
         <Image
           key={idx}
