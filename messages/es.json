@@ -15,5 +15,12 @@
   "admin/editor.image-list.images.link.noFollow.title": "Debería ser un enlace nofollow",
   "admin/editor.image-list.images.link.title.title": "Título de la imagen.",
   "admin/editor.image-list.images.title": "Imágenes",
-  "admin/editor.image-list.height.title": "Altura máxima para cada imagen (px)"
+  "admin/editor.image-list.height.title": "Altura máxima para cada imagen (px)",
+  "admin/editor.image-slider.title": "Control deslizante de imagen",
+  "admin/editor.image-slider.description": "Control deslizante de imagen",
+  "admin/editor.image-slider.slider.title": "Opciones de control deslizante",
+  "admin/editor.image-slider.slider.infinite": "infinito",
+  "admin/editor.image-slider.slider.showNavigation": "Mostrar flechas de navegación",
+  "admin/editor.image-slider.slider.showPaginationDots": "Mostrar puntos de paginación",
+  "admin/editor.image-slider.slider.usePagination": "Usar paginación"
 }

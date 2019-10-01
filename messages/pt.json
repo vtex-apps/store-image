@@ -15,5 +15,12 @@
   "admin/editor.image-list.images.link.noFollow.title": "Link nofollow",
   "admin/editor.image-list.images.link.title.title": "Título para a imagem",
   "admin/editor.image-list.images.title": "Imagens",
-  "admin/editor.image-list.height.title": "Altura máxima de cada imagem (px)"
+  "admin/editor.image-list.height.title": "Altura máxima de cada imagem (px)",
+  "admin/editor.image-slider.title": "Slider de imagens",
+  "admin/editor.image-slider.description": "Slider de imagens",
+  "admin/editor.image-slider.slider.title": "Configurações do slider",
+  "admin/editor.image-slider.slider.infinite": "Infinito",
+  "admin/editor.image-slider.slider.showNavigation": "Mostrar setas para navegação",
+  "admin/editor.image-slider.slider.showPaginationDots": "Mostrar indicadores de paginação",
+  "admin/editor.image-slider.slider.usePagination": "Usar paginação"
 }
