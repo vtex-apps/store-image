@@ -8,6 +8,9 @@ import styles from './styles.css'
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
+  minWidth?: string | number
+  minHeight?: string | number
+  shouldFillWidth?: boolean
   blockClass?: string
   link?: {
     url: string
@@ -23,6 +26,11 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
   alt = '',
   maxWidth = 'none',
   maxHeight = 'none',
+  minWidth = 'none',
+  minHeight = 'none',
+  width = undefined,
+  height = undefined,
+  shouldFillWidth = false,
   srcSet = '',
   sizes = '',
   blockClass,
@@ -30,9 +38,13 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
   intl,
 }) => {
   const classes = generateBlockClass(styles.imageElement, blockClass)
-  const maxDimensions = {
-    maxWidth: maxWidth,
-    maxHeight: maxHeight,
+  const imageDimensions = {
+    minWidth,
+    minHeight,
+    maxWidth,
+    maxHeight,
+    width,
+    height,
   }
 
   const formattedSrc = formatIOMessage({ id: src, intl })
@@ -44,7 +56,10 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
       srcSet={srcSet}
       sizes={sizes}
       alt={formattedAlt}
-      style={maxDimensions}
+      style={{
+        ...imageDimensions,
+        width: shouldFillWidth ? '100%' : width,
+      }}
       className={classes}
     />
   )
@@ -54,7 +69,8 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
       href={formatIOMessage({ id: link.url, intl })}
       rel={link.noFollow ? 'nofollow' : ''}
       target={link.openNewTab ? '_blank' : ''}
-      title={formatIOMessage({ id: link.title, intl })}>
+      title={formatIOMessage({ id: link.title, intl })}
+      style={{ width: shouldFillWidth ? '100%' : width }}>
       {imgElement}
     </a>
   ) : (
