@@ -17,6 +17,40 @@
           "default": ""
         }
       }
+    },
+    "Images": {
+      "type": "array",
+      "title": "admin/editor.image-list.images.title",
+      "items": {
+        "properties": {
+          "image": {
+            "$ref": "app:vtex.native-types#/definitions/url",
+            "default": "",
+            "title": "admin/editor.image-list.images.image.title",
+            "widget": {
+              "ui:widget": "image-uploader"
+            }
+          },
+          "mobileImage": {
+            "$ref": "app:vtex.native-types#/definitions/url",
+            "default": "",
+            "title": "admin/editor.image-list.images.mobileImage.title",
+            "widget": {
+              "ui:widget": "image-uploader"
+            }
+          },
+          "description": {
+            "$ref": "app:vtex.native-types#/definitions/text",
+            "default": "",
+            "title": "admin/editor.image-list.images.description.title"
+          },
+          "link": {
+            "default": "",
+            "title": "",
+            "$ref": "app:vtex.native-types#/definitions/link"
+          }
+        }
+      }
     }
   }
 }

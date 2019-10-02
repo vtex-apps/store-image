@@ -9,6 +9,11 @@
     "component": "ImageList"
   },
   "image-slider": {
-    "component": "ImageSlider"
+    "component": "ImageSlider",
+    "content": {
+      "properties": {
+        "images": { "$ref": "app:vtex.store-image#/definitions/Images" }
+      }
+    }
   }
 }

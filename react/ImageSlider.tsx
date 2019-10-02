@@ -1,7 +1,8 @@
 import React from 'react'
-import { defineMessages } from 'react-intl'
+import { defineMessages, injectIntl, InjectedIntlProps } from 'react-intl'
 import { SliderLayout } from 'vtex.slider-layout'
 import { useDevice } from 'vtex.device-detector'
+import { formatIOMessage } from 'vtex.native-types'
 
 import Image from './Image'
 
@@ -31,7 +32,11 @@ interface Props {
   }
 }
 
-const ImageSlider: StorefrontFunctionComponent<Props> = ({
+function getImageUrl(isMobile: boolean, image: string, mobileImage: string) {
+  return !!mobileImage && isMobile ? mobileImage : image
+}
+
+const ImageSlider: StorefrontFunctionComponent<Props & InjectedIntlProps> = ({
   images,
   height,
   sliderLayoutConfig = {
@@ -45,21 +50,36 @@ const ImageSlider: StorefrontFunctionComponent<Props> = ({
     showPaginationDots: 'always',
     usePagination: true,
   },
+  intl,
 }) => {
   const { isMobile } = useDevice()
 
   return (
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
-      {images.map(({ link, image, mobileImage, description }, idx) => (
-        <Image
-          key={idx}
-          src={isMobile && mobileImage ? mobileImage : image}
-          alt={description}
-          link={link}
-          maxHeight={height}
-          fullWidth
-        />
-      ))}
+      {images.map(({ link, image, mobileImage, description }, idx) => {
+        const imageUrl = getImageUrl(
+          isMobile,
+          formatIOMessage({ id: image, intl }),
+          formatIOMessage({ id: mobileImage, intl })
+        )
+        const imageAltDescription = formatIOMessage({ id: description, intl })
+        const imageLink = link && {
+          ...link,
+          url: formatIOMessage({ id: link.url, intl }),
+          title: formatIOMessage({ id: link.title, intl }),
+        }
+
+        return (
+          <Image
+            key={idx}
+            src={imageUrl}
+            alt={imageAltDescription}
+            link={imageLink}
+            maxHeight={height}
+            fullWidth
+          />
+        )
+      })}
     </SliderLayout>
   )
 }
@@ -133,65 +153,6 @@ ImageSlider.schema = {
   description: messages.description.id,
   type: 'object',
   properties: {
-    images: {
-      items: {
-        properties: {
-          image: {
-            default: '',
-            title: messages.imagesImageTitle.id,
-            type: 'string',
-            widget: {
-              'ui:widget': 'image-uploader',
-            },
-          },
-          mobileImage: {
-            default: '',
-            title: messages.imagesMobileImageTitle.id,
-            type: 'string',
-            widget: {
-              'ui:widget': 'image-uploader',
-            },
-          },
-          description: {
-            default: '',
-            title: messages.imagesImageDescription.id,
-            type: 'string',
-          },
-          link: {
-            default: '',
-            title: '',
-            type: 'object',
-            properties: {
-              url: {
-                type: 'string',
-                title: messages.imagesImageLinkUrl.id,
-                default: '',
-              },
-              openNewTab: {
-                type: 'boolean',
-                title: messages.imagesImageLinkOpenNewTab.id,
-                default: false,
-              },
-              noFollow: {
-                type: 'boolean',
-                title: messages.imagesImageLinkNoFollow.id,
-                default: false,
-              },
-              title: {
-                type: 'string',
-                title: messages.imagesImageLinkTitle.id,
-                default: '',
-              },
-            },
-          },
-        },
-        title: messages.imagesTitle.id,
-        type: 'object',
-      },
-      minItems: 1,
-      title: messages.imagesTitle.id,
-      type: 'array',
-    },
     height: {
       default: 420,
       enum: [420, 440],
@@ -230,4 +191,4 @@ ImageSlider.schema = {
   },
 }
 
-export default ImageSlider
+export default injectIntl(ImageSlider)
