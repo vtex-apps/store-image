@@ -9,3 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Initial implementation.
 - Port `Image` component from `vtex.store-components`.
+- Create `ImageList` component.
+- New `image-list` interface.
+- Create `ImageSlider` component.
+- New `image-slider` interface.
