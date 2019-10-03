@@ -19,7 +19,7 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   intl: InjectedIntl
 }
 
-const CSS_HANDLES = ['imgElement'] as const
+const CSS_HANDLES = ['imageElement'] as const
 
 const Image: StorefrontFunctionComponent<ImageProps> = ({
   src,
@@ -59,7 +59,7 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
         ...imageDimensions,
         width: fullWidth ? '100%' : width,
       }}
-      className={handles.imgElement}
+      className={handles.imageElement}
     />
   )
 
