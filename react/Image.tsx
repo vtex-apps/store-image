@@ -1,9 +1,7 @@
 import React, { ImgHTMLAttributes, Fragment } from 'react'
-import { generateBlockClass } from '@vtex/css-handles'
+import { useCssHandles } from 'vtex.css-handles'
 import { injectIntl, InjectedIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
-
-import styles from './styles.css'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
@@ -21,6 +19,8 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   intl: InjectedIntl
 }
 
+const CSS_HANDLES = ['imgElement'] as const
+
 const Image: StorefrontFunctionComponent<ImageProps> = ({
   src,
   alt = '',
@@ -33,11 +33,10 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
   fullWidth = false,
   srcSet = '',
   sizes = '',
-  blockClass,
   link,
   intl,
 }) => {
-  const classes = generateBlockClass(styles.imageElement, blockClass)
+  const handles = useCssHandles(CSS_HANDLES)
   const imageDimensions = {
     minWidth,
     minHeight,
@@ -60,7 +59,7 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
         ...imageDimensions,
         width: fullWidth ? '100%' : width,
       }}
-      className={classes}
+      className={handles.imgElement}
     />
   )
 
