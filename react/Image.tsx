@@ -36,7 +36,9 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
   link,
   intl,
 }) => {
-  const handles = useCssHandles(CSS_HANDLES)
+  const handles = useCssHandles(CSS_HANDLES, {
+    migrationFrom: 'vtex.store-components@3.x',
+  })
   const imageDimensions = {
     minWidth,
     minHeight,
