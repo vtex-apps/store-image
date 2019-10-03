@@ -83,19 +83,19 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
 const messages = defineMessages({
   title: {
     defaultMessage: '',
-    id: 'admin/editor.image.title',
+    id: 'admin/editor.store-image.title',
   },
   description: {
     defaultMessage: '',
-    id: 'admin/editor.image.description',
+    id: 'admin/editor.store-image.description',
   },
   blockClassTitle: {
     defaultMessage: '',
-    id: 'admin/editor.blockClass.title',
+    id: 'admin/editor.store-image.blockClass.title',
   },
   blockClassDescription: {
     defaultMessage: '',
-    id: 'admin/editor.blockClass.description',
+    id: 'admin/editor.store-image.blockClass.description',
   },
 })
 
