@@ -19,7 +19,7 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   intl: InjectedIntl
 }
 
-const CSS_HANDLES = ['imageElement'] as const
+const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 const Image: StorefrontFunctionComponent<ImageProps> = ({
   src,
@@ -71,6 +71,7 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
       rel={link.noFollow ? 'nofollow' : ''}
       target={link.openNewTab ? '_blank' : ''}
       title={formatIOMessage({ id: link.title, intl })}
+      className={handles.imageElementLink}
       style={{ width: fullWidth ? '100%' : width }}>
       {imgElement}
     </a>
