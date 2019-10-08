@@ -8,7 +8,6 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxHeight?: string | number
   minWidth?: string | number
   minHeight?: string | number
-  fullWidth?: boolean
   blockClass?: string
   link?: {
     url: string
@@ -30,7 +29,6 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
   minHeight = 'none',
   width = undefined,
   height = undefined,
-  fullWidth = false,
   srcSet = '',
   sizes = '',
   link,
@@ -68,8 +66,7 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
       rel={link.noFollow ? 'nofollow' : ''}
       target={link.openNewTab ? '_blank' : ''}
       title={formatIOMessage({ id: link.title, intl })}
-      className={handles.imageElementLink}
-      style={{ width: fullWidth ? '100%' : width }}>
+      className={handles.imageElementLink}>
       {imgElement}
     </a>
   ) : (
