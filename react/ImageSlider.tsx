@@ -76,7 +76,7 @@ const ImageSlider: StorefrontFunctionComponent<Props & InjectedIntlProps> = ({
             alt={imageAltDescription}
             link={imageLink}
             maxHeight={height}
-            fullWidth
+            width="100%"
           />
         )
       })}

@@ -57,10 +57,7 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
       srcSet={srcSet}
       sizes={sizes}
       alt={formattedAlt}
-      style={{
-        ...imageDimensions,
-        width: fullWidth ? '100%' : width,
-      }}
+      style={imageDimensions}
       className={handles.imageElement}
     />
   )
