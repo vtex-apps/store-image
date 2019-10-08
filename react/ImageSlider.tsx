@@ -6,30 +6,34 @@ import { formatIOMessage } from 'vtex.native-types'
 
 import Image from './Image'
 
-interface Props {
-  images: {
-    link?: {
-      url: string
-      noFollow: boolean
-      openNewTab: boolean
-      title: string
-    }
-    image: string
-    mobileImage: string
-    description: string
-  }[]
-  height: number
-  sliderLayoutConfig: {
-    itemsPerPage: {
-      desktop: number
-      tablet: number
-      phone: number
-    }
-    showNavigationArrows: 'mobileOnly' | 'desktopOnly' | 'always' | 'never'
-    showPaginationDots: 'mobileOnly' | 'desktopOnly' | 'always' | 'never'
-    usePagination: boolean
-    infinite: boolean
+interface Image {
+  link?: {
+    url: string
+    noFollow: boolean
+    openNewTab: boolean
+    title: string
   }
+  image: string
+  mobileImage: string
+  description: string
+}
+
+interface SliderConfig {
+  itemsPerPage: {
+    desktop: number
+    tablet: number
+    phone: number
+  }
+  showNavigationArrows: 'mobileOnly' | 'desktopOnly' | 'always' | 'never'
+  showPaginationDots: 'mobileOnly' | 'desktopOnly' | 'always' | 'never'
+  usePagination: boolean
+  infinite: boolean
+}
+
+interface Props {
+  images: Image[]
+  height: number
+  sliderLayoutConfig: SliderConfig
 }
 
 function getImageUrl(isMobile: boolean, image: string, mobileImage: string) {
