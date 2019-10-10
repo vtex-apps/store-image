@@ -1084,6 +1084,11 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
+"@vtex/css-handles@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@vtex/css-handles/-/css-handles-1.1.3.tgz#30bd1010f2907443188738f74dd11d3b6b4ac624"
+  integrity sha512-DkqnzMf5jW6lQ1L8wYb9fnXyh0FqZym8qEokGYjeLUqBLBAiVK8XbI4U0ezFswWTOJ3iHZUkUjqPt5WodxR29w==
+
 "@vtex/test-tools@^0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@vtex/test-tools/-/test-tools-0.3.2.tgz#f9423c98f1960b226d18dfe59d6d9c430e14d530"
@@ -2022,9 +2027,9 @@ eslint-plugin-lodash@^5.1.0:
     lodash "^4.17.15"
 
 eslint-plugin-prettier@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.0.tgz#8695188f95daa93b0dc54b249347ca3b79c4686d"
-  integrity sha512-XWX2yVuwVNLOUhQijAkXz+rMPPoCr7WFiAl8ig6I7Xn+pPVhDhzg4DxHpmbeb0iqjO9UronEA3Tb09ChnFVHHA==
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.1.tgz#507b8562410d02a03f0ddc949c616f877852f2ba"
+  integrity sha512-A+TZuHZ0KU0cnn56/9mfR7/KjUJ9QNVXUhwvRFSR7PGPe0zQR6PTkmyqg1AtUUEOzTqeRsUwyKFh0oVZKVCrtA==
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
@@ -5202,6 +5207,14 @@ verror@1.10.0:
     assert-plus "^1.0.0"
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
+
+"vtex.native-types@http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.native-types@0.5.0/public/_types/react":
+  version "0.5.0"
+  resolved "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.native-types@0.5.0/public/_types/react#a5c857ed98cbd32f5b66e663bce7a6bec4fae651"
+
+"vtex.render-runtime@http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.render-runtime@8.64.0/public/_types/react":
+  version "8.64.0"
+  resolved "http://vtex.vteximg.com.br/_v/public/typings/v1/vtex.render-runtime@8.64.0/public/_types/react#c54c2addfc323f48746e28a5cdfb8b08d39ef037"
 
 w3c-hr-time@^1.0.1:
   version "1.0.1"
