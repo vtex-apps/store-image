@@ -1,15 +1,21 @@
 {
   "vendor": "vtex",
-  "name": "image",
+  "name": "store-image",
   "version": "0.1.0",
   "title": "VTEX Image",
   "description": "Set of VTEX components to handle images",
   "builders": {
     "react": "3.x",
+    "store": "0.x",
     "messages": "1.x",
     "docs": "0.x"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vtex.native-types": "0.x",
+    "vtex.device-detector": "0.x",
+    "vtex.slider-layout": "0.x",
+    "vtex.css-handles": "0.x"
+  },
   "registries": [
     "smartcheckout"
   ],
