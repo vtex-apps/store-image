@@ -4,13 +4,5 @@
     "content": {
       "$ref": "app:vtex.store-image#/definitions/Image"
     }
-  },
-  "image-slider": {
-    "component": "ImageSlider",
-    "content": {
-      "properties": {
-        "images": { "$ref": "app:vtex.store-image#/definitions/Images" }
-      }
-    }
   }
 }

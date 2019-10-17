@@ -13,12 +13,9 @@
   "dependencies": {
     "vtex.native-types": "0.x",
     "vtex.device-detector": "0.x",
-    "vtex.slider-layout": "0.x",
     "vtex.css-handles": "0.x"
   },
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
