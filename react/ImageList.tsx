@@ -103,65 +103,6 @@ ImageList.schema = {
   description: messages.description.id,
   type: 'object',
   properties: {
-    images: {
-      items: {
-        properties: {
-          image: {
-            default: '',
-            title: messages.imagesImageTitle.id,
-            type: 'string',
-            widget: {
-              'ui:widget': 'image-uploader',
-            },
-          },
-          mobileImage: {
-            default: '',
-            title: messages.imagesMobileImageTitle.id,
-            type: 'string',
-            widget: {
-              'ui:widget': 'image-uploader',
-            },
-          },
-          description: {
-            default: '',
-            title: messages.imagesImageDescription.id,
-            type: 'string',
-          },
-          link: {
-            default: '',
-            title: '',
-            type: 'object',
-            properties: {
-              url: {
-                type: 'string',
-                title: messages.imagesImageLinkUrl.id,
-                default: '',
-              },
-              openNewTab: {
-                type: 'boolean',
-                title: messages.imagesImageLinkOpenNewTab.id,
-                default: false,
-              },
-              noFollow: {
-                type: 'boolean',
-                title: messages.imagesImageLinkNoFollow.id,
-                default: false,
-              },
-              title: {
-                type: 'string',
-                title: messages.imagesImageLinkTitle.id,
-                default: '',
-              },
-            },
-          },
-        },
-        title: messages.imagesTitle.id,
-        type: 'object',
-      },
-      minItems: 1,
-      title: messages.imagesTitle.id,
-      type: 'array',
-    },
     height: {
       default: 420,
       enum: [420, 440],
