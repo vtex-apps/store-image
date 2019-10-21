@@ -1,6 +1,7 @@
-import React, { createContext, useContext } from 'react'
+import React from 'react'
 import { defineMessages } from 'react-intl'
 import { useDevice } from 'vtex.device-detector'
+import { useListContext, ListContextProvider } from 'vtex.list-context'
 
 import Image from './Image'
 
@@ -19,16 +20,14 @@ interface Props {
   height: number
 }
 
-const ImageListStateContext = createContext<JSX.Element[] | undefined>(
-  undefined
-)
-
 const ImageList: StorefrontFunctionComponent<Props> = ({
   images,
   height = 420,
   children,
 }) => {
   const { isMobile } = useDevice()
+  const { list } = useListContext() || []
+
   const imageListContent = images.map(
     ({ link, image, mobileImage, description }, idx) => (
       <Image
@@ -42,16 +41,13 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
     )
   )
 
-  return (
-    <ImageListStateContext.Provider value={imageListContent}>
-      {children}
-    </ImageListStateContext.Provider>
-  )
-}
+  const newListContextValue = list.concat(imageListContent)
 
-export function useImageListState() {
-  const context = useContext(ImageListStateContext)
-  return context
+  return (
+    <ListContextProvider list={newListContextValue}>
+      {children}
+    </ListContextProvider>
+  )
 }
 
 const messages = defineMessages({
