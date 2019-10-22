@@ -65,3 +65,8 @@ Below, we describe the namespaces that are defined by `store-image`.
 | `imageElementLink` | Class for the wrapping `<a>` tag of an image with a link. |
 
 Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. Take a look at [Slider-Layout](https://vtex.io/docs/app/vtex.slider-layout).
+
+
+**Upcoming documentation:**
+
+ - [Create ImageList](https://github.com/vtex-apps/store-image/pull/5)
