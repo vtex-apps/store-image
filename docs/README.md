@@ -19,9 +19,9 @@ There's a common `ImageObject` type used by both blocks:
 
 ### ImageList
 
-The `list-context.image-list` interface is an stance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
+The `list-context.image-list` interface is a stance of the `list-context` interfaces, which means its part of a set of special interfaces that enables you to create lists of content that can be edited via Site Editor.
 
-Currently, this should be used to create a block analogous to an `ImageSlider`, but in a more composable way, since you could use it along with other `list-context` blocks to create a more flexible and customizable slider. The following example shows how your could use this to replicate a `ImageSlider`:
+Currently, this should be used to create a block analogous to an `ImageSlider`, but in a more composable way, since you could use it along with other `list-context` blocks to create a more flexible and customizable slider. The following example shows how you could use this to replicate an `ImageSlider`:
 
 ```json
   "list-context.image-list#demo": {
