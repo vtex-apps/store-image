@@ -5,7 +5,10 @@
         "src": {
           "title": "admin/editor.image.src.title",
           "$ref": "app:vtex.native-types#/definitions/url",
-          "default": ""
+          "default": "",
+          "widget": {
+            "ui:widget": "image-uploader"
+          }
         },
         "link": {
           "$ref": "app:vtex.native-types#/definitions/link",
