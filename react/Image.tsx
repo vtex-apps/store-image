@@ -23,8 +23,8 @@ const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 const Image: StorefrontFunctionComponent<ImageProps> = ({
   src,
   alt = '',
-  maxWidth = 'none',
-  maxHeight = 'none',
+  maxWidth = '100%',
+  maxHeight = '100%',
   minWidth = 'none',
   minHeight = 'none',
   width = undefined,
