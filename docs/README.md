@@ -4,6 +4,8 @@ This app exports a set of blocks to work with images inside of our Store Framewo
 
 ## Blocks API
 
+Documentation on the `image` interface can be found at: <https://vtex.io/docs/app/vtex.store-components/image>
+
 A few interfaces are exported by this app. For now, only `image-slider` and `image-list` are documented and allowed for use inside of `store`.
 
 There's a common `ImageObject` type used by both blocks:
