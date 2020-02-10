@@ -33,6 +33,7 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
   sizes = '',
   link,
   intl,
+  title,
 }) => {
   const handles = useCssHandles(CSS_HANDLES, {
     migrationFrom: 'vtex.store-components@3.x',
@@ -51,9 +52,10 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
 
   const imgElement = (
     <img
-      src={formattedSrc}
-      srcSet={srcSet}
+      title={title}
       sizes={sizes}
+      srcSet={srcSet}
+      src={formattedSrc}
       alt={formattedAlt}
       style={imageDimensions}
       className={handles.imageElement}
