@@ -18,6 +18,12 @@
           "title": "admin/editor.image.alt.title",
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": ""
+        },
+        "title": {
+          "title": "admin/editor.image.title.title",
+          "description": "admin/editor.image.title.description",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": ""
         }
       }
     },

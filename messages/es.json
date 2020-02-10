@@ -5,6 +5,8 @@
   "admin/editor.store-image.alt.title": "Texto alternativo",
   "admin/editor.store-image.blockClass.title": "CSS Block Class",
   "admin/editor.store-image.blockClass.description": "Agrega un nombre de clase extra para facilitar la estilización",
+  "admin/editor.store-image.title.title": "Título de la imagen",
+  "admin/editor.store-image.title.description": "Título que se mostrará al pasar el mouse sobre la imagen",
   "admin/editor.image-list.title": "Lista de imagenes",
   "admin/editor.image-list.description": "Mostrar una lista de imágenes",
   "admin/editor.image-list.images.image.title": "Imagen",
