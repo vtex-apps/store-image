@@ -30,7 +30,7 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
   children,
 }) => {
   const { isMobile } = useDevice()
-  const { list } = useListContext() || []
+  const list = useListContext()?.list ?? []
 
   const imageListContent = images.map(
     ({ link, image, mobileImage, description }, idx) => (
