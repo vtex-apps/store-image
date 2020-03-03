@@ -3,8 +3,13 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["es2017", "dom", "es2018.promise", "esnext.asynciterable"],
-    "module": "es6",
+    "lib": [
+      "es2017",
+      "dom",
+      "es2018.promise",
+      "esnext.asynciterable"
+    ],
+    "module": "esnext",
     "moduleResolution": "node",
     "noEmitOnError": false,
     "noImplicitAny": true,
@@ -18,10 +23,19 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "es2017",
-    "typeRoots": ["node_modules/@types"],
-    "types": ["node", "jest"]
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "jest"
+    ]
   },
-  "include": ["./typings/*.d.ts", "./**/*.tsx", "./**/*.ts"],
+  "include": [
+    "./typings/*.d.ts",
+    "./**/*.tsx",
+    "./**/*.ts"
+  ],
   "typeAcquisition": {
     "enable": false
   }

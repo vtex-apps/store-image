@@ -68,7 +68,8 @@ const Image: StorefrontFunctionComponent<ImageProps> = ({
       rel={link.noFollow ? 'nofollow' : ''}
       target={link.openNewTab ? '_blank' : ''}
       title={formatIOMessage({ id: link.title, intl })}
-      className={handles.imageElementLink}>
+      className={handles.imageElementLink}
+    >
       {imgElement}
     </a>
   ) : (
