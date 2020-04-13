@@ -57,7 +57,32 @@ You are now able to use the `list-context.image-list` block, exported by the Sto
 
 Note that the `slider-layout` block, exported from the Slider Layout app, is given as a child of `list-context.image-list`. It is responsible for defining which images will be displayed, as well as their behavior once rendered.
 
-This means that the `list-context.image-list` block is in fact not rendered and therefore does not have its own props that can be configured. Instead, you should use the `slider-layout` props - check out the Configuration section in the [Slider Layout documentation](https://vtex.io/docs/app/vtex.slider-layout).
+### `list-context.image-list` props
+
+| Prop name     | Type  | Description                                                | Default value |
+| ------------- | ----- | ---------------------------------------------------------- | ------------- |
+| `images`    | `object` | Object declaring all desired images to be rendered.        | `undefined`   |
+| `height` | `number`   | Image height for all images declared in the `image` object. | `undefined`   |
+
+- **`image` object:**
+
+| Prop name     | Type   | Description                                                | Default value |
+| ------------- | ------- | ---------------------------------------------------------- | ------------- |
+| `image`       | `string` | Image URL.                                        |  `undefined`       |
+| `mobileImage` | `string` | Mobile image URL.                                 | `undefined`        |
+| `description` | `string` | Image description.                                | `undefined`        |
+| `link`        | `object` | Links an URL to the image being rendered.         | `undefined` | 
+
+- **`link` object:**
+
+| Prop name     | Type   | Description                                                | Default value |
+| ------------- | ------- | ---------------------------------------------------------- | ------------- |
+| `url`       | `string` | URL users will be redirected to when clicking on the image.    |  `undefined`       |
+| `noFollow` | `boolean` | Whether the linked URL is endorsed by the owner of the page the user was navigating on i.e. if there is a commercial relationship between both pages (`true`) or not (`false`). | `false`        |
+| `openNewTab` | `string` | Whether a new tab on browser will be opened (`true`) or not (`false`) .   | `undefined`   |
+| `title`        | `string` | Text label used to identify the image in the admin's Site Editor. | `undefined` | 
+
+:information_source: Use the **admin's Site Editor** to manage all images declared in the `list-context.image-list` block. 
 
 ## Customization
 
