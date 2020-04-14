@@ -15,10 +15,10 @@ The Store Image app exports the `list-context.image-list` block, which is respon
 
 1. Add the `store-image` app to your theme's dependencies in the `manifest.json`, for example:
 
-```json
-dependencies: {
-"vtex.store-image": "0.x"
-}
+```diff
+ "dependencies ": {
++  "vtex.store-image": "0.x"
+ }
 ```
 
 You are now able to use the `list-context.image-list` block, exported by the Store Image app. The block allows you to display images in your store with a higher degree of composability, since you can use it along with other `list-context` blocks to create a more flexible and customizable image slider.
@@ -88,4 +88,4 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 The block still doesn't have CSS Handles for its specific customization. 
 
-All CSS Handles available for the Image block are the ones available for the `slider-layout` block. Take a look at the Customization section in the [Slider Layout documentation](https://vtex.io/docs/app/vtex.slider-layout).
+All CSS Handles available for the Image block are the ones available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://vtex.io/docs/app/vtex.slider-layout).
