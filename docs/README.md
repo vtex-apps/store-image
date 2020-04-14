@@ -61,10 +61,10 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 | Prop name     | Type  | Description                                                | Default value |
 | ------------- | ----- | ---------------------------------------------------------- | ------------- |
-| `images`    | `object` | Object declaring all desired images to be rendered.        | `undefined`   |
+| `images`    | `array` | Array of objects declaring all desired images to be rendered.        | `undefined`   |
 | `height` | `number`   | Image height for all images declared in the `image` object. | `undefined`   |
 
-- **`image` object:**
+- **`images` array of objects:**
 
 | Prop name     | Type   | Description                                                | Default value |
 | ------------- | ------- | ---------------------------------------------------------- | ------------- |
