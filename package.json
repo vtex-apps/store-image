@@ -3,9 +3,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "lint": "cd ./react && yarn lint",
-    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "lint": "eslint --quiet --fix --ext ts,tsx ./react",
     "test": "cd ./react && yarn test",
+    "format": "prettier --write \"**/*.{ts,js,json}\"",
     "lint:locales": "intl-equalizer",
     "locales:fix": "intl-equalizer --fix",
     "verify": "yarn lint && yarn lint:locales && yarn test"
@@ -26,15 +26,15 @@
     ]
   },
   "devDependencies": {
-    "@vtex/intl-equalizer": "^2.3.0",
-    "@vtex/prettier-config": "^0.1.3",
+    "@vtex/intl-equalizer": "^2.4.2",
+    "@vtex/prettier-config": "^0.1.4",
     "eslint": "^6.8.0",
-    "eslint-config-vtex": "^12.2.1",
-    "eslint-config-vtex-react": "^6.2.1",
-    "husky": "^4.2.0",
-    "lint-staged": "^10.0.2",
-    "prettier": "^1.19.1",
-    "typescript": "^3.7.5"
+    "eslint-config-vtex": "^12.3.2",
+    "eslint-config-vtex-react": "^6.3.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5",
+    "typescript": "^3.8.3"
   },
   "version": "0.2.0",
   "intl-equalizer": {
