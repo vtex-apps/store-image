@@ -3,9 +3,9 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
-    "lint": "cd ./react && yarn lint",
-    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "lint": "eslint --quiet --fix --ext ts,tsx ./react",
     "test": "cd ./react && yarn test",
+    "format": "prettier --write \"**/*.{ts,js,json}\"",
     "lint:locales": "intl-equalizer",
     "locales:fix": "intl-equalizer --fix",
     "verify": "yarn lint && yarn lint:locales && yarn test"
