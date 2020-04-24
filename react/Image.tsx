@@ -1,6 +1,6 @@
 import React, { ImgHTMLAttributes, Fragment } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
-import { injectIntl, InjectedIntl, defineMessages } from 'react-intl'
+import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
@@ -15,26 +15,26 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
     openNewTab: boolean
     title: string
   }
-  intl: InjectedIntl
 }
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
-const Image: StorefrontFunctionComponent<ImageProps> = ({
-  src,
-  alt = '',
-  maxWidth,
-  maxHeight,
-  minWidth,
-  minHeight,
-  width,
-  height,
-  srcSet = '',
-  sizes = '',
-  link,
-  intl,
-  title,
-}) => {
+function Image(props: ImageProps) {
+  const {
+    src,
+    alt = '',
+    maxWidth,
+    maxHeight,
+    minWidth,
+    minHeight,
+    width,
+    height,
+    srcSet = '',
+    sizes = '',
+    link,
+    title,
+  } = props
+  const intl = useIntl()
   const handles = useCssHandles(CSS_HANDLES, {
     migrationFrom: 'vtex.store-components@3.x',
   })
@@ -110,4 +110,4 @@ Image.schema = {
   },
 }
 
-export default injectIntl(Image)
+export default Image

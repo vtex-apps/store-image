@@ -1,5 +1,5 @@
 import React from 'react'
-import { defineMessages, injectIntl, InjectedIntlProps } from 'react-intl'
+import { defineMessages, useIntl } from 'react-intl'
 import { SliderLayout } from 'vtex.slider-layout'
 import { useDevice } from 'vtex.device-detector'
 import { formatIOMessage } from 'vtex.native-types'
@@ -40,23 +40,24 @@ function getImageUrl(isMobile: boolean, image: string, mobileImage: string) {
   return !!mobileImage && isMobile ? mobileImage : image
 }
 
-const ImageSlider: StorefrontFunctionComponent<Props & InjectedIntlProps> = ({
-  images,
-  height,
-  sliderLayoutConfig = {
-    itemsPerPage: {
-      desktop: 1,
-      tablet: 1,
-      phone: 1,
+function ImageSlider(props: Props) {
+  const {
+    images,
+    height,
+    sliderLayoutConfig = {
+      itemsPerPage: {
+        desktop: 1,
+        tablet: 1,
+        phone: 1,
+      },
+      infinite: true,
+      showNavigationArrows: 'always',
+      showPaginationDots: 'always',
+      usePagination: true,
     },
-    infinite: true,
-    showNavigationArrows: 'always',
-    showPaginationDots: 'always',
-    usePagination: true,
-  },
-  intl,
-}) => {
+  } = props
   const { isMobile } = useDevice()
+  const intl = useIntl()
 
   return (
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
@@ -195,4 +196,4 @@ ImageSlider.schema = {
   },
 }
 
-export default injectIntl(ImageSlider)
+export default ImageSlider
