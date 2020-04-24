@@ -89,9 +89,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 The block still doesn't have CSS Handles for its specific customization.
 
-<<<<<<< HEAD
 All CSS Handles available for the Image block are the ones available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://vtex.io/docs/app/vtex.slider-layout).
-=======
 Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. Take a look at [Slider-Layout](https://vtex.io/docs/app/vtex.slider-layout).
 
 ## Contributors ✨
@@ -107,5 +105,3 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-> > > > > > > bbf1e2d... Update .all-contributorsrc file
