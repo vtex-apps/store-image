@@ -12,8 +12,16 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   link?: {
     url: string
     noFollow: boolean
-    openNewTab: boolean
     title: string
+    /**
+     * These two properties need to both exist because
+     * there was a mismatch in the API defined by this component,
+     * which exposes a openNewTab prop, and the native link type
+     * from vtex.native-types, which expects a newTab property
+     * instead of openNewTab.
+     */
+    openNewTab?: boolean
+    newTab?: boolean
   }
 }
 
@@ -62,11 +70,13 @@ function Image(props: ImageProps) {
     />
   )
 
+  const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
   return link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
       rel={link.noFollow ? 'nofollow' : ''}
-      target={link.openNewTab ? '_blank' : ''}
+      target={shouldOpenLinkInNewTab ? '_blank' : ''}
       title={formatIOMessage({ id: link.title, intl })}
       className={handles.imageElementLink}
     >
