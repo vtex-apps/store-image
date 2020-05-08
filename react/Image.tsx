@@ -9,20 +9,7 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   minWidth?: string | number
   minHeight?: string | number
   blockClass?: string
-  link?: {
-    url: string
-    noFollow: boolean
-    title: string
-    /**
-     * These two properties need to both exist because
-     * there was a mismatch in the API defined by this component,
-     * which exposes a openNewTab prop, and the native link type
-     * from vtex.native-types, which expects a newTab property
-     * instead of openNewTab.
-     */
-    openNewTab?: boolean
-    newTab?: boolean
-  }
+  link?: Link
 }
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
