@@ -5,20 +5,6 @@ import { useListContext, ListContextProvider } from 'vtex.list-context'
 
 import Image from './Image'
 
-interface Link {
-  url: string
-  noFollow: boolean
-  openNewTab: boolean
-  title: string
-}
-
-interface Image {
-  link?: Link
-  image: string
-  mobileImage: string
-  description: string
-}
-
 interface Props {
   images: Image[]
   height: number
