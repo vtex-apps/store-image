@@ -67,7 +67,7 @@ function Image(props: ImageProps) {
     <a
       href={formatIOMessage({ id: link.url, intl })}
       rel={link.noFollow ? 'nofollow' : ''}
-      target={shouldOpenLinkInNewTab ? '_blank' : ''}
+      target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       title={formatIOMessage({ id: link.title, intl })}
       className={handles.imageElementLink}
     >
