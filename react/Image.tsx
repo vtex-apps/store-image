@@ -57,6 +57,10 @@ function Image(props: ImageProps) {
     />
   )
 
+  /**
+   * To understand why we need to check for both newTab and openNewTab
+   * properties, check the Image type definition at './typings/image.d.ts'.
+   */
   const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
 
   return link ? (
