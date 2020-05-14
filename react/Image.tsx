@@ -9,12 +9,7 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   minWidth?: string | number
   minHeight?: string | number
   blockClass?: string
-  link?: {
-    url: string
-    noFollow: boolean
-    openNewTab: boolean
-    title: string
-  }
+  link?: Link
 }
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
@@ -62,11 +57,17 @@ function Image(props: ImageProps) {
     />
   )
 
+  /**
+   * To understand why we need to check for both newTab and openNewTab
+   * properties, check the Image type definition at './typings/image.d.ts'.
+   */
+  const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
   return link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
       rel={link.noFollow ? 'nofollow' : ''}
-      target={link.openNewTab ? '_blank' : ''}
+      target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       title={formatIOMessage({ id: link.title, intl })}
       className={handles.imageElementLink}
     >
