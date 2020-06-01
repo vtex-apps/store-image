@@ -1,7 +1,8 @@
-import React, { ImgHTMLAttributes, Fragment } from 'react'
+import React, { ImgHTMLAttributes, Fragment, useMemo } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
+import { changeImageUrlSize } from './modules/imageUrl'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
@@ -10,9 +11,24 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   minHeight?: string | number
   blockClass?: string
   link?: Link
+  breakpoints?: number[]
 }
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
+
+const useAutoSrcSet = (src?: string, breakpoints?: number[]) => {
+  return useMemo(() => {
+    if (!breakpoints || !src) {
+      return undefined
+    }
+
+    return breakpoints
+      .map(breakpoint =>
+        `${changeImageUrlSize(src, breakpoint)} ${breakpoint}w`
+      )
+      .join(',')
+  }, [src, breakpoints])
+}
 
 function Image(props: ImageProps) {
   const {
@@ -24,15 +40,21 @@ function Image(props: ImageProps) {
     minHeight,
     width,
     height,
-    srcSet = '',
-    sizes = '',
+    srcSet,
+    sizes,
     link,
     title,
+    breakpoints,
+    className,
   } = props
+
   const intl = useIntl()
   const handles = useCssHandles(CSS_HANDLES, {
     migrationFrom: 'vtex.store-components@3.x',
   })
+
+  const formattedSrcSet = useAutoSrcSet(src, breakpoints)
+
   const imageDimensions = {
     minWidth,
     minHeight,
@@ -49,11 +71,11 @@ function Image(props: ImageProps) {
     <img
       title={title}
       sizes={sizes}
-      srcSet={srcSet}
+      srcSet={srcSet ?? formattedSrcSet}
       src={formattedSrc}
       alt={formattedAlt}
       style={imageDimensions}
-      className={handles.imageElement}
+      className={`${handles.imageElement} ${className}`}
     />
   )
 
