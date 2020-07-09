@@ -85,12 +85,6 @@ const messages = defineMessages({
   description: {
     id: 'admin/editor.store-image.description',
   },
-  blockClassTitle: {
-    id: 'admin/editor.store-image.blockClass.title',
-  },
-  blockClassDescription: {
-    id: 'admin/editor.store-image.blockClass.description',
-  },
 })
 
 Image.schema = {

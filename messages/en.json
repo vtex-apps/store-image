@@ -3,8 +3,6 @@
   "admin/editor.store-image.description": "Show any image",
   "admin/editor.store-image.src.title": "Image",
   "admin/editor.store-image.alt.title": "Alternative text",
-  "admin/editor.store-image.blockClass.title": "CSS Block Class",
-  "admin/editor.store-image.blockClass.description": "Adds an extra class name to ease styling",
   "admin/editor.store-image.title.title": "Image title",
   "admin/editor.store-image.title.description": "Title to be shown on hover",
   "admin/editor.image-list.title": "Image List",
