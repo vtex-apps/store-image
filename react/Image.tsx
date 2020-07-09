@@ -80,35 +80,21 @@ function Image(props: ImageProps) {
 
 const messages = defineMessages({
   title: {
-    defaultMessage: '',
     id: 'admin/editor.store-image.title',
   },
   description: {
-    defaultMessage: '',
     id: 'admin/editor.store-image.description',
   },
   blockClassTitle: {
-    defaultMessage: '',
     id: 'admin/editor.store-image.blockClass.title',
   },
   blockClassDescription: {
-    defaultMessage: '',
     id: 'admin/editor.store-image.blockClass.description',
   },
 })
 
 Image.schema = {
   title: messages.title.id,
-  description: messages.description.id,
-  type: 'object',
-  properties: {
-    blockClass: {
-      title: messages.blockClassTitle.id,
-      description: messages.blockClassDescription.id,
-      type: 'string',
-      isLayout: true,
-    },
-  },
 }
 
 export default Image
