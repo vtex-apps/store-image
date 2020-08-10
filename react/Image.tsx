@@ -24,14 +24,14 @@ const useImageLoad = (
   imageRef: RefObject<HTMLImageElement | null>,
   { bailOut = false } = {}
 ) => {
-  const [loaded, setLoaded] = useState(false)
+  const [isLoaded, setLoaded] = useState(false)
+
   useEffect(() => {
     if (bailOut) {
       return
     }
 
     const imageElement = imageRef.current
-
     if (!imageElement) {
       return
     }
@@ -40,6 +40,7 @@ const useImageLoad = (
       setLoaded(true)
       return
     }
+
     const handleLoad = () => {
       setLoaded(true)
     }
@@ -50,7 +51,8 @@ const useImageLoad = (
       imageElement.removeEventListener('load', handleLoad)
     }
   }, [imageRef, bailOut])
-  return loaded
+
+  return isLoaded
 }
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
