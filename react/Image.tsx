@@ -1,4 +1,11 @@
-import React, { ImgHTMLAttributes, Fragment } from 'react'
+import React, {
+  ImgHTMLAttributes,
+  Fragment,
+  useState,
+  useRef,
+  useEffect,
+  RefObject,
+} from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
@@ -9,7 +16,41 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   minWidth?: string | number
   minHeight?: string | number
   blockClass?: string
+  experimentalPreventLayoutShift?: boolean
   link?: Link
+}
+
+const useImageLoad = (
+  imageRef: RefObject<HTMLImageElement | null>,
+  { bailOut = false } = {}
+) => {
+  const [loaded, setLoaded] = useState(false)
+  useEffect(() => {
+    if (bailOut) {
+      return
+    }
+
+    const imageElement = imageRef.current
+
+    if (!imageElement) {
+      return
+    }
+
+    if (imageElement.complete) {
+      setLoaded(true)
+      return
+    }
+    const handleLoad = () => {
+      setLoaded(true)
+    }
+
+    imageElement.addEventListener('load', handleLoad)
+
+    return () => {
+      imageElement.removeEventListener('load', handleLoad)
+    }
+  }, [imageRef, bailOut])
+  return loaded
 }
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
@@ -28,7 +69,12 @@ function Image(props: ImageProps) {
     sizes = '',
     link,
     title,
+    experimentalPreventLayoutShift,
   } = props
+  const imageRef = useRef<HTMLImageElement | null>(null)
+  const isLoaded = useImageLoad(imageRef, {
+    bailOut: !experimentalPreventLayoutShift,
+  })
   const intl = useIntl()
   const handles = useCssHandles(CSS_HANDLES, {
     migrationFrom: 'vtex.store-components@3.x',
@@ -42,6 +88,8 @@ function Image(props: ImageProps) {
     height,
   }
 
+  const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
+
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
 
@@ -53,6 +101,7 @@ function Image(props: ImageProps) {
       src={formattedSrc}
       alt={formattedAlt}
       style={imageDimensions}
+      ref={imageRef}
       className={handles.imageElement}
     />
   )
@@ -63,7 +112,7 @@ function Image(props: ImageProps) {
    */
   const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
 
-  return link ? (
+  const maybeLink = link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
       rel={link.noFollow ? 'nofollow' : ''}
@@ -75,6 +124,19 @@ function Image(props: ImageProps) {
     </a>
   ) : (
     <Fragment>{imgElement}</Fragment>
+  )
+
+  return experimentalPreventLayoutShift ? (
+    <span
+      className="dib"
+      style={{
+        height: isLoaded ? 'auto' : placeholderSize,
+      }}
+    >
+      {maybeLink}
+    </span>
+  ) : (
+    maybeLink
   )
 }
 
