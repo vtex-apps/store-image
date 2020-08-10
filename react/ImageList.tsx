@@ -27,6 +27,7 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
         link={link}
         maxHeight={height}
         width="100%"
+        experimentalPreventLayoutShift
       />
     )
   )
