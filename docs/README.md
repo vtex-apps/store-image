@@ -63,7 +63,12 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | Prop name | Type     | Description                                                   | Default value |
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
-| `height`  | `number` | Image height for all images declared in the `image` object.   | `undefined`   |
+| `width`   | `number` | Width (in pixels) for all images declared in the `image` object. | `undefined` | 
+| `height`  | `number` | Height (in pixels) for all images declared in the `image` object.   | `undefined`   |
+| `maxWidth`| `number` | Maximum width (in pixels) for all images declared in the `image` object. | `undefined`   |
+| `minWidth`| `number` | Minimum width (in pixels) for all images declared in the `image` object. | `undefined`   |
+| `maxHeight`| `number` | Maximum height (in pixels) for all images declared in the `image` object. | `undefined`   |
+| `minHeight` | `number` | Minimum height (in pixels) for all images declared in the `image` object. | `undefined`   |
 
 - **`images` array:**
 
