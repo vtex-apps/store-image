@@ -15,7 +15,8 @@ interface Image {
   }
   image: string
   mobileImage: string
-  description: string
+  description: string,
+  title?: string
 }
 
 interface SliderConfig {
@@ -61,7 +62,7 @@ function ImageSlider(props: Props) {
 
   return (
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
-      {images.map(({ link, image, mobileImage, description }, idx) => {
+      {images.map(({ image, mobileImage, link, title, description }, idx) => {
         const imageUrl = getImageUrl(
           isMobile,
           formatIOMessage({ id: image, intl }),
@@ -80,6 +81,7 @@ function ImageSlider(props: Props) {
             src={imageUrl}
             alt={imageAltDescription}
             link={imageLink}
+            title={title}
             maxHeight={height}
             width="100%"
           />
@@ -105,6 +107,10 @@ const messages = defineMessages({
   },
   imagesImageDescription: {
     id: 'admin/editor.image-list.images.description.title',
+    defaultMessage: '',
+  },
+  imagesImageAttributeTitle: {
+    id: 'admin/editor.image-list.images.title.title',
     defaultMessage: '',
   },
   imagesImageLinkUrl: {
