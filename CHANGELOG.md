@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.5.1] - 2020-09-02
 ### Fixed
 - `title` prop to `Image` component
 
