@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- `title` prop to `Image` component
+
 ## [0.5.0] - 2020-08-10
 ### Added
 - `experimentalPreventLayoutShift` prop to `Image` component

@@ -19,12 +19,13 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
   const list = useListContext()?.list ?? []
 
   const imageListContent = images.map(
-    ({ link, image, mobileImage, description }, idx) => (
+    ({ image, mobileImage, link, title, description }, idx) => (
       <Image
         key={idx}
         src={isMobile && mobileImage ? mobileImage : image}
-        alt={description}
         link={link}
+        title={title}
+        alt={description}
         maxHeight={height}
         width="100%"
         experimentalPreventLayoutShift
@@ -57,6 +58,10 @@ const messages = defineMessages({
   },
   imagesImageDescription: {
     id: 'admin/editor.image-list.images.description.title',
+    defaultMessage: '',
+  },
+  imagesImageAttributeTitle: {
+    id: 'admin/editor.image-list.images.title.title',
     defaultMessage: '',
   },
   imagesImageLinkUrl: {

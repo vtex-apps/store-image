@@ -1,7 +1,7 @@
 interface Link {
   url: string
   noFollow: boolean
-  title: string
+  attributeTitle?: string
   /**
    * These two properties need to both exist because
    * there was a mismatch in the API defined by this component,
@@ -16,6 +16,7 @@ interface Link {
 interface Image {
   image: string
   mobileImage: string
-  description: string
   link?: Link
+  title?: string
+  description: string
 }
