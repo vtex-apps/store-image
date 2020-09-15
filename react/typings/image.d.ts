@@ -19,4 +19,5 @@ interface Image {
   link?: Link
   title?: string
   description: string
+  experimentalPreventLayoutShift?: boolean
 }
