@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- `experimentalPreventLayoutShift` not being passed down to `Image`s rendered by `ImageList`.
 
 ## [0.5.1] - 2020-09-09
 
