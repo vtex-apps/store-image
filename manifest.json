@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-image",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "title": "VTEX Image",
   "description": "Set of VTEX components to handle images",
   "builders": {

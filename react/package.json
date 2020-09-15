@@ -14,5 +14,5 @@
     "typescript": "3.8.3",
     "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@0.4.2/public/@types/vtex.css-handles"
   },
-  "version": "0.5.1"
+  "version": "0.5.2"
 }
