@@ -19,7 +19,17 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
   const list = useListContext()?.list ?? []
 
   const imageListContent = images.map(
-    ({ image, mobileImage, link, title, description }, idx) => (
+    (
+      {
+        image,
+        mobileImage,
+        link,
+        title,
+        description,
+        experimentalPreventLayoutShift,
+      },
+      idx
+    ) => (
       <Image
         key={idx}
         src={isMobile && mobileImage ? mobileImage : image}
@@ -28,7 +38,7 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
         alt={description}
         maxHeight={height}
         width="100%"
-        experimentalPreventLayoutShift
+        experimentalPreventLayoutShift={experimentalPreventLayoutShift}
       />
     )
   )

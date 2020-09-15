@@ -15,7 +15,7 @@ interface Image {
   }
   image: string
   mobileImage: string
-  description: string,
+  description: string
   title?: string
 }
 
