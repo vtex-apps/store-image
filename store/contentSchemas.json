@@ -2,7 +2,6 @@
   "definitions": {
     "Image": {
       "title": "admin/editor.store-image.title",
-      "description": "admin/editor.store-image.description",
       "properties": {
         "src": {
           "title": "admin/editor.image.src.title",
