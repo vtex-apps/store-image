@@ -1,6 +1,5 @@
 {
   "admin/editor.store-image.title": "Imagen",
-  "admin/editor.store-image.description": "Mostrar cualquier imagen",
   "admin/editor.store-image.src.title": "Imagen",
   "admin/editor.store-image.alt.title": "Texto alternativo",
   "admin/editor.store-image.title.title": "Título de la imagen",

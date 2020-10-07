@@ -146,9 +146,6 @@ const messages = defineMessages({
   title: {
     id: 'admin/editor.store-image.title',
   },
-  description: {
-    id: 'admin/editor.store-image.description',
-  },
 })
 
 Image.schema = {
