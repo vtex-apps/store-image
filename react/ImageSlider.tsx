@@ -1,8 +1,9 @@
-import React from 'react'
-import { defineMessages, useIntl } from 'react-intl'
 import { SliderLayout } from 'vtex.slider-layout'
 import { useDevice } from 'vtex.device-detector'
 import { formatIOMessage } from 'vtex.native-types'
+
+import { defineMessages, useIntl } from 'react-intl'
+import React from 'react'
 
 import Image from './Image'
 

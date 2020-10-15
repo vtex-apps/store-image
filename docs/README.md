@@ -64,6 +64,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object.   | `undefined`   |
+| `listWithoutContext`  | `boolean` | Should return a simple list of image elements or use the `children` wrapped in `ListContextProvider` | `false`   |
 
 - **`images` array:**
 

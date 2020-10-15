@@ -16,6 +16,8 @@
   "admin/editor.image-list.images.link.noFollow.title": "Link nofollow",
   "admin/editor.image-list.images.link.title.title": "Título para o link",
   "admin/editor.image-list.height.title": "Altura máxima de cada imagem (px)",
+  "admin/editor.image-list.images.width.title": "Largura da imagem",
+  "admin/editor.image-list.images.width.description": "Largura de imagem para uma única imagem (% ou px)",
   "admin/editor.image-slider.title": "Slider de imagens",
   "admin/editor.image-slider.description": "Slider de imagens",
   "admin/editor.image-slider.slider.title": "Configurações do slider",

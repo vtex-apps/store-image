@@ -16,6 +16,8 @@
   "admin/editor.image-list.images.link.noFollow.title": "Should be a nofollow link",
   "admin/editor.image-list.images.link.title.title": "Title for the link",
   "admin/editor.image-list.height.title": "Maximum height for each image (px)",
+  "admin/editor.image-list.images.width.title": "Image width",
+  "admin/editor.image-list.images.width.description": "Image width for a single image (% or px)",
   "admin/editor.image-slider.title": "Image Slider",
   "admin/editor.image-slider.description": "Image Slider",
   "admin/editor.image-slider.slider.title": "Slider options",

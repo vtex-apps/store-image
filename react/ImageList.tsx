@@ -1,19 +1,22 @@
-import React from 'react'
-import { defineMessages } from 'react-intl'
 import { useDevice } from 'vtex.device-detector'
 import { useListContext, ListContextProvider } from 'vtex.list-context'
+
+import React from 'react'
+import { defineMessages } from 'react-intl'
 
 import Image from './Image'
 
 interface Props {
   images: Image[]
   height: number
+  listWithoutContext: boolean
 }
 
 const ImageList: StorefrontFunctionComponent<Props> = ({
   images,
   height = 420,
   children,
+  listWithoutContext = false,
 }) => {
   const { isMobile } = useDevice()
   const list = useListContext()?.list ?? []
@@ -27,6 +30,7 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
         title,
         description,
         experimentalPreventLayoutShift,
+        width = '100%',
       },
       idx
     ) => (
@@ -37,7 +41,7 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
         title={title}
         alt={description}
         maxHeight={height}
-        width="100%"
+        width={width}
         experimentalPreventLayoutShift={experimentalPreventLayoutShift}
       />
     )
@@ -45,7 +49,9 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
 
   const newListContextValue = list.concat(imageListContent)
 
-  return (
+  return listWithoutContext ? (
+    <>{newListContextValue}</>
+  ) : (
     <ListContextProvider list={newListContextValue}>
       {children}
     </ListContextProvider>
