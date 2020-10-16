@@ -2,8 +2,8 @@ import { ListContextProvider, useListContext } from 'vtex.list-context'
 
 import React from 'react'
 
-import ImageList from "./ImageList"
-import { IMAGE_LIST_SCHEMA } from "./utils/schema"
+import ImageList from './ImageList'
+import { IMAGE_LIST_SCHEMA } from './utils/schema'
 
 interface Props {
   images: Image[]

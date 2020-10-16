@@ -1,4 +1,4 @@
-import { defineMessages } from "react-intl"
+import { defineMessages } from 'react-intl'
 
 const IMAGE_LIST_MESSAGES = defineMessages({
   title: { id: 'admin/editor.image-list.title', defaultMessage: '' },
