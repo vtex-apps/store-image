@@ -20,6 +20,12 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   experimentalPreventLayoutShift?: boolean
   link?: Link
   width?: string
+  src: string
+  alt?: string
+  height?: string
+  srcSet?: string
+  sizes?: string
+  title?: string
 }
 
 const useImageLoad = (

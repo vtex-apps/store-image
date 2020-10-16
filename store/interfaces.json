@@ -9,12 +9,24 @@
     "component": "ImageSlider",
     "content": {
       "properties": {
-        "images": { "$ref": "app:vtex.store-image#/definitions/Images" }
+        "images": {
+          "$ref": "app:vtex.store-image#/definitions/Images"
+        }
+      }
+    }
+  },
+  "image-list": {
+    "component": "ImageList",
+    "content": {
+      "properties": {
+        "images": {
+          "$ref": "app:vtex.store-image#/definitions/Images"
+        }
       }
     }
   },
   "list-context.image-list": {
-    "component": "ImageList",
+    "component": "ListContextImageList",
     "composition": "children",
     "allowed": "*",
     "content": {
