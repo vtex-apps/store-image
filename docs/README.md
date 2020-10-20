@@ -73,6 +73,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | `mobileImage` | `string` | Mobile image URL.                         | `undefined`   |
 | `description` | `string` | Image description.                        | `undefined`   |
 | `link`        | `object` | Links an URL to the image being rendered. | `undefined`   |
+| `width`       | `string` | The width of the image (in % or px).      |    `100%`     |
 
 - **`link` object:**
 
