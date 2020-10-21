@@ -68,7 +68,7 @@
             "title": "admin/editor.image-list.images.width.title",
             "description": "admin/editor.image-list.images.width.description",
             "$ref": "app:vtex.native-types#/definitions/text",
-            "default": "33%"
+            "default": "100%"
           }
         }
       }
