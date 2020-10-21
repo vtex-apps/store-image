@@ -1,7 +1,12 @@
-import Image from "../Image";
-import React from "react";
+import React from 'react'
 
-export const getImagesAsJSXList = (images: Image[], isMobile: boolean, height: string | number) => {
+import Image from '../Image'
+
+export const getImagesAsJSXList = (
+  images: Image[],
+  isMobile: boolean,
+  height: string | number
+) => {
   return images.map(
     (
       {

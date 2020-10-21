@@ -3,7 +3,7 @@ import { useDevice } from 'vtex.device-detector'
 import React from 'react'
 
 import { IMAGE_LIST_SCHEMA } from './utils/schema'
-import { getImagesAsJSXList } from "./utils/imageUtils";
+import { getImagesAsJSXList } from './utils/imageUtils'
 
 interface ImageListProps {
   images: Image[]
@@ -16,11 +16,7 @@ const ImageList = (props: ImageListProps) => {
 
   const imageListContent = getImagesAsJSXList(images, isMobile, height)
 
-  return (
-    <React.Fragment>
-      {imageListContent}
-    </React.Fragment>
-  )
+  return <React.Fragment>{imageListContent}</React.Fragment>
 }
 
 ImageList.schema = IMAGE_LIST_SCHEMA
