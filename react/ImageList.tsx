@@ -1,7 +1,9 @@
+import { useDevice } from 'vtex.device-detector'
+
 import React from 'react'
-import Image from "./Image"
-import { useDevice } from "vtex.device-detector"
-import { IMAGE_LIST_SCHEMA } from "./utils/schema"
+
+import { IMAGE_LIST_SCHEMA } from './utils/schema'
+import { getImagesAsJSXList } from "./utils/imageUtils";
 
 interface ImageListProps {
   images: Image[]
@@ -12,31 +14,7 @@ const ImageList = (props: ImageListProps) => {
   const { images, height = 420 } = props
   const { isMobile } = useDevice()
 
-  const imageListContent = images.map(
-    (
-      {
-        image,
-        mobileImage,
-        link,
-        title,
-        description,
-        experimentalPreventLayoutShift,
-        width = '100%',
-      },
-      idx
-    ) => (
-      <Image
-        key={idx}
-        src={isMobile && mobileImage ? mobileImage : image}
-        link={link}
-        title={title}
-        alt={description}
-        maxHeight={height}
-        width={width}
-        experimentalPreventLayoutShift={experimentalPreventLayoutShift}
-      />
-    )
-  )
+  const imageListContent = getImagesAsJSXList(images, isMobile, height)
 
   return (
     <React.Fragment>

@@ -1,9 +1,9 @@
 import { ListContextProvider, useListContext } from 'vtex.list-context'
 
 import React from 'react'
-
-import ImageList from './ImageList'
 import { IMAGE_LIST_SCHEMA } from './utils/schema'
+import { getImagesAsJSXList } from "./utils/imageUtils";
+import { useDevice } from "vtex.device-detector";
 
 interface Props {
   images: Image[]
@@ -16,10 +16,10 @@ const ListContextImageList: StorefrontFunctionComponent<Props> = ({
   children
 }) => {
   const list = useListContext()?.list ?? []
+  const { isMobile } = useDevice()
 
-  const imageListContent = () => <ImageList images={images} height={height} />
-
-  const newListContextValue = list.concat(imageListContent())
+  const imageListContent = getImagesAsJSXList(images, isMobile, height)
+  const newListContextValue = list.concat(imageListContent)
 
   return (
     <ListContextProvider list={newListContextValue}>
