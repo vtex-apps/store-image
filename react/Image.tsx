@@ -9,6 +9,7 @@ import React, {
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
+import { usePixel } from 'vtex.pixel-manager/PixelContext'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
@@ -18,6 +19,9 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
   link?: Link
+  customPixelClickEventId?: string
+  customPixelShowEventId?: string
+  position?: number
 }
 
 const useImageLoad = (
@@ -72,6 +76,9 @@ function Image(props: ImageProps) {
     link,
     title,
     experimentalPreventLayoutShift,
+    customPixelShowEventId,
+    customPixelClickEventId,
+    position = 1
   } = props
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
@@ -113,7 +120,21 @@ function Image(props: ImageProps) {
    * properties, check the Image type definition at './typings/image.d.ts'.
    */
   const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
-
+  const imageInfo: any = {
+    src: formattedSrc,
+    alt: formattedAlt,
+    maxWidth,
+    maxHeight,
+    minWidth,
+    minHeight,
+    width,
+    height,
+    srcSet,
+    sizes,
+    link,
+    title,
+    position,
+  }
   const maybeLink = link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
@@ -121,12 +142,21 @@ function Image(props: ImageProps) {
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       title={formatIOMessage({ id: link?.attributeTitle, intl })}
       className={handles.imageElementLink}
+      onClick={() => customPixelClickEventId && push({ event: customPixelClickEventId, imageInfo})}
     >
       {imgElement}
     </a>
   ) : (
     <Fragment>{imgElement}</Fragment>
   )
+  const { push } = usePixel()
+
+  useEffect(() => {
+    customPixelShowEventId && push({
+      event: customPixelShowEventId,
+      imageInfo,
+    })
+  }, [])
 
   return experimentalPreventLayoutShift ? (
     <span

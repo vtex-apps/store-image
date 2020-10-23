@@ -62,7 +62,7 @@ function ImageSlider(props: Props) {
 
   return (
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
-      {images.map(({ image, mobileImage, link, title, description }, idx) => {
+      {images.map(({ image, mobileImage, link, title, description, ...otherProps }, idx) => {
         const imageUrl = getImageUrl(
           isMobile,
           formatIOMessage({ id: image, intl }),
@@ -84,6 +84,8 @@ function ImageSlider(props: Props) {
             title={title}
             maxHeight={height}
             width="100%"
+            position={idx + 1}
+            {...otherProps}
           />
         )
       })}

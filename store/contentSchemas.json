@@ -25,6 +25,18 @@
           "description": "admin/editor.image.title.description",
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": ""
+        },
+        "customPixelShowEventId": {
+          "title": "admin/editor.image.customPixelShowEventId.title",
+          "description": "admin/editor.image.customPixelShowEventId.description",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": ""
+        },
+        "customPixelClickEventId": {
+          "title": "admin/editor.image.customPixelClickEventId.title",
+          "description": "admin/editor.image.customPixelClickEventId.description",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": ""
         }
       }
     },

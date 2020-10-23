@@ -15,7 +15,8 @@
     "vtex.device-detector": "0.x",
     "vtex.css-handles": "0.x",
     "vtex.slider-layout": "0.x",
-    "vtex.list-context": "0.x"
+    "vtex.list-context": "0.x",
+    "vtex.pixel-manager": "1.x"
   },
   "registries": [
     "smartcheckout"
