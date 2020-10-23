@@ -120,6 +120,9 @@ function Image(props: ImageProps) {
    * properties, check the Image type definition at './typings/image.d.ts'.
    */
   const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
+  const { push } = usePixel()
+
   const imageInfo: any = {
     src: formattedSrc,
     alt: formattedAlt,
@@ -149,7 +152,6 @@ function Image(props: ImageProps) {
   ) : (
     <Fragment>{imgElement}</Fragment>
   )
-  const { push } = usePixel()
 
   useEffect(() => {
     customPixelShowEventId && push({
