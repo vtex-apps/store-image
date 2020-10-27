@@ -16,7 +16,7 @@
     }
   },
   "image-list": {
-    "component": "ImageList",
+    "component": "ImageListWithoutContext",
     "content": {
       "properties": {
         "images": {
@@ -26,7 +26,7 @@
     }
   },
   "list-context.image-list": {
-    "component": "ListContextImageList",
+    "component": "ImageList",
     "composition": "children",
     "allowed": "*",
     "content": {
