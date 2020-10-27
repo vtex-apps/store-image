@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+- `list-context.image-list` has been refactored to use the `image-list` with a `list-context`
+
+### Added
+- `image-list` is now a simple list of images that can be editable from the admin panel 
+
 ## [0.5.3] - 2020-10-07
 ### Removed
 - Remove description of `new-image` schema to make it not available in the new CMS.
