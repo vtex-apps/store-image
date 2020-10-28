@@ -63,14 +63,14 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | Prop name | Type     | Description                                                   | Default value |
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
-| `height`  | `number` | Image height for all images declared in the `image` object.   | `undefined`   |
+| `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
 
 ### `image-list` props
 
 | Prop name | Type     | Description                                                   | Default value |
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
-| `height`  | `number` | Image height for all images declared in the `image` object.   | `undefined`   |
+| `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
 
 - **`images` array:**
 
