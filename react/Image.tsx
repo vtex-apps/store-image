@@ -1,5 +1,3 @@
-import { formatIOMessage } from 'vtex.native-types'
-
 import React, {
   ImgHTMLAttributes,
   Fragment,
@@ -10,6 +8,7 @@ import React, {
 } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
+import { formatIOMessage } from 'vtex.native-types'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
@@ -19,13 +18,6 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
   link?: Link
-  width?: string
-  src: string
-  alt?: string
-  height?: string
-  srcSet?: string
-  sizes?: string
-  title?: string
 }
 
 const useImageLoad = (

@@ -1,7 +1,6 @@
-import { ListContextProvider, useListContext } from 'vtex.list-context'
-import { useDevice } from 'vtex.device-detector'
-
 import React from 'react'
+import { useDevice } from 'vtex.device-detector'
+import { ListContextProvider, useListContext } from 'vtex.list-context'
 
 import { IMAGE_LIST_SCHEMA } from './utils/schema'
 import { getImagesAsJSXList } from './utils/imageUtils'

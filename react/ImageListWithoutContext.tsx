@@ -1,6 +1,5 @@
-import { useDevice } from 'vtex.device-detector'
-
 import React from 'react'
+import { useDevice } from 'vtex.device-detector'
 
 import { IMAGE_LIST_SCHEMA } from './utils/schema'
 import { getImagesAsJSXList } from './utils/imageUtils'
