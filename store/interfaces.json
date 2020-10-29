@@ -9,7 +9,19 @@
     "component": "ImageSlider",
     "content": {
       "properties": {
-        "images": { "$ref": "app:vtex.store-image#/definitions/Images" }
+        "images": {
+          "$ref": "app:vtex.store-image#/definitions/Images"
+        }
+      }
+    }
+  },
+  "image-list": {
+    "component": "ImageListWithoutContext",
+    "content": {
+      "properties": {
+        "images": {
+          "$ref": "app:vtex.store-image#/definitions/Images"
+        }
       }
     }
   },

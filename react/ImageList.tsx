@@ -1,9 +1,9 @@
 import React from 'react'
-import { defineMessages } from 'react-intl'
 import { useDevice } from 'vtex.device-detector'
-import { useListContext, ListContextProvider } from 'vtex.list-context'
+import { ListContextProvider, useListContext } from 'vtex.list-context'
 
-import Image from './Image'
+import { IMAGE_LIST_SCHEMA } from './utils/schema'
+import { getImagesAsJSXList } from './utils/imageUtils'
 
 interface Props {
   images: Image[]
@@ -15,34 +15,10 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
   height = 420,
   children,
 }) => {
-  const { isMobile } = useDevice()
   const list = useListContext()?.list ?? []
+  const { isMobile } = useDevice()
 
-  const imageListContent = images.map(
-    (
-      {
-        image,
-        mobileImage,
-        link,
-        title,
-        description,
-        experimentalPreventLayoutShift,
-      },
-      idx
-    ) => (
-      <Image
-        key={idx}
-        src={isMobile && mobileImage ? mobileImage : image}
-        link={link}
-        title={title}
-        alt={description}
-        maxHeight={height}
-        width="100%"
-        experimentalPreventLayoutShift={experimentalPreventLayoutShift}
-      />
-    )
-  )
-
+  const imageListContent = getImagesAsJSXList(images, isMobile, height)
   const newListContextValue = list.concat(imageListContent)
 
   return (
@@ -52,67 +28,6 @@ const ImageList: StorefrontFunctionComponent<Props> = ({
   )
 }
 
-const messages = defineMessages({
-  title: { id: 'admin/editor.image-list.title', defaultMessage: '' },
-  description: {
-    id: 'admin/editor.image-list.description',
-    defaultMessage: '',
-  },
-  imagesImageTitle: {
-    id: 'admin/editor.image-list.images.image.title',
-    defaultMessage: '',
-  },
-  imagesMobileImageTitle: {
-    id: 'admin/editor.image-list.images.mobileImage.title',
-    defaultMessage: '',
-  },
-  imagesImageDescription: {
-    id: 'admin/editor.image-list.images.description.title',
-    defaultMessage: '',
-  },
-  imagesImageAttributeTitle: {
-    id: 'admin/editor.image-list.images.title.title',
-    defaultMessage: '',
-  },
-  imagesImageLinkUrl: {
-    id: 'admin/editor.image-list.images.link.url.title',
-    defaultMessage: '',
-  },
-  imagesImageLinkOpenNewTab: {
-    id: 'admin/editor.image-list.images.link.openNewTab.title',
-    defaultMessage: '',
-  },
-  imagesImageLinkNoFollow: {
-    id: 'admin/editor.image-list.images.link.noFollow.title',
-    defaultMessage: '',
-  },
-  imagesImageLinkTitle: {
-    id: 'admin/editor.image-list.images.link.title.title',
-    defaultMessage: '',
-  },
-  imagesTitle: {
-    id: 'admin/editor.image-list.images.title',
-    defaultMessage: '',
-  },
-  heightTitle: {
-    id: 'admin/editor.image-list.height.title',
-    defaultMessage: '',
-  },
-})
-
-ImageList.schema = {
-  title: messages.title.id,
-  description: messages.description.id,
-  type: 'object',
-  properties: {
-    height: {
-      default: 420,
-      enum: [420, 440],
-      isLayout: true,
-      title: messages.heightTitle.id,
-      type: 'number',
-    },
-  },
-}
+ImageList.schema = IMAGE_LIST_SCHEMA
 
 export default ImageList

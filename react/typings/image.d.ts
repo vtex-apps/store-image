@@ -20,4 +20,5 @@ interface Image {
   title?: string
   description: string
   experimentalPreventLayoutShift?: boolean
+  width?: string
 }

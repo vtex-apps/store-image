@@ -16,6 +16,8 @@
   "admin/editor.image-list.images.link.noFollow.title": "Debería ser un enlace nofollow",
   "admin/editor.image-list.images.link.title.title": "Título de la link.",
   "admin/editor.image-list.height.title": "Altura máxima para cada imagen (px)",
+  "admin/editor.image-list.images.width.title": "Ancho de la imagen",
+  "admin/editor.image-list.images.width.description": "Ancho de imagen para una sola imagen (% o px)",
   "admin/editor.image-slider.title": "Control deslizante de imagen",
   "admin/editor.image-slider.description": "Control deslizante de imagen",
   "admin/editor.image-slider.slider.title": "Opciones de control deslizante",
