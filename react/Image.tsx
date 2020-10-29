@@ -78,7 +78,8 @@ function Image(props: ImageProps) {
     experimentalPreventLayoutShift,
     customPixelShowEventId,
     customPixelClickEventId,
-    position = 1
+    position = 1,
+    ...otherProps
   } = props
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
@@ -137,6 +138,7 @@ function Image(props: ImageProps) {
     link,
     title,
     position,
+    ...otherProps
   }
   const maybeLink = link ? (
     <a
