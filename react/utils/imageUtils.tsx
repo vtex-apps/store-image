@@ -17,6 +17,7 @@ export const getImagesAsJSXList = (
         description,
         experimentalPreventLayoutShift,
         width = '100%',
+        ...otherProps
       },
       idx
     ) => (
@@ -29,6 +30,8 @@ export const getImagesAsJSXList = (
         maxHeight={height}
         width={width}
         experimentalPreventLayoutShift={experimentalPreventLayoutShift}
+        position={idx + 1}
+        {...otherProps}
       />
     )
   )
