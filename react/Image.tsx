@@ -6,6 +6,7 @@ import React, {
   useEffect,
   RefObject,
 } from 'react'
+import { useOnView } from './hooks/useOnView'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
@@ -155,12 +156,14 @@ function Image(props: ImageProps) {
     <Fragment>{imgElement}</Fragment>
   )
 
-  useEffect(() => {
-    customPixelShowEventId && push({
+  useOnView({
+    ref: imageRef,
+    onView: () => customPixelShowEventId && push({
       event: customPixelShowEventId,
       imageInfo,
-    })
-  }, [])
+    }),
+    once: true,
+  })
 
   return experimentalPreventLayoutShift ? (
     <span
