@@ -6,7 +6,7 @@ import React, {
   useEffect,
   RefObject,
 } from 'react'
-import { useOnView } from './hooks/useOnView'
+import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
