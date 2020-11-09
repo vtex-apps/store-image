@@ -4,10 +4,6 @@
   "admin/editor.store-image.alt.title": "Texto alternativo",
   "admin/editor.store-image.title.title": "Título da imagem",
   "admin/editor.store-image.title.description": "Título a ser mostrado quando você passa o mouse pela imagem",
-  "admin/editor.store-image.customPixelShowEventId.title": "Título do evento show",
-  "admin/editor.store-image.customPixelShowEventId.description": "Se definido, um evento de pixel será lançado",
-  "admin/editor.store-image.customPixelClickEventId.title": "Título do evento push",
-  "admin/editor.store-image.customPixelClickEventId.description": "Se definido, um evento de pixel será lançado",
   "admin/editor.image-list.title": "Lista de imagens",
   "admin/editor.image-list.description": "Exiba uma lista de imagens",
   "admin/editor.image-list.images.title": "Imagens",
@@ -28,5 +24,11 @@
   "admin/editor.image-slider.slider.infinite": "Infinito",
   "admin/editor.image-slider.slider.showNavigation": "Mostrar setas para navegação",
   "admin/editor.image-slider.slider.showPaginationDots": "Mostrar indicadores de paginação",
-  "admin/editor.image-slider.slider.usePagination": "Usar paginação"
+  "admin/editor.image-slider.slider.usePagination": "Usar paginação",
+  "admin/editor.image.analytics.title": "Evento do Analytics",
+  "admin/editor.image.analytics.none": "Não",
+  "admin/editor.image.analytics.provide": "Sim",
+  "admin/editor.image.analytics.promotionId": "Id da promoção",
+  "admin/editor.image.analytics.promotionName": "Nome da promoção",
+  "admin/editor.image.analytics.promotionPosition": "Posição do criativo"
 }

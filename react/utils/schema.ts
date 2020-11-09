@@ -1,50 +1,63 @@
 import { defineMessages } from 'react-intl'
 
 const IMAGE_LIST_MESSAGES = defineMessages({
-  title: { id: 'admin/editor.image-list.title', defaultMessage: '' },
+  title: { id: 'admin/editor.image-list.title' },
   description: {
     id: 'admin/editor.image-list.description',
-    defaultMessage: '',
   },
   imagesImageTitle: {
     id: 'admin/editor.image-list.images.image.title',
-    defaultMessage: '',
   },
   imagesMobileImageTitle: {
     id: 'admin/editor.image-list.images.mobileImage.title',
-    defaultMessage: '',
   },
   imagesImageDescription: {
     id: 'admin/editor.image-list.images.description.title',
-    defaultMessage: '',
   },
   imagesImageAttributeTitle: {
     id: 'admin/editor.image-list.images.title.title',
-    defaultMessage: '',
   },
   imagesImageLinkUrl: {
     id: 'admin/editor.image-list.images.link.url.title',
-    defaultMessage: '',
   },
   imagesImageLinkOpenNewTab: {
     id: 'admin/editor.image-list.images.link.openNewTab.title',
-    defaultMessage: '',
   },
   imagesImageLinkNoFollow: {
     id: 'admin/editor.image-list.images.link.noFollow.title',
-    defaultMessage: '',
   },
   imagesImageLinkTitle: {
     id: 'admin/editor.image-list.images.link.title.title',
-    defaultMessage: '',
   },
   imagesTitle: {
     id: 'admin/editor.image-list.images.title',
-    defaultMessage: '',
   },
   heightTitle: {
     id: 'admin/editor.image-list.height.title',
-    defaultMessage: '',
+  },
+  widthTitle: {
+    id: 'admin/editor.image-list.images.width.title',
+  },
+  widthDescription: {
+    id: 'admin/editor.image-list.images.width.description',
+  },
+  analyticsTitle: {
+    id: 'admin/editor.image.analytics.title',
+  },
+  analyticsNone: {
+    id: 'admin/editor.image.analytics.none',
+  },
+  analyticsProvide: {
+    id: 'admin/editor.image.analytics.provide',
+  },
+  analyticsPromotionId: {
+    id: 'admin/editor.image.analytics.promotionId',
+  },
+  analyticsPromotionName: {
+    id: 'admin/editor.image.analytics.promotionName',
+  },
+  analyticsPromotionPosition: {
+    id: 'admin/editor.image.analytics.promotionPosition',
   },
 })
 

@@ -21,4 +21,8 @@ interface Image {
   description: string
   experimentalPreventLayoutShift?: boolean
   width?: string
+  analyticsProperties?: 'none' | 'provide'
+  promotionId?: string
+  promotionName?: string
+  promotionPosition?: string
 }

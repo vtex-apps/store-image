@@ -4,10 +4,6 @@
   "admin/editor.store-image.alt.title": "Alternative text",
   "admin/editor.store-image.title.title": "Image title",
   "admin/editor.store-image.title.description": "Title to be shown on hover",
-  "admin/editor.store-image.customPixelShowEventId.title": "Title of the show event",
-  "admin/editor.store-image.customPixelShowEventId.description": "If defined a pixel event will be thrown",
-  "admin/editor.store-image.customPixelClickEventId.title": "Title of the push event",
-  "admin/editor.store-image.customPixelClickEventId.description": "If defined a pixel event will be thrown",
   "admin/editor.image-list.title": "Image List",
   "admin/editor.image-list.description": "Show a list of images",
   "admin/editor.image-list.images.title": "Images",
@@ -28,5 +24,11 @@
   "admin/editor.image-slider.slider.infinite": "Infinite",
   "admin/editor.image-slider.slider.showNavigation": "Show navigation arrows",
   "admin/editor.image-slider.slider.showPaginationDots": "Show pagination dots",
-  "admin/editor.image-slider.slider.usePagination": "Use pagination"
+  "admin/editor.image-slider.slider.usePagination": "Use pagination",
+  "admin/editor.image.analytics.title": "Analytics event",
+  "admin/editor.image.analytics.none": "No",
+  "admin/editor.image.analytics.provide": "Yes",
+  "admin/editor.image.analytics.promotionId": "Promotion ID",
+  "admin/editor.image.analytics.promotionName": "Promotion Name",
+  "admin/editor.image.analytics.promotionPosition": "Creative position"
 }

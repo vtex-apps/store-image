@@ -26,17 +26,53 @@
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": ""
         },
-        "customPixelShowEventId": {
-          "title": "admin/editor.image.customPixelShowEventId.title",
-          "description": "admin/editor.image.customPixelShowEventId.description",
-          "$ref": "app:vtex.native-types#/definitions/text",
-          "default": ""
-        },
-        "customPixelClickEventId": {
-          "title": "admin/editor.image.customPixelClickEventId.title",
-          "description": "admin/editor.image.customPixelClickEventId.description",
-          "$ref": "app:vtex.native-types#/definitions/text",
-          "default": ""
+        "analyticsProperties": {
+          "title": "admin/editor.image.analytics.title",
+          "description": "admin/editor.image.analytics.description",
+          "enum": ["none", "provide"],
+          "enumNames": [
+            "admin/editor.image.analytics.none",
+            "admin/editor.image.analytics.provide"
+          ],
+          "widget": {
+            "ui:widget": "radio"
+          },
+          "default": "none"
+        }
+      },
+      "dependencies": {
+        "analyticsProperties": {
+          "oneOf": [
+            {
+              "properties": {
+                "analyticsProperties": {
+                  "enum": ["provide"]
+                },
+                "promotionId": {
+                  "title": "admin/editor.image.analytics.promotionId",
+                  "type": "string",
+                  "default": ""
+                },
+                "promotionName": {
+                  "title": "admin/editor.image.analytics.promotionName",
+                  "type": "string",
+                  "default": ""
+                },
+                "promotionPosition": {
+                  "title": "admin/editor.image.analytics.promotionPosition",
+                  "type": "string",
+                  "default": ""
+                }
+              }
+            },
+            {
+              "properties": {
+                "analyticsProperties": {
+                  "enum": ["none"]
+                }
+              }
+            }
+          ]
         }
       }
     },
@@ -81,6 +117,54 @@
             "description": "admin/editor.image-list.images.width.description",
             "$ref": "app:vtex.native-types#/definitions/text",
             "default": "100%"
+          },
+          "analyticsProperties": {
+            "title": "admin/editor.image.analytics.title",
+            "description": "admin/editor.image.analytics.description",
+            "enum": ["none", "provide"],
+            "enumNames": [
+              "admin/editor.image.analytics.none",
+              "admin/editor.image.analytics.provide"
+            ],
+            "widget": {
+              "ui:widget": "radio"
+            },
+            "default": "none"
+          }
+        },
+        "dependencies": {
+          "analyticsProperties": {
+            "oneOf": [
+              {
+                "properties": {
+                  "analyticsProperties": {
+                    "enum": ["provide"]
+                  },
+                  "promotionId": {
+                    "title": "admin/editor.image.analytics.promotionId",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "promotionName": {
+                    "title": "admin/editor.image.analytics.promotionName",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "promotionPosition": {
+                    "title": "admin/editor.image.analytics.promotionPosition",
+                    "type": "string",
+                    "default": ""
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "analyticsProperties": {
+                    "enum": ["none"]
+                  }
+                }
+              }
+            ]
           }
         }
       }

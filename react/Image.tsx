@@ -10,7 +10,7 @@ import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
-import { usePixel } from 'vtex.pixel-manager/PixelContext'
+import { usePixel } from 'vtex.pixel-manager'
 
 export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
@@ -20,9 +20,11 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
   link?: Link
-  customPixelClickEventId?: string
-  customPixelShowEventId?: string
   position?: number
+  analyticsProperties?: 'none' | 'provide'
+  promotionId?: string
+  promotionName?: string
+  promotionPosition?: string
 }
 
 const useImageLoad = (
@@ -77,10 +79,10 @@ function Image(props: ImageProps) {
     link,
     title,
     experimentalPreventLayoutShift,
-    customPixelShowEventId,
-    customPixelClickEventId,
-    position = 1,
-    ...otherProps
+    analyticsProperties = 'none',
+    promotionId,
+    promotionName,
+    promotionPosition,
   } = props
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
@@ -125,22 +127,16 @@ function Image(props: ImageProps) {
 
   const { push } = usePixel()
 
-  const imageInfo: any = {
-    src: formattedSrc,
-    alt: formattedAlt,
-    maxWidth,
-    maxHeight,
-    minWidth,
-    minHeight,
-    width,
-    height,
-    srcSet,
-    sizes,
-    link,
-    title,
-    position,
-    ...otherProps
-  }
+  const promotionEventData =
+    analyticsProperties === 'provide'
+      ? {
+          id: promotionId,
+          name: promotionName,
+          creative: formattedSrc,
+          position: promotionPosition,
+        }
+      : undefined
+
   const maybeLink = link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
@@ -148,7 +144,11 @@ function Image(props: ImageProps) {
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       title={formatIOMessage({ id: link?.attributeTitle, intl })}
       className={handles.imageElementLink}
-      onClick={() => customPixelClickEventId && push({ event: customPixelClickEventId, imageInfo})}
+      onClick={() => {
+        if (analyticsProperties === 'none') return
+
+        push({ event: 'promotionClick', promotions: [promotionEventData] })
+      }}
     >
       {imgElement}
     </a>
@@ -158,10 +158,14 @@ function Image(props: ImageProps) {
 
   useOnView({
     ref: imageRef,
-    onView: () => customPixelShowEventId && push({
-      event: customPixelShowEventId,
-      imageInfo,
-    }),
+    onView: () => {
+      if (analyticsProperties === 'none') return
+
+      push({
+        event: 'promoView',
+        promotions: [promotionEventData],
+      })
+    },
     once: true,
   })
 
