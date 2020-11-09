@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Added
-- Posibility to push a custom pixel event on click or view.
+- Option to send image's analytics event.
 
 ## [0.6.0] - 2020-10-29
 
