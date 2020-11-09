@@ -12,19 +12,17 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { usePixel } from 'vtex.pixel-manager'
 
-export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+import type { ImageSchema } from './modules/schema'
+
+export interface ImageProps
+  extends ImageSchema,
+    ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
   minHeight?: string | number
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
-  link?: Link
-  position?: number
-  analyticsProperties?: 'none' | 'provide'
-  promotionId?: string
-  promotionName?: string
-  promotionPosition?: string
 }
 
 const useImageLoad = (
@@ -140,7 +138,7 @@ function Image(props: ImageProps) {
   const maybeLink = link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
-      rel={link.noFollow ? 'nofollow' : ''}
+      rel={link.attributeNofollow ? 'nofollow' : ''}
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       title={formatIOMessage({ id: link?.attributeTitle, intl })}
       className={handles.imageElementLink}

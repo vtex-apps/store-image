@@ -1,9 +1,10 @@
 import React from 'react'
 
 import Image from '../Image'
+import type { ImagesSchema } from './schema'
 
 export const getImagesAsJSXList = (
-  images: Image[],
+  images: ImagesSchema,
   isMobile: boolean,
   height: string | number
 ) => {
@@ -12,8 +13,6 @@ export const getImagesAsJSXList = (
       {
         image,
         mobileImage,
-        link,
-        title,
         description,
         experimentalPreventLayoutShift,
         width = '100%',
@@ -24,8 +23,6 @@ export const getImagesAsJSXList = (
       <Image
         key={idx}
         src={isMobile && mobileImage ? mobileImage : image}
-        link={link}
-        title={title}
         alt={description}
         maxHeight={height}
         width={width}
