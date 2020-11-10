@@ -6,18 +6,23 @@ import React, {
   useEffect,
   RefObject,
 } from 'react'
+import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
+import { usePixel } from 'vtex.pixel-manager'
 
-export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
+import type { ImageSchema } from './modules/schema'
+
+export interface ImageProps
+  extends ImageSchema,
+    ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
   minHeight?: string | number
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
-  link?: Link
 }
 
 const useImageLoad = (
@@ -72,6 +77,10 @@ function Image(props: ImageProps) {
     link,
     title,
     experimentalPreventLayoutShift,
+    analyticsProperties = 'none',
+    promotionId,
+    promotionName,
+    promotionPosition,
   } = props
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
@@ -114,19 +123,49 @@ function Image(props: ImageProps) {
    */
   const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
 
+  const { push } = usePixel()
+
+  const promotionEventData =
+    analyticsProperties === 'provide'
+      ? {
+          id: promotionId,
+          name: promotionName,
+          creative: formattedSrc,
+          position: promotionPosition,
+        }
+      : undefined
+
   const maybeLink = link ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
-      rel={link.noFollow ? 'nofollow' : ''}
+      rel={link.attributeNofollow ? 'nofollow' : ''}
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       title={formatIOMessage({ id: link?.attributeTitle, intl })}
       className={handles.imageElementLink}
+      onClick={() => {
+        if (analyticsProperties === 'none') return
+
+        push({ event: 'promotionClick', promotions: [promotionEventData] })
+      }}
     >
       {imgElement}
     </a>
   ) : (
     <Fragment>{imgElement}</Fragment>
   )
+
+  useOnView({
+    ref: imageRef,
+    onView: () => {
+      if (analyticsProperties === 'none') return
+
+      push({
+        event: 'promoView',
+        promotions: [promotionEventData],
+      })
+    },
+    once: true,
+  })
 
   return experimentalPreventLayoutShift ? (
     <span

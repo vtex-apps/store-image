@@ -24,5 +24,11 @@
   "admin/editor.image-slider.slider.infinite": "Infinite",
   "admin/editor.image-slider.slider.showNavigation": "Show navigation arrows",
   "admin/editor.image-slider.slider.showPaginationDots": "Show pagination dots",
-  "admin/editor.image-slider.slider.usePagination": "Use pagination"
+  "admin/editor.image-slider.slider.usePagination": "Use pagination",
+  "admin/editor.image.analytics.title": "Analytics event",
+  "admin/editor.image.analytics.none": "No",
+  "admin/editor.image.analytics.provide": "Yes",
+  "admin/editor.image.analytics.promotionId": "Promotion ID",
+  "admin/editor.image.analytics.promotionName": "Promotion Name",
+  "admin/editor.image.analytics.promotionPosition": "Creative position"
 }

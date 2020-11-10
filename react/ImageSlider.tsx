@@ -5,19 +5,7 @@ import { useDevice } from 'vtex.device-detector'
 import { formatIOMessage } from 'vtex.native-types'
 
 import Image from './Image'
-
-interface Image {
-  link?: {
-    url: string
-    noFollow: boolean
-    openNewTab: boolean
-    title: string
-  }
-  image: string
-  mobileImage: string
-  description: string
-  title?: string
-}
+import type { ImagesSchema } from './modules/schema'
 
 interface SliderConfig {
   itemsPerPage: {
@@ -32,7 +20,7 @@ interface SliderConfig {
 }
 
 interface Props {
-  images: Image[]
+  images: ImagesSchema
   height: number
   sliderLayoutConfig: SliderConfig
 }
@@ -62,31 +50,33 @@ function ImageSlider(props: Props) {
 
   return (
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
-      {images.map(({ image, mobileImage, link, title, description }, idx) => {
-        const imageUrl = getImageUrl(
-          isMobile,
-          formatIOMessage({ id: image, intl }),
-          formatIOMessage({ id: mobileImage, intl })
-        )
-        const imageAltDescription = formatIOMessage({ id: description, intl })
-        const imageLink = link && {
-          ...link,
-          url: formatIOMessage({ id: link.url, intl }),
-          title: formatIOMessage({ id: link.title, intl }),
-        }
+      {images.map(
+        ({ image, mobileImage, link, description, ...otherProps }, idx) => {
+          const imageUrl = getImageUrl(
+            isMobile,
+            formatIOMessage({ id: image, intl }),
+            formatIOMessage({ id: mobileImage, intl })
+          )
+          const imageAltDescription = formatIOMessage({ id: description, intl })
+          const imageLink = link && {
+            ...link,
+            url: formatIOMessage({ id: link.url, intl }),
+            title: formatIOMessage({ id: link.attributeTitle, intl }),
+          }
 
-        return (
-          <Image
-            key={idx}
-            src={imageUrl}
-            alt={imageAltDescription}
-            link={imageLink}
-            title={title}
-            maxHeight={height}
-            width="100%"
-          />
-        )
-      })}
+          return (
+            <Image
+              key={idx}
+              src={imageUrl}
+              alt={imageAltDescription}
+              link={imageLink}
+              maxHeight={height}
+              width="100%"
+              {...otherProps}
+            />
+          )
+        }
+      )}
     </SliderLayout>
   )
 }
