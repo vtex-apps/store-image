@@ -1,18 +1,15 @@
-import React, {
-  ImgHTMLAttributes,
-  Fragment,
-  useState,
-  useRef,
-  useEffect,
-  RefObject,
-} from 'react'
+import React, { Fragment, useState, useRef, useEffect } from 'react'
+import type { ImgHTMLAttributes, RefObject } from 'react'
 import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
+import type { CssHandlesTypes } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { usePixel } from 'vtex.pixel-manager'
 
 import type { ImageSchema } from './modules/schema'
+
+const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 export interface ImageProps
   extends ImageSchema,
@@ -23,6 +20,7 @@ export interface ImageProps
   minHeight?: string | number
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
 }
 
 const useImageLoad = (
@@ -37,12 +35,14 @@ const useImageLoad = (
     }
 
     const imageElement = imageRef.current
+
     if (!imageElement) {
       return
     }
 
     if (imageElement.complete) {
       setLoaded(true)
+
       return
     }
 
@@ -59,8 +59,6 @@ const useImageLoad = (
 
   return isLoaded
 }
-
-const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 function Image(props: ImageProps) {
   const {
@@ -81,15 +79,20 @@ function Image(props: ImageProps) {
     promotionId,
     promotionName,
     promotionPosition,
+    classes,
   } = props
+
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
     bailOut: !experimentalPreventLayoutShift,
   })
+
   const intl = useIntl()
-  const handles = useCssHandles(CSS_HANDLES, {
+  const { handles } = useCssHandles(CSS_HANDLES, {
     migrationFrom: 'vtex.store-components@3.x',
+    classes,
   })
+
   const imageDimensions = {
     minWidth,
     minHeight,

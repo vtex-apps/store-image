@@ -45,6 +45,7 @@ function ImageSlider(props: Props) {
       usePagination: true,
     },
   } = props
+
   const { isMobile } = useDevice()
   const intl = useIntl()
 
@@ -57,6 +58,7 @@ function ImageSlider(props: Props) {
             formatIOMessage({ id: image, intl }),
             formatIOMessage({ id: mobileImage, intl })
           )
+
           const imageAltDescription = formatIOMessage({ id: description, intl })
           const imageLink = link && {
             ...link,
