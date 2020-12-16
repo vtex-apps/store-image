@@ -17,9 +17,9 @@
     "vtex.list-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-context@0.1.1/public/@types/vtex.list-context",
     "vtex.native-types": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.native-types@0.7.4/public/@types/vtex.native-types",
     "vtex.on-view": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.on-view@1.0.0/public/@types/vtex.on-view",
-    "vtex.pixel-manager": "https://icaroshopbycategory--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.pixel-manager@1.6.0+build1608064784/public/@types/vtex.pixel-manager",
+    "vtex.pixel-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.6.1/public/@types/vtex.pixel-manager",
     "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.126.4/public/@types/vtex.render-runtime",
-    "vtex.slider-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.15.2/public/@types/vtex.slider-layout"
+    "vtex.slider-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.16.0/public/@types/vtex.slider-layout"
   },
   "version": "0.7.0"
 }
