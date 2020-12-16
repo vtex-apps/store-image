@@ -1,7 +1,8 @@
 import React from 'react'
 import { useDevice } from 'vtex.device-detector'
 
-import { ImagesSchema, IMAGE_LIST_SCHEMA } from './modules/schema'
+import type { ImagesSchema } from './modules/schema'
+import { IMAGE_LIST_SCHEMA } from './modules/schema'
 import { getImagesAsJSXList } from './modules/imageAsList'
 
 interface ImageListProps {

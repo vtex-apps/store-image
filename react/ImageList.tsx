@@ -1,8 +1,10 @@
 import React from 'react'
+import type { PropsWithChildren } from 'react'
 import { useDevice } from 'vtex.device-detector'
 import { ListContextProvider, useListContext } from 'vtex.list-context'
 
-import { ImagesSchema, IMAGE_LIST_SCHEMA } from './modules/schema'
+import type { ImagesSchema } from './modules/schema'
+import { IMAGE_LIST_SCHEMA } from './modules/schema'
 import { getImagesAsJSXList } from './modules/imageAsList'
 
 interface Props {
@@ -10,11 +12,11 @@ interface Props {
   height: number
 }
 
-const ImageList: StorefrontFunctionComponent<Props> = ({
+function ImageList({
   images,
   height = 420,
   children,
-}) => {
+}: PropsWithChildren<Props>) {
   const list = useListContext()?.list ?? []
   const { isMobile } = useDevice()
 
