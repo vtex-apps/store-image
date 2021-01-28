@@ -3,20 +3,20 @@ import type { PropsWithChildren } from 'react'
 import { useDevice } from 'vtex.device-detector'
 import { ListContextProvider, useListContext } from 'vtex.list-context'
 
-import type { ImagesSchema } from './modules/schema'
 import { IMAGE_LIST_SCHEMA } from './modules/schema'
 import { getImagesAsJSXList } from './modules/imageAsList'
+import type { ImagesSchema } from './ImageTypes'
 
-interface Props {
+export interface ImageListProps {
   images: ImagesSchema
-  height: number
+  height?: number
 }
 
 function ImageList({
   images,
   height = 420,
   children,
-}: PropsWithChildren<Props>) {
+}: PropsWithChildren<ImageListProps>) {
   const list = useListContext()?.list ?? []
   const { isMobile } = useDevice()
 

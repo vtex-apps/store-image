@@ -7,7 +7,7 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { usePixel } from 'vtex.pixel-manager'
 
-import type { ImageSchema } from './modules/schema'
+import type { ImageSchema } from './ImageTypes'
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
@@ -193,5 +193,7 @@ const messages = defineMessages({
 Image.schema = {
   title: messages.title.id,
 }
+
+Image.cssHandles = CSS_HANDLES
 
 export default Image
