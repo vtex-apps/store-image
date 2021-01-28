@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Exports CSS Handles embedded within `Image` component.
 - `ImageTypes.ts` file exporting all types of the app.
 
+### Fixed
+- Schema properties' titles not being displayed correctly when imported by other apps.
+
 ## [0.8.0] - 2020-12-16
 ### Changed
 - Update `vtex.css-handles` to `1.x`.
