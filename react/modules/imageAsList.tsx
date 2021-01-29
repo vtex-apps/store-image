@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Image from '../Image'
-import type { ImagesSchema } from './schema'
+import type { ImagesSchema } from '../ImageTypes'
 
 export const getImagesAsJSXList = (
   images: ImagesSchema,

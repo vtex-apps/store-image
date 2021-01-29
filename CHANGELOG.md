@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Exports CSS Handles embedded within `Image` component.
+- `ImageTypes.ts` file exporting all types of the app.
+
+### Fixed
+- Schema properties' titles not being displayed correctly when imported by other apps.
 
 ## [0.8.0] - 2020-12-16
 ### Changed

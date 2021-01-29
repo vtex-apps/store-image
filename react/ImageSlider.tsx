@@ -5,21 +5,9 @@ import { useDevice } from 'vtex.device-detector'
 import { formatIOMessage } from 'vtex.native-types'
 
 import Image from './Image'
-import type { ImagesSchema } from './modules/schema'
+import type { SliderConfig, ImagesSchema } from './ImageTypes'
 
-interface SliderConfig {
-  itemsPerPage: {
-    desktop: number
-    tablet: number
-    phone: number
-  }
-  showNavigationArrows: 'mobileOnly' | 'desktopOnly' | 'always' | 'never'
-  showPaginationDots: 'mobileOnly' | 'desktopOnly' | 'always' | 'never'
-  usePagination: boolean
-  infinite: boolean
-}
-
-interface Props {
+export interface ImageSliderProps {
   images: ImagesSchema
   height: number
   sliderLayoutConfig: SliderConfig
@@ -29,7 +17,7 @@ function getImageUrl(isMobile: boolean, image: string, mobileImage: string) {
   return !!mobileImage && isMobile ? mobileImage : image
 }
 
-function ImageSlider(props: Props) {
+function ImageSlider(props: ImageSliderProps) {
   const {
     images,
     height,

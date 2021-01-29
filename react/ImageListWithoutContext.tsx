@@ -1,14 +1,9 @@
 import React from 'react'
 import { useDevice } from 'vtex.device-detector'
 
-import type { ImagesSchema } from './modules/schema'
 import { IMAGE_LIST_SCHEMA } from './modules/schema'
 import { getImagesAsJSXList } from './modules/imageAsList'
-
-interface ImageListProps {
-  images: ImagesSchema
-  height: number
-}
+import type { ImageListProps } from './ImageList'
 
 const ImageListWithoutContext = (props: ImageListProps) => {
   const { images, height = 420 } = props
