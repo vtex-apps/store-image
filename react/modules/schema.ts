@@ -68,8 +68,7 @@ export const IMAGE_LIST_SCHEMA = {
   properties: {
     height: {
       default: 420,
-      enum: [420, 440],
-      isLayout: true,
+      isLayout: false,
       title: IMAGE_LIST_MESSAGES.heightTitle.id,
       type: 'number',
     },
