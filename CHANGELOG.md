@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.9.1] - 2021-02-03
+
 ### Fix
 - `Height` not apearing in site editor and fixed to be a number instead of enum
 
