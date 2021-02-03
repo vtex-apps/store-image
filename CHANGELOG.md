@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fix
+- `Height` not apearing in site editor and fixed to be a number instead of enum
+
 ## [0.9.0] - 2021-01-29
 ### Added
 - Exports CSS Handles embedded within `Image` component.
