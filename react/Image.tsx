@@ -14,10 +14,10 @@ const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 export interface ImageProps
   extends ImageSchema,
     ImgHTMLAttributes<HTMLImageElement> {
-  width?: string | number,
-  height?: string | number,
-  inlineWidth?: string | number,
-  inlineHeight?: string | number,
+  width?: string | number
+  height?: string | number
+  inlineWidth?: string | number
+  inlineHeight?: string | number
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
