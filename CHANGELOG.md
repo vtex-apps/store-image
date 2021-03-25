@@ -7,11 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added 
+- `inlineWidth` and `inlineHeight` props to `Image` component.
+
 ## [0.10.0] - 2021-03-03
 
-
 ### Added
-
 - I18n Ro and JP.
 - Crowdin configuration file.
 
