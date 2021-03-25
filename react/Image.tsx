@@ -14,6 +14,10 @@ const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 export interface ImageProps
   extends ImageSchema,
     ImgHTMLAttributes<HTMLImageElement> {
+  width?: string | number,
+  height?: string | number,
+  inlineWidth?: string | number,
+  inlineHeight?: string | number,
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
@@ -70,6 +74,8 @@ function Image(props: ImageProps) {
     minHeight,
     width,
     height,
+    inlineWidth,
+    inlineHeight,
     srcSet = '',
     sizes = '',
     link,
@@ -109,6 +115,8 @@ function Image(props: ImageProps) {
 
   const imgElement = (
     <img
+      width={inlineWidth}
+      height={inlineHeight}
       title={title}
       sizes={sizes}
       srcSet={srcSet}
