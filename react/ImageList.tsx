@@ -10,17 +10,21 @@ import type { ImagesSchema } from './ImageTypes'
 export interface ImageListProps {
   images: ImagesSchema
   height?: number
+  useDesktopImage?: boolean
 }
 
 function ImageList({
   images,
   height = 420,
+  useDesktopImage = false,
   children,
 }: PropsWithChildren<ImageListProps>) {
   const list = useListContext()?.list ?? []
-  const { isMobile } = useDevice()
+  const { isMobile, device } = useDevice()
 
-  const imageListContent = getImagesAsJSXList(images, isMobile, height)
+  const isTablet = device === "tablet"
+
+  const imageListContent = getImagesAsJSXList(images, isMobile, useDesktopImage, isTablet, height)
   const newListContextValue = list.concat(imageListContent)
 
   return (

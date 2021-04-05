@@ -6,10 +6,13 @@ import { getImagesAsJSXList } from './modules/imageAsList'
 import type { ImageListProps } from './ImageList'
 
 const ImageListWithoutContext = (props: ImageListProps) => {
-  const { images, height = 420 } = props
-  const { isMobile } = useDevice()
+  const { images, height = 420, useDesktopImage = false } = props
 
-  const imageListContent = getImagesAsJSXList(images, isMobile, height)
+  const { isMobile, device } = useDevice()
+
+  const isTablet = device === "tablet"
+
+  const imageListContent = getImagesAsJSXList(images, isMobile, useDesktopImage, isTablet, height)
 
   return <React.Fragment>{imageListContent}</React.Fragment>
 }

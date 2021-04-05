@@ -64,6 +64,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
+| `useDesktopImage`  | `boolean` | Defines which image the `tablet` will inherit (`mobile` or `desktop`) | `false`   |
 
 ### `image-list` props
 
@@ -71,6 +72,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
+| `useDesktopImage`  | `boolean` | Defines which image the `tablet` will inherit (`mobile` or `desktop`) | `false`   |
 
 - **`images` array:**
 
@@ -107,6 +109,12 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/gabrielkerchner"><img src="https://avatars.githubusercontent.com/u/38087734?v=4" width="100px;" alt="Gabriel Kerchner"/><br /><sub><b>Gabriel Kerchner</b></sub></a><br /><a href="" title="Code">💻</a></td>
+  </tr>
+</table>
+
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
 
