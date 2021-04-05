@@ -72,5 +72,10 @@ export const IMAGE_LIST_SCHEMA = {
       title: IMAGE_LIST_MESSAGES.heightTitle.id,
       type: 'number',
     },
+    useDesktopImage: {
+      title: 'Use Desktop Image for Tablet?',
+      type: 'boolean',
+      default: false,
+    },
   },
 }
