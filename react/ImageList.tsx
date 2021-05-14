@@ -10,17 +10,19 @@ import type { ImagesSchema } from './ImageTypes'
 export interface ImageListProps {
   images: ImagesSchema
   height?: number
+  preload?: boolean
 }
 
 function ImageList({
   images,
   height = 420,
   children,
+  preload,
 }: PropsWithChildren<ImageListProps>) {
   const list = useListContext()?.list ?? []
   const { isMobile } = useDevice()
 
-  const imageListContent = getImagesAsJSXList(images, isMobile, height)
+  const imageListContent = getImagesAsJSXList(images, isMobile, height, preload)
   const newListContextValue = list.concat(imageListContent)
 
   return (

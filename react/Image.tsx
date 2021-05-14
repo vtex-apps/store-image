@@ -21,6 +21,7 @@ export interface ImageProps
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  preload?: boolean
 }
 
 const useImageLoad = (
@@ -80,6 +81,7 @@ function Image(props: ImageProps) {
     promotionName,
     promotionPosition,
     classes,
+    preload,
   } = props
 
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -117,6 +119,9 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
+      {...(preload ? {
+        'data-vtex-preload': 'true'
+      } : {})}
     />
   )
 

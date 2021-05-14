@@ -37,6 +37,8 @@ function ImageSlider(props: ImageSliderProps) {
   const { isMobile } = useDevice()
   const intl = useIntl()
 
+  console.log('use preload')
+
   return (
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
       {images.map(
@@ -62,6 +64,7 @@ function ImageSlider(props: ImageSliderProps) {
               link={imageLink}
               maxHeight={height}
               width="100%"
+              preload={idx === 0}
               {...otherProps}
             />
           )

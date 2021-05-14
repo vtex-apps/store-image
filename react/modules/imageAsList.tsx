@@ -6,7 +6,8 @@ import type { ImagesSchema } from '../ImageTypes'
 export const getImagesAsJSXList = (
   images: ImagesSchema,
   isMobile: boolean,
-  height: string | number
+  height: string | number,
+  preload?: boolean
 ) => {
   return images.map(
     (
@@ -27,6 +28,7 @@ export const getImagesAsJSXList = (
         maxHeight={height}
         width={width}
         experimentalPreventLayoutShift={experimentalPreventLayoutShift}
+        preload={preload}
         {...props}
       />
     )
