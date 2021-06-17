@@ -30,6 +30,7 @@ You are now able to use the `list-context.image-list` block, exported by the Sto
   "list-context.image-list#demo": {
     "children": ["slider-layout#demo-images"],
     "props": {
+      "preload": true,
       "height": 650,
       "images": [
         {
@@ -64,6 +65,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | --------- | -------- | ------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
+| `preload`  | `boolean` | Preloads the first image in a list, which helps prioritizing the display of images over other assets | `undefined`   |
 
 ### `image-list` props
 
