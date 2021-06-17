@@ -28,7 +28,7 @@ export const getImagesAsJSXList = (
         maxHeight={height}
         width={width}
         experimentalPreventLayoutShift={experimentalPreventLayoutShift}
-        preload={preload}
+        preload={preload && idx === 0}
         {...props}
       />
     )
