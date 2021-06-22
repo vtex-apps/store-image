@@ -11,6 +11,7 @@ export interface ImageSliderProps {
   images: ImagesSchema
   height: number
   sliderLayoutConfig: SliderConfig
+  preload?: boolean
 }
 
 function getImageUrl(isMobile: boolean, image: string, mobileImage: string) {
@@ -32,6 +33,7 @@ function ImageSlider(props: ImageSliderProps) {
       showPaginationDots: 'always',
       usePagination: true,
     },
+    preload,
   } = props
 
   const { isMobile } = useDevice()
@@ -62,6 +64,7 @@ function ImageSlider(props: ImageSliderProps) {
               link={imageLink}
               maxHeight={height}
               width="100%"
+              preload={preload && idx === 0}
               {...otherProps}
             />
           )
