@@ -143,7 +143,7 @@ function Image(props: ImageProps) {
         }
       : undefined
 
-  const maybeLink = link ? (
+  const maybeLink = link?.url ? (
     <a
       href={formatIOMessage({ id: link.url, intl })}
       rel={link.attributeNofollow ? 'nofollow' : ''}
