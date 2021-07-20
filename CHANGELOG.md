@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.12.1] - 2021-07-06
+
+### Fixed
+- prevent thruty value on condition
+
 ## [0.12.0] - 2021-06-22
 ### Added
 
