@@ -22,6 +22,7 @@ export interface ImageProps
   experimentalPreventLayoutShift?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
+  __isDuplicated?: boolean
 }
 
 const useImageLoad = (
@@ -82,6 +83,9 @@ function Image(props: ImageProps) {
     promotionPosition,
     classes,
     preload,
+    // Do not use this property
+    // eslint-disable-next-line
+    __isDuplicated,
   } = props
 
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -119,9 +123,11 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
-      {...(preload ? {
-        'data-vtex-preload': 'true'
-      } : {})}
+      {...(preload
+        ? {
+            'data-vtex-preload': 'true',
+          }
+        : {})}
     />
   )
 
@@ -165,7 +171,7 @@ function Image(props: ImageProps) {
   useOnView({
     ref: imageRef,
     onView: () => {
-      if (analyticsProperties === 'none') return
+      if (analyticsProperties === 'none' || __isDuplicated) return
 
       push({
         event: 'promoView',
