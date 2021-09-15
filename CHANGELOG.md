@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Fixed
-- `Image`: Prevent trigger promoView event when `__isDuplicated` is enabled.
+- `Image`: Prevent to trigger promoView event when `__isDuplicated` is enabled.
 
 ### Added
 - `Image`:  `__isDuplicated` prop to handle when an image is duplicated inside the slider-layout.

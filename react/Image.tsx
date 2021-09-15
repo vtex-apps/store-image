@@ -23,8 +23,8 @@ export interface ImageProps
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   /**
-   * Warning: This property is for internal usage, please avoid use it.
-   * This property is used when the Image is children of SliderTrack component and prevents to trigger the promoView event twice for cloned images.
+   * Warning: This property is for internal usage, please avoid using it.
+   * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
    * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
    */
   __isDuplicated?: boolean
