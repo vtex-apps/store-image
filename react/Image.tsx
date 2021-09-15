@@ -22,6 +22,12 @@ export interface ImageProps
   experimentalPreventLayoutShift?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
+  /**
+   * Warning: This property is for internal usage, please avoid using it.
+   * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
+   * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
+   */
+  __isDuplicated?: boolean
 }
 
 const useImageLoad = (
@@ -82,6 +88,8 @@ function Image(props: ImageProps) {
     promotionPosition,
     classes,
     preload,
+    // eslint-disable-next-line
+    __isDuplicated,
   } = props
 
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -119,9 +127,11 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
-      {...(preload ? {
-        'data-vtex-preload': 'true'
-      } : {})}
+      {...(preload
+        ? {
+            'data-vtex-preload': 'true',
+          }
+        : {})}
     />
   )
 
@@ -165,7 +175,7 @@ function Image(props: ImageProps) {
   useOnView({
     ref: imageRef,
     onView: () => {
-      if (analyticsProperties === 'none') return
+      if (analyticsProperties === 'none' || __isDuplicated) return
 
       push({
         event: 'promoView',
