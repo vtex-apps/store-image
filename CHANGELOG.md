@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - I18n Bg and Bs (pseudo-language to implement In-context tool).
 
+# Fixed
+- I18n es, it-IT, ko-KR, pt
 ## [0.13.0] - 2021-09-15
 ### Fixed
 - `Image`: Prevent to trigger promoView event when `__isDuplicated` is enabled.
