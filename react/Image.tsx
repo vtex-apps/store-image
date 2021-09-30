@@ -5,6 +5,7 @@ import { useCssHandles } from 'vtex.css-handles'
 import type { CssHandlesTypes } from 'vtex.css-handles'
 import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
+import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
 
 import type { ImageSchema } from './ImageTypes'
@@ -154,11 +155,10 @@ function Image(props: ImageProps) {
       : undefined
 
   const maybeLink = link?.url ? (
-    <a
-      href={formatIOMessage({ id: link.url, intl })}
+    <Link
+      to={formatIOMessage({ id: link.url, intl }) ?? ''}
       rel={link.attributeNofollow ? 'nofollow' : ''}
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
-      title={formatIOMessage({ id: link?.attributeTitle, intl })}
       className={handles.imageElementLink}
       onClick={() => {
         if (analyticsProperties === 'none') return
@@ -167,7 +167,7 @@ function Image(props: ImageProps) {
       }}
     >
       {imgElement}
-    </a>
+    </Link>
   ) : (
     <Fragment>{imgElement}</Fragment>
   )
