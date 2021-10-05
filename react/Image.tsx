@@ -156,7 +156,8 @@ function Image(props: ImageProps) {
 
   const maybeLink = link?.url ? (
     <Link
-      to={formatIOMessage({ id: link.url, intl }) ?? ''}
+      to={(formatIOMessage({ id: link.url, intl }) as string) ?? ''}
+      title={formatIOMessage({ id: link?.attributeTitle, intl }) as string}
       rel={link.attributeNofollow ? 'nofollow' : ''}
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       className={handles.imageElementLink}
