@@ -4791,9 +4791,9 @@ verror@1.10.0:
   version "1.8.0"
   resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.8.0/public/@types/vtex.pixel-manager#3ccfcb1927614984a5f7a3e5650c8c8d2bd3c0f4"
 
-"vtex.render-runtime@https://brasileiro--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.render-runtime@8.132.2+build1633464084/public/@types/vtex.render-runtime":
-  version "8.132.2"
-  resolved "https://brasileiro--storecomponents.myvtex.com/_v/private/typings/linked/v1/vtex.render-runtime@8.132.2+build1633464084/public/@types/vtex.render-runtime#b96dff8df81dca24d04a4b15005aecf9f141de2b"
+"vtex.render-runtime@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime":
+  version "8.132.3"
+  resolved "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime#c7dd142e384f38bd7a7c841543b73e9349fadc93"
 
 "vtex.slider-layout@http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout":
   version "0.22.0"
