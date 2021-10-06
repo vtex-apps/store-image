@@ -115,8 +115,8 @@ function Image(props: ImageProps) {
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
-  const formattedSrc = formatIOMessage({ id: src, intl })
-  const formattedAlt = formatIOMessage({ id: alt, intl })
+  const formattedSrc = formatIOMessage({ id: src, intl }) as string
+  const formattedAlt = formatIOMessage({ id: alt, intl }) as string
 
   const imgElement = (
     <img

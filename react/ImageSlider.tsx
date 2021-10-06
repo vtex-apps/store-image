@@ -45,15 +45,19 @@ function ImageSlider(props: ImageSliderProps) {
         ({ image, mobileImage, link, description, ...otherProps }, idx) => {
           const imageUrl = getImageUrl(
             isMobile,
-            formatIOMessage({ id: image, intl }),
-            formatIOMessage({ id: mobileImage, intl })
+            formatIOMessage({ id: image, intl }) as string,
+            formatIOMessage({ id: mobileImage, intl }) as string
           )
 
-          const imageAltDescription = formatIOMessage({ id: description, intl })
+          const imageAltDescription = formatIOMessage({
+            id: description,
+            intl,
+          }) as string
+
           const imageLink = link && {
             ...link,
-            url: formatIOMessage({ id: link.url, intl }),
-            title: formatIOMessage({ id: link.attributeTitle, intl }),
+            url: formatIOMessage({ id: link.url, intl }) as string,
+            title: formatIOMessage({ id: link.attributeTitle, intl }) as string,
           }
 
           return (
