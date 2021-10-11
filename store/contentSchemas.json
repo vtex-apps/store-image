@@ -97,6 +97,14 @@
               "ui:widget": "image-uploader"
             }
           },
+          "phoneImage": {
+            "$ref": "app:vtex.native-types#/definitions/url",
+            "default": "",
+            "title": "admin/editor.image-list.images.mobileImage.title",
+            "widget": {
+              "ui:widget": "image-uploader"
+            }
+          },
           "description": {
             "$ref": "app:vtex.native-types#/definitions/text",
             "default": "",
