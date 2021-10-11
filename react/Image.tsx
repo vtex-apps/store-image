@@ -115,16 +115,16 @@ function Image(props: ImageProps) {
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
-  const formattedSrc = formatIOMessage({ id: src, intl }) as string
-  const formattedAlt = formatIOMessage({ id: alt, intl }) as string
+  const formattedSrc = formatIOMessage({ id: src, intl })
+  const formattedAlt = formatIOMessage({ id: alt, intl })
 
   const imgElement = (
     <img
       title={title}
       sizes={sizes}
       srcSet={srcSet}
-      src={formattedSrc}
-      alt={formattedAlt}
+      src={typeof formattedSrc === 'string' ? formattedSrc : ''}
+      alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
@@ -154,10 +154,16 @@ function Image(props: ImageProps) {
         }
       : undefined
 
+  const formatedLink = formatIOMessage({ id: link?.url, intl })
+  const formatedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+
   const maybeLink = link?.url ? (
+    // The onclick function and the <Link> component are necessary,
+    // so knowing this disable the anchor-is-valid rule seems good.
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <Link
-      to={(formatIOMessage({ id: link.url, intl }) as string) ?? ''}
-      title={formatIOMessage({ id: link?.attributeTitle, intl }) as string}
+      to={typeof formatedLink === 'string' ? formatedLink : ''}
+      title={typeof formatedTitle === 'string' ? formatedTitle : ''}
       rel={link.attributeNofollow ? 'nofollow' : ''}
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       className={handles.imageElementLink}
