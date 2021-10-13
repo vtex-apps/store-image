@@ -43,25 +43,28 @@ function ImageSlider(props: ImageSliderProps) {
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
       {images.map(
         ({ image, mobileImage, link, description, ...otherProps }, idx) => {
-          const formatedImage = formatIOMessage({ id: image, intl })
-          const formatedMobileImage = formatIOMessage({ id: mobileImage, intl })
+          const formattedImage = formatIOMessage({ id: image, intl })
+          const formattedMobileImage = formatIOMessage({
+            id: mobileImage,
+            intl,
+          })
 
           const imageUrl = getImageUrl(
             isMobile,
-            typeof formatedImage === 'string' ? formatedImage : '',
-            typeof formatedMobileImage === 'string' ? formatedMobileImage : ''
+            typeof formattedImage === 'string' ? formattedImage : '',
+            typeof formattedMobileImage === 'string' ? formattedMobileImage : ''
           )
 
-          const formatedAltDescription = formatIOMessage({
+          const formattedAltDescription = formatIOMessage({
             id: description,
             intl,
           })
 
-          const formatedUrl = link
+          const formattedUrl = link
             ? formatIOMessage({ id: link.url, intl })
             : ''
 
-          const formatedTitle = link
+          const formattedTitle = link
             ? formatIOMessage({
                 id: link.attributeTitle,
                 intl,
@@ -70,8 +73,8 @@ function ImageSlider(props: ImageSliderProps) {
 
           const imageLink = link && {
             ...link,
-            url: typeof formatedUrl === 'string' ? formatedUrl : '',
-            title: typeof formatedTitle === 'string' ? formatedTitle : '',
+            url: typeof formattedUrl === 'string' ? formattedUrl : '',
+            title: typeof formattedTitle === 'string' ? formattedTitle : '',
           }
 
           return (
@@ -79,8 +82,8 @@ function ImageSlider(props: ImageSliderProps) {
               key={idx}
               src={imageUrl}
               alt={
-                typeof formatedAltDescription === 'string'
-                  ? formatedAltDescription
+                typeof formattedAltDescription === 'string'
+                  ? formattedAltDescription
                   : ''
               }
               link={imageLink}
