@@ -43,24 +43,49 @@ function ImageSlider(props: ImageSliderProps) {
     <SliderLayout {...sliderLayoutConfig} totalItems={images.length}>
       {images.map(
         ({ image, mobileImage, link, description, ...otherProps }, idx) => {
+          const formattedImage = formatIOMessage({ id: image, intl })
+          const formattedMobileImage = formatIOMessage({
+            id: mobileImage,
+            intl,
+          })
+
           const imageUrl = getImageUrl(
             isMobile,
-            formatIOMessage({ id: image, intl }),
-            formatIOMessage({ id: mobileImage, intl })
+            typeof formattedImage === 'string' ? formattedImage : '',
+            typeof formattedMobileImage === 'string' ? formattedMobileImage : ''
           )
 
-          const imageAltDescription = formatIOMessage({ id: description, intl })
+          const formattedAltDescription = formatIOMessage({
+            id: description,
+            intl,
+          })
+
+          const formattedUrl = link
+            ? formatIOMessage({ id: link.url, intl })
+            : ''
+
+          const formattedTitle = link
+            ? formatIOMessage({
+                id: link.attributeTitle,
+                intl,
+              })
+            : ''
+
           const imageLink = link && {
             ...link,
-            url: formatIOMessage({ id: link.url, intl }),
-            title: formatIOMessage({ id: link.attributeTitle, intl }),
+            url: typeof formattedUrl === 'string' ? formattedUrl : '',
+            title: typeof formattedTitle === 'string' ? formattedTitle : '',
           }
 
           return (
             <Image
               key={idx}
               src={imageUrl}
-              alt={imageAltDescription}
+              alt={
+                typeof formattedAltDescription === 'string'
+                  ? formattedAltDescription
+                  : ''
+              }
               link={imageLink}
               maxHeight={height}
               width="100%"

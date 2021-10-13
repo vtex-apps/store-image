@@ -123,8 +123,8 @@ function Image(props: ImageProps) {
       title={title}
       sizes={sizes}
       srcSet={srcSet}
-      src={formattedSrc}
-      alt={formattedAlt}
+      src={typeof formattedSrc === 'string' ? formattedSrc : ''}
+      alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
@@ -154,9 +154,16 @@ function Image(props: ImageProps) {
         }
       : undefined
 
+  const formattedLink = formatIOMessage({ id: link?.url, intl })
+  const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+
   const maybeLink = link?.url ? (
+    // The onClick function and the <Link> component are necessary,
+    // knowing this, it seems good to disable the anchor-is-valid rule.
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <Link
-      to={formatIOMessage({ id: link.url, intl }) ?? ''}
+      to={typeof formattedLink === 'string' ? formattedLink : ''}
+      title={typeof formattedTitle === 'string' ? formattedTitle : ''}
       rel={link.attributeNofollow ? 'nofollow' : ''}
       target={shouldOpenLinkInNewTab ? '_blank' : undefined}
       className={handles.imageElementLink}
