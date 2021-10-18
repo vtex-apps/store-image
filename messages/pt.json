@@ -9,6 +9,7 @@
   "admin/editor.image-list.images.title": "Imagens",
   "admin/editor.image-list.images.image.title": "Imagem",
   "admin/editor.image-list.images.mobileImage.title": "Imagem para mobile",
+  "admin/editor.image-list.images.phoneImage.title": "Imagem para celular",
   "admin/editor.image-list.images.description.title": "Descrição alternativa para a imagem",
   "admin/editor.image-list.images.title.title": "Título da imagem",
   "admin/editor.image-list.images.link.url.title": "URL do link da imagem",

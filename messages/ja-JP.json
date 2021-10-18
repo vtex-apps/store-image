@@ -9,6 +9,7 @@
   "admin/editor.image-list.images.title": "画像",
   "admin/editor.image-list.images.image.title": "画像",
   "admin/editor.image-list.images.mobileImage.title": "モバイル用画像",
+  "admin/editor.image-list.images.phoneImage.title": "携帯電話用画像",
   "admin/editor.image-list.images.description.title": "画像代替テキスト",
   "admin/editor.image-list.images.title.title": "画像のタイトル",
   "admin/editor.image-list.images.link.url.title": "画像リンク URL",

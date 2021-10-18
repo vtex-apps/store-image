@@ -9,6 +9,7 @@
   "admin/editor.image-list.images.title": "Изображения",
   "admin/editor.image-list.images.image.title": "Изображение",
   "admin/editor.image-list.images.mobileImage.title": "Изображение за мобилно устройство",
+  "admin/editor.image-list.images.phoneImage.title": "изображение на мобилен телефон",
   "admin/editor.image-list.images.description.title": "Алтернативен текст за изображение",
   "admin/editor.image-list.images.title.title": "Заглавие на изображение",
   "admin/editor.image-list.images.link.url.title": "URL адрес с линк за изображението",

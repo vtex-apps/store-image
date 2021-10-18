@@ -2,7 +2,7 @@
   "image-new": {
     "component": "Image",
     "content": {
-      "$ref": "app:sudambeef.store-image#/definitions/Image"
+      "$ref": "app:vtex.store-image#/definitions/Image"
     }
   },
   "image-slider": {
@@ -10,7 +10,7 @@
     "content": {
       "properties": {
         "images": {
-          "$ref": "app:sudambeef.store-image#/definitions/Images"
+          "$ref": "app:vtex.store-image#/definitions/Images"
         }
       }
     }
@@ -20,7 +20,7 @@
     "content": {
       "properties": {
         "images": {
-          "$ref": "app:sudambeef.store-image#/definitions/Images"
+          "$ref": "app:vtex.store-image#/definitions/Images"
         }
       }
     }
@@ -32,7 +32,7 @@
     "content": {
       "properties": {
         "images": {
-          "$ref": "app:sudambeef.store-image#/definitions/Images"
+          "$ref": "app:vtex.store-image#/definitions/Images"
         }
       }
     }

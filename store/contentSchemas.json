@@ -100,7 +100,7 @@
           "phoneImage": {
             "$ref": "app:vtex.native-types#/definitions/url",
             "default": "",
-            "title": "admin/editor.image-list.images.mobileImage.title",
+            "title": "admin/editor.image-list.images.phoneImage.title",
             "widget": {
               "ui:widget": "image-uploader"
             }
