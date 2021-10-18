@@ -3,7 +3,13 @@ import React from 'react'
 import Image from '../Image'
 import type { ImagesSchema } from '../ImageTypes'
 
-const getResponsiveImage = (device: string, image: string, mobileImage: string,phoneImage: string) => {
+interface ResponsiveImageParams {
+  device: string
+  image: string
+  mobileImage: string
+  phoneImage: string
+}
+const getResponsiveImage = ({ device, image, mobileImage, phoneImage }: ResponsiveImageParams) => {
   let currentImage = image;
 
   if( device == 'tablet' && mobileImage) currentImage = mobileImage;
