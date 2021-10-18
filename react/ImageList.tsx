@@ -8,7 +8,7 @@ import { getImagesAsJSXList } from './modules/imageAsList'
 import type { ImagesSchema } from './ImageTypes'
 
 export interface ImageListProps {
-  images: ImagesSchema 
+  images: ImagesSchema
   height?: number
   preload?: boolean
 }

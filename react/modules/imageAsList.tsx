@@ -9,14 +9,19 @@ interface ResponsiveImageParams {
   mobileImage: string
   phoneImage: string
 }
-const getResponsiveImage = ({ device, image, mobileImage, phoneImage }: ResponsiveImageParams) => {
-  let currentImage = image;
+const getResponsiveImage = ({
+  device,
+  image,
+  mobileImage,
+  phoneImage,
+}: ResponsiveImageParams) => {
+  let currentImage = image
 
-  if( device == 'tablet' && mobileImage) currentImage = mobileImage;
-  if(device == 'phone' && phoneImage) currentImage = phoneImage;
-  else if (device == 'phone' && mobileImage) currentImage = mobileImage;
-  
-  return currentImage;
+  if (device === 'tablet' && mobileImage) currentImage = mobileImage
+  if (device === 'phone' && phoneImage) currentImage = phoneImage
+  else if (device === 'phone' && mobileImage) currentImage = mobileImage
+
+  return currentImage
 }
 
 export const getImagesAsJSXList = (
@@ -38,20 +43,25 @@ export const getImagesAsJSXList = (
       },
       idx
     ) => {
-      
-      const currentImage = getResponsiveImage(device, image, mobileImage,phoneImage)
-      
+      const currentImage = getResponsiveImage(
+        device,
+        image,
+        mobileImage,
+        phoneImage
+      )
+
       return (
-      <Image
-        key={idx}
-        src={currentImage}
-        alt={description}
-        maxHeight={height}
-        width={width}
-        experimentalPreventLayoutShift={experimentalPreventLayoutShift}
-        preload={preload && idx === 0}
-        {...props}
-      />)
+        <Image
+          key={idx}
+          src={currentImage}
+          alt={description}
+          maxHeight={height}
+          width={width}
+          experimentalPreventLayoutShift={experimentalPreventLayoutShift}
+          preload={preload && idx === 0}
+          {...props}
+        />
+      )
     }
   )
 }
