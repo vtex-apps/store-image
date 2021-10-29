@@ -43,12 +43,12 @@ export const getImagesAsJSXList = (
       },
       idx
     ) => {
-      const currentImage = getResponsiveImage(
+      const currentImage = getResponsiveImage({
         device,
         image,
         mobileImage,
-        phoneImage
-      )
+        phoneImage,
+      })
 
       return (
         <Image
