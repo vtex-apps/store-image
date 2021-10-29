@@ -9,6 +9,7 @@
   "admin/editor.image-list.images.title": "Afbeeldingen",
   "admin/editor.image-list.images.image.title": "Afbeelding",
   "admin/editor.image-list.images.mobileImage.title": "Afbeelding voor mobiel",
+  "admin/editor.image-list.images.phoneImage.title": "Afbeelding voor mobiel telefoon",
   "admin/editor.image-list.images.description.title": "Afbeelding alt-tekst",
   "admin/editor.image-list.images.title.title": "Titel van de afbeelding",
   "admin/editor.image-list.images.link.url.title": "URL van afbeeldingslink",

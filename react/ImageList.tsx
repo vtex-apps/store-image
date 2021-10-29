@@ -20,9 +20,9 @@ function ImageList({
   preload,
 }: PropsWithChildren<ImageListProps>) {
   const list = useListContext()?.list ?? []
-  const { isMobile } = useDevice()
+  const { device } = useDevice()
 
-  const imageListContent = getImagesAsJSXList(images, isMobile, height, preload)
+  const imageListContent = getImagesAsJSXList(images, device, height, preload)
   const newListContextValue = list.concat(imageListContent)
 
   return (

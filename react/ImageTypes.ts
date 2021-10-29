@@ -18,6 +18,7 @@ export interface ImageSchema {
 export type ImagesSchema = Array<{
   image: string
   mobileImage: string
+  phoneImage: string
   link?: Link
   title?: string
   description: string
