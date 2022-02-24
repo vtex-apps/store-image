@@ -23,6 +23,8 @@ export interface ImageProps
   experimentalPreventLayoutShift?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
+  tagWidth?: string | number
+  tagHeight?: string | number
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -89,6 +91,8 @@ function Image(props: ImageProps) {
     promotionPosition,
     classes,
     preload,
+    tagWidth,
+    tagHeight,
     // eslint-disable-next-line
     __isDuplicated,
   } = props
@@ -133,6 +137,8 @@ function Image(props: ImageProps) {
             'data-vtex-preload': 'true',
           }
         : {})}
+      width={tagWidth}
+      height={tagHeight}
     />
   )
 
