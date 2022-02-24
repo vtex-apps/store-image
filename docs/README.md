@@ -61,28 +61,30 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 ### `list-context.image-list` props
 
-| Prop name | Type     | Description                                                   | Default value |
-| --------- | -------- | ------------------------------------------------------------- | ------------- |
-| `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
-| `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
-| `preload`  | `boolean` | Preloads the first image in a list, which helps prioritizing the display of images over other assets | `false`   |
+| Prop name | Type      | Description                                                                                          | Default value |
+| --------- | --------- | ---------------------------------------------------------------------------------------------------- | ------------- |
+| `images`  | `array`   | Array of objects declaring all desired images to be rendered.                                        | `undefined`   |
+| `height`  | `number`  | Image height for all images declared in the `image` object (in `px`).                                | `undefined`   |
+| `preload` | `boolean` | Preloads the first image in a list, which helps prioritizing the display of images over other assets | `false`       |
 
 ### `image-list` props
 
-| Prop name | Type     | Description                                                   | Default value |
-| --------- | -------- | ------------------------------------------------------------- | ------------- |
-| `images`  | `array`  | Array of objects declaring all desired images to be rendered. | `undefined`   |
-| `height`  | `number` | Image height for all images declared in the `image` object (in `px`).   | `undefined`   |
+| Prop name | Type     | Description                                                           | Default value |
+| --------- | -------- | --------------------------------------------------------------------- | ------------- |
+| `images`  | `array`  | Array of objects declaring all desired images to be rendered.         | `undefined`   |
+| `height`  | `number` | Image height for all images declared in the `image` object (in `px`). | `undefined`   |
 
 - **`images` array:**
 
-| Prop name     | Type     | Description                               | Default value |
-| ------------- | -------- | ----------------------------------------- | ------------- |
-| `image`       | `string` | Image URL.                                | `undefined`   |
-| `mobileImage` | `string` | Mobile image URL.                         | `undefined`   |
-| `description` | `string` | Image description.                        | `undefined`   |
-| `link`        | `object` | Links an URL to the image being rendered. | `undefined`   |
-| `width` | `string` / `number` | Image width (in `%` or `px`). | `100%` |
+| Prop name     | Type                | Description                               | Default value |
+| ------------- | ------------------- | ----------------------------------------- | ------------- |
+| `image`       | `string`            | Image URL.                                | `undefined`   |
+| `mobileImage` | `string`            | Mobile image URL.                         | `undefined`   |
+| `description` | `string`            | Image description.                        | `undefined`   |
+| `link`        | `object`            | Links an URL to the image being rendered. | `undefined`   |
+| `width`       | `string` / `number` | Image width (in `%` or `px`).             | `100%`        |
+| `tagWidth`    | `string` / `number` | Image width (in `%` or `px`).             | `undefined`   |
+| `tagHeight`   | `string` / `number` | Image width (in `%` or `px`).             | `undefined`   |
 
 - **`link` object:**
 
