@@ -44,12 +44,19 @@ function getDropdownOptions() {
   }
   if (data) {
     for (let idx = 0; idx < data.customerClassInfo.length; ++idx) {
-      options.push({ value: idx, label: `${data.customerClassInfo[idx].customerClass}` })
+      options.push(`${data.customerClassInfo[idx].customerClass}`)
       console.log('customerClass: ', data.customerClassInfo[idx].customerClass)
     }
     setCustomerClass(`${data.customerClassInfo[0].customerClass}`)
   }
-  return options
+  let uniqueOptions: string[] = [];
+  options.forEach((c) => {
+    if (!uniqueOptions.includes(c)) {
+        uniqueOptions.push(c);
+    }
+});
+
+  return uniqueOptions;
 }
 function handleChange(e: any) {
   setCustomerClass(e.target.value);
