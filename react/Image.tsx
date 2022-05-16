@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react'
+import { useQuery } from 'react-apollo'
 import type { ImgHTMLAttributes, RefObject } from 'react'
 import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
@@ -7,14 +8,17 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
-
 import type { ImageSchema } from './ImageTypes'
+import GET_IMAGEURL from './graphql/getImage.gql'
+
+import { SessionSuccess, useRenderSession } from 'vtex.session-client'
+
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 export interface ImageProps
   extends ImageSchema,
-    ImgHTMLAttributes<HTMLImageElement> {
+  ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
@@ -98,7 +102,6 @@ function Image(props: ImageProps) {
     // eslint-disable-next-line
     __isDuplicated,
   } = props
-
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
     bailOut: !experimentalPreventLayoutShift,
@@ -131,8 +134,32 @@ function Image(props: ImageProps) {
     !height?.toString().includes('%') &&
     (widthWithoutUnits || heightWithoutUnits)
 
-  const formattedSrc = formatIOMessage({ id: src, intl })
-  const formattedAlt = formatIOMessage({ id: alt, intl })
+  const { loading2, session, error2 } = useRenderSession()
+  let userId = "";
+  if (session) {
+    const {
+      namespaces: { profile },
+    } = session as SessionSuccess
+
+    // const isAuthenticated = profile?.isAuthenticated.value === 'true'
+
+    // if (!isAuthenticated) {
+    //   return null
+    // }
+
+    userId = profile?.id?.value
+    console.log("inside if(session) userId: ", userId)
+    console.log("type of userId: ", typeof (userId))
+  }
+  if (loading2) {
+    console.log('loading')
+  }
+  if (error2) {
+    console.log('error: ', error2)
+  }
+  console.log("userId: ", userId)
+  const query = GET_IMAGEURL
+  let imgElement, formattedSrc, formattedAlt;
 
   const imgElement = (
     <img
@@ -152,12 +179,13 @@ function Image(props: ImageProps) {
           }
         : {})}
       {...(preload
-        ? {
+          ? {
             'data-vtex-preload': 'true',
           }
-        : {})}
-    />
-  )
+          : {})}
+      />
+    )
+  }
 
   /**
    * To understand why we need to check for both newTab and openNewTab

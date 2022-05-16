@@ -36,5 +36,11 @@
         }
       }
     }
+  },
+  "custom-dropdown": {
+    "component": "CustomDropdown",
+    "content": {
+      "$ref": "app:vtex.store-image#/definitions/CustomDropdown"
+    }
   }
 }
