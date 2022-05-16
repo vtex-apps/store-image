@@ -1,3 +1,5 @@
 query customerClass($userId: String!) {
-    getCustomerClass(userId: $userId): { customerClass }  @context(provider: "vtex.image-protocol-example")
+    customerClassInfo(userId: $userId) @context(provider: "vtex.image-protocol-example") {
+        customerClass
+    }
 }
