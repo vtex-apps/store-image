@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react'
+import { useQuery } from 'react-apollo'
 import type { ImgHTMLAttributes, RefObject } from 'react'
 import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
@@ -7,14 +8,17 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
-
 import type { ImageSchema } from './ImageTypes'
+import GET_IMAGEURL from './graphql/getImage.gql'
+
+import { SessionSuccess, useRenderSession } from 'vtex.session-client'
+
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 export interface ImageProps
   extends ImageSchema,
-    ImgHTMLAttributes<HTMLImageElement> {
+  ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
@@ -92,7 +96,6 @@ function Image(props: ImageProps) {
     // eslint-disable-next-line
     __isDuplicated,
   } = props
-
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
     bailOut: !experimentalPreventLayoutShift,
@@ -115,26 +118,88 @@ function Image(props: ImageProps) {
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
-  const formattedSrc = formatIOMessage({ id: src, intl })
-  const formattedAlt = formatIOMessage({ id: alt, intl })
+  const { loading2, session, error2 } = useRenderSession()
+  let userId = "";
+  if (session) {
+    const {
+      namespaces: { profile },
+    } = session as SessionSuccess
 
-  const imgElement = (
-    <img
-      title={title}
-      sizes={sizes}
-      srcSet={srcSet}
-      src={typeof formattedSrc === 'string' ? formattedSrc : ''}
-      alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
-      style={imageDimensions}
-      ref={imageRef}
-      className={handles.imageElement}
-      {...(preload
-        ? {
+    // const isAuthenticated = profile?.isAuthenticated.value === 'true'
+
+    // if (!isAuthenticated) {
+    //   return null
+    // }
+
+    userId = profile?.id?.value
+    console.log("inside if(session) userId: ", userId)
+    console.log("type of userId: ", typeof (userId))
+  }
+  if (loading2) {
+    console.log('loading')
+  }
+  if (error2) {
+    console.log('error: ', error2)
+  }
+  console.log("userId: ", userId)
+  const query = GET_IMAGEURL
+  let imgElement, formattedSrc, formattedAlt;
+
+  const { loading, error, data } = useQuery(query, {
+    variables: { userId: userId },
+    skip: !userId
+  })
+  if (loading) {
+    imgElement = (<div>{'Loading…'}</div>)
+  }
+  if (error) {
+    imgElement = (<div>{'Error ' + error}</div>)
+  }
+  if (data) {
+    console.log('inside if(data)')
+    formattedSrc = formatIOMessage({ id: data.imageUrl, intl })
+    formattedAlt = formatIOMessage({ id: alt, intl })
+    console.log("formattedSrc: ", formattedSrc)
+    imgElement = (
+      <img
+        title={title + "hola"}
+        sizes={sizes}
+        srcSet={srcSet}
+        src={typeof formattedSrc === 'string' ? formattedSrc : ''}
+        alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
+        style={imageDimensions}
+        ref={imageRef}
+        className={handles.imageElement}
+        {...(preload
+          ? {
             'data-vtex-preload': 'true',
           }
-        : {})}
-    />
-  )
+          : {})}
+      />
+    )
+  } else {
+    formattedSrc = formatIOMessage({ id: src, intl })
+    console.log('inside else')
+    console.log('formattedSrc: ', formattedSrc)
+    formattedAlt = formatIOMessage({ id: alt, intl })
+    imgElement = (
+      <img
+        title={title + "hola"}
+        sizes={sizes}
+        srcSet={srcSet}
+        src={typeof formattedSrc === 'string' ? formattedSrc : ''}
+        alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
+        style={imageDimensions}
+        ref={imageRef}
+        className={handles.imageElement}
+        {...(preload
+          ? {
+            'data-vtex-preload': 'true',
+          }
+          : {})}
+      />
+    )
+  }
 
   /**
    * To understand why we need to check for both newTab and openNewTab
@@ -147,11 +212,11 @@ function Image(props: ImageProps) {
   const promotionEventData =
     analyticsProperties === 'provide'
       ? {
-          id: promotionId,
-          name: promotionName,
-          creative: formattedSrc,
-          position: promotionPosition,
-        }
+        id: promotionId,
+        name: promotionName,
+        creative: formattedSrc,
+        position: promotionPosition,
+      }
       : undefined
 
   const formattedLink = formatIOMessage({ id: link?.url, intl })

@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-image",
-  "version": "0.14.2",
+  "version": "0.14.3-beta-hkignore",
   "title": "VTEX Image",
   "description": "Set of VTEX components to handle images",
   "builders": {
@@ -17,7 +17,9 @@
     "vtex.slider-layout": "0.x",
     "vtex.list-context": "0.x",
     "vtex.pixel-manager": "1.x",
-    "vtex.on-view": "1.x"
+    "vtex.on-view": "1.x",
+    "vtex.image-protocol-example": "0.x",
+    "vtex.session-client": "1.x"
   },
   "registries": [
     "smartcheckout"
