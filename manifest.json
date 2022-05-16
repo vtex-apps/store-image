@@ -19,7 +19,8 @@
     "vtex.pixel-manager": "1.x",
     "vtex.on-view": "1.x",
     "vtex.session-client": "1.x",
-    "vtex.image-protocol": "1.x"
+    "vtex.image-protocol": "1.x",
+    "vtex.image-protocol-example": "0.x"
   },
   "registries": ["smartcheckout"],
   "policies": [],
