@@ -1,5 +1,0 @@
-query customerClass($userId: String!) {
-    customerClassInfo(userId: $userId) @context(provider: "vtex.image-protocol-example") {
-        customerClass
-    }
-}

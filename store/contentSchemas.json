@@ -3,6 +3,11 @@
     "Image": {
       "title": "admin/editor.store-image.title",
       "properties": {
+        "id": {
+          "title": "admin/editor.store-image.imageProtocolId.title",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": ""
+        },
         "src": {
           "title": "admin/editor.image.src.title",
           "$ref": "app:vtex.native-types#/definitions/url",
@@ -117,6 +122,11 @@
             "widget": {
               "ui:widget": "image-uploader"
             }
+          },
+          "imageProtocolId": {
+            "$ref": "app:vtex.native-types#/definitions/text",
+            "default": "",
+            "title": "admin/editor.image-list.images.imageProtocolId.title"
           },
           "mobileImage": {
             "$ref": "app:vtex.native-types#/definitions/url",

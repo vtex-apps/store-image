@@ -39,6 +39,7 @@ export const getImagesAsJSXList = (
         }
         preload={preload && idx === 0}
         {...props}
+        isMobile={isMobile}
       />
     )
   )
