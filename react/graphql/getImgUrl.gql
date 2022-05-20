@@ -1,0 +1,6 @@
+query getImgUrl($userId: String!, $imageProtocolId: String!) {
+    getImgUrl(userId: $userId, imageProtocolId: $imageProtocolId) @context(provider: "vtex.image-protocol-example"){
+    url,
+    urlMobile
+  }
+}

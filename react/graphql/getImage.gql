@@ -1,3 +1,0 @@
-query image($userId: String!) {
-    imageUrl(userId: $userId) @context(provider: "vtex.image-protocol-example")
-}

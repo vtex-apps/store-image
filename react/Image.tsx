@@ -9,7 +9,7 @@ import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
 import type { ImageSchema } from './ImageTypes'
-import GET_IMAGEURL from './graphql/getImage.gql'
+import GET_ImgUrl from './graphql/getImgUrl.gql'
 
 import { SessionSuccess, useRenderSession } from 'vtex.session-client'
 
@@ -74,6 +74,8 @@ const useImageLoad = (
 
 function Image(props: ImageProps) {
   const {
+    isMobile=false, // Desktop
+    imageProtocolId='',
     src,
     alt = '',
     maxWidth,
@@ -93,9 +95,10 @@ function Image(props: ImageProps) {
     promotionPosition,
     classes,
     preload,
-    // eslint-disable-next-line
     __isDuplicated,
   } = props
+
+  console.log("props", props)
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
     bailOut: !experimentalPreventLayoutShift,
@@ -124,16 +127,15 @@ function Image(props: ImageProps) {
     const {
       namespaces: { profile },
     } = session as SessionSuccess
-
+    
     // const isAuthenticated = profile?.isAuthenticated.value === 'true'
 
     // if (!isAuthenticated) {
     //   return null
     // }
-
+    
     userId = profile?.id?.value
     console.log("inside if(session) userId: ", userId)
-    console.log("type of userId: ", typeof (userId))
   }
   if (loading2) {
     console.log('loading')
@@ -142,11 +144,11 @@ function Image(props: ImageProps) {
     console.log('error: ', error2)
   }
   console.log("userId: ", userId)
-  const query = GET_IMAGEURL
+  const query = GET_ImgUrl
   let imgElement, formattedSrc, formattedAlt;
 
   const { loading, error, data } = useQuery(query, {
-    variables: { userId: userId },
+    variables: { userId: userId, imageProtocolId: imageProtocolId},
     skip: !userId
   })
   if (loading) {
@@ -155,14 +157,23 @@ function Image(props: ImageProps) {
   if (error) {
     imgElement = (<div>{'Error ' + error}</div>)
   }
-  if (data) {
+  if (data && data.getImgUrl !== null) {
+    console.log("data.getImgUrl: ", data.getImgUrl.url)
     console.log('inside if(data)')
-    formattedSrc = formatIOMessage({ id: data.imageUrl, intl })
+    console.log('imageProtocolId', imageProtocolId)
+    if(isMobile){
+      formattedSrc = formatIOMessage({ id: data.getImgUrl.urlMobile, intl })
+      console.log("if isMobile formattedSrc: ", formattedSrc)
+    }else{
+      formattedSrc = formatIOMessage({ id: data.getImgUrl.url, intl })
+      console.log("if not mobile formattedSrc: ", formattedSrc)
+    }
+    
     formattedAlt = formatIOMessage({ id: alt, intl })
-    console.log("formattedSrc: ", formattedSrc)
+
     imgElement = (
       <img
-        title={title + "hola"}
+        title={title}
         sizes={sizes}
         srcSet={srcSet}
         src={typeof formattedSrc === 'string' ? formattedSrc : ''}
@@ -180,11 +191,12 @@ function Image(props: ImageProps) {
   } else {
     formattedSrc = formatIOMessage({ id: src, intl })
     console.log('inside else')
+    console.log('imageProtocolId', imageProtocolId)
     console.log('formattedSrc: ', formattedSrc)
     formattedAlt = formatIOMessage({ id: alt, intl })
     imgElement = (
       <img
-        title={title + "hola"}
+        title={title}
         sizes={sizes}
         srcSet={srcSet}
         src={typeof formattedSrc === 'string' ? formattedSrc : ''}
@@ -274,11 +286,11 @@ function Image(props: ImageProps) {
 const messages = defineMessages({
   title: {
     id: 'admin/editor.store-image.title',
-  },
+  }
 })
 
 Image.schema = {
-  title: messages.title.id,
+  title: messages.title.id
 }
 
 Image.cssHandles = CSS_HANDLES

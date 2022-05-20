@@ -1,5 +1,6 @@
 {
   "admin/editor.store-image.title": "Image",
+  "admin/editor.store-image.imageProtocolId.title": "Protocol Image id",
   "admin/editor.store-image.src.title": "Image",
   "admin/editor.store-image.alt.title": "Alternative text",
   "admin/editor.store-image.title.title": "Image title",
@@ -8,6 +9,7 @@
   "admin/editor.image-list.description": "Show a list of images",
   "admin/editor.image-list.images.title": "Images",
   "admin/editor.image-list.images.image.title": "Image",
+  "admin/editor.image-list.images.imageProtocolId.title": "Protocol Image Id",
   "admin/editor.image-list.images.mobileImage.title": "Image for mobile",
   "admin/editor.image-list.images.description.title": "Image alt text",
   "admin/editor.image-list.images.title.title": "Image title",

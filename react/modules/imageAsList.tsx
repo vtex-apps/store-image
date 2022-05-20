@@ -30,6 +30,7 @@ export const getImagesAsJSXList = (
         experimentalPreventLayoutShift={experimentalPreventLayoutShift}
         preload={preload && idx === 0}
         {...props}
+        isMobile={isMobile}
       />
     )
   )
