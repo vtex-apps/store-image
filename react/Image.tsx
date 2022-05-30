@@ -98,7 +98,6 @@ function Image(props: ImageProps) {
     __isDuplicated,
   } = props
 
-  console.log("props", props)
   const imageRef = useRef<HTMLImageElement | null>(null)
   const isLoaded = useImageLoad(imageRef, {
     bailOut: !experimentalPreventLayoutShift,
@@ -157,15 +156,15 @@ function Image(props: ImageProps) {
   if (error) {
     imgElement = (<div>{'Error ' + error}</div>)
   }
-  if (data && data.getImgUrl !== null) {
-    console.log("data.getImgUrl: ", data.getImgUrl.url)
+  if (data) {
     console.log('inside if(data)')
+    console.log("data.getImage: ", data)
     console.log('imageProtocolId', imageProtocolId)
     if(isMobile){
-      formattedSrc = formatIOMessage({ id: data.getImgUrl.urlMobile, intl })
+      formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
       console.log("if isMobile formattedSrc: ", formattedSrc)
     }else{
-      formattedSrc = formatIOMessage({ id: data.getImgUrl.url, intl })
+      formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
       console.log("if not mobile formattedSrc: ", formattedSrc)
     }
     
