@@ -156,7 +156,7 @@ function Image(props: ImageProps) {
   if (error) {
     imgElement = (<div>{'Error ' + error}</div>)
   }
-  if (data) {
+  if (data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
     console.log('inside if(data)')
     console.log("data.getImage: ", data)
     console.log('imageProtocolId', imageProtocolId)
@@ -190,7 +190,6 @@ function Image(props: ImageProps) {
   } else {
     formattedSrc = formatIOMessage({ id: src, intl })
     console.log('inside else')
-    console.log('imageProtocolId', imageProtocolId)
     console.log('formattedSrc: ', formattedSrc)
     formattedAlt = formatIOMessage({ id: alt, intl })
     imgElement = (
