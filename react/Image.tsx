@@ -95,6 +95,7 @@ function Image(props: ImageProps) {
     promotionPosition,
     classes,
     preload,
+    // eslint-disable-next-line
     __isDuplicated,
   } = props
 
