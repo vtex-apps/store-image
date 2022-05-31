@@ -74,7 +74,7 @@ const useImageLoad = (
 
 function Image(props: ImageProps) {
   const {
-    isMobile=false, // Desktop
+    isMobile=false,
     imageProtocolId='',
     src,
     alt = '',
@@ -130,9 +130,11 @@ function Image(props: ImageProps) {
     userId = profile?.id?.value
   }
   if (loading2) {
+    // eslint-disable-next-line no-console
     console.log('loading')
   }
   if (error2) {
+    // eslint-disable-next-line no-console
     console.log('error: ', error2)
   }
   const query = GET_ImgUrl
@@ -146,7 +148,7 @@ function Image(props: ImageProps) {
     imgElement = (<div>{'Loading…'}</div>)
   }
   if (error) {
-    imgElement = (<div>{'Error ' + error}</div>)
+    imgElement = (<div>{error}</div>)
   }
   if (data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
     if(isMobile){
@@ -176,8 +178,6 @@ function Image(props: ImageProps) {
     )
   } else {
     formattedSrc = formatIOMessage({ id: src, intl })
-    console.log('inside else')
-    console.log('formattedSrc: ', formattedSrc)
     formattedAlt = formatIOMessage({ id: alt, intl })
     imgElement = (
       <img
