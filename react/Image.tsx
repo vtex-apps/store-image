@@ -100,6 +100,7 @@ function Image(props: ImageProps) {
     promotionProductName,
     classes,
     preload,
+    // eslint-disable-next-line
     __isDuplicated,
   } = props
 
