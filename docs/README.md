@@ -102,6 +102,61 @@ The block still doesn't have CSS Handles for its specific customization.
 All CSS Handles available for the Image block are the ones available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://vtex.io/docs/app/vtex.slider-layout).
 Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. Take a look at [Slider-Layout](https://vtex.io/docs/app/vtex.slider-layout).
 
+## Image Protocol Implementation
+
+In the `manifest.json` we added Session Client app and also the Image Protocol app in the dependency list:
+
+```json
+ "dependencies": {
+    "vtex.session-client": "1.x",
+    "vtex.image-protocol": "0.x"
+  }
+```
+The interface `ImageTypes.ts` is modified to have the isMobile and imageProtocolId props:
+
+```ts
+export interface ImageSchema {
+  isMobile?: boolean
+  imageProtocolId? : string
+  ...
+}
+```
+To be able to personalize a specific image the props defined in the interface are also exposed in the Image component: 
+
+```tsx
+const{
+  isMobile=false,
+  imageProtocolId='',
+  ...
+}=props
+``` 
+
+>**NOTE**: The prop imageProtocolId can be modified from the Site Editor.
+
+To implement the URLs from the image protocol example we have created inside the `react/graphql` the `getImgUrl.gql` that will use the resolver in the `image-protocol` app.
+
+```graphql
+query getImage($userId: String!, $imageProtocolId: String!) {
+    getImage(userId: $userId, imageProtocolId: $imageProtocolId) @context(provider: "vtex.image-protocol"){
+    url,
+    urlMobile
+  }
+}
+```
+
+In order to get the user Id we use the useRenderSession and the SessionSuccess from the vtex.session-client package in the `Image.tsx`. Also to use the query created inside the graphq folder we also import it as well as the useQuery.
+
+```tsx
+import { useQuery } from 'react-apollo'
+import GET_ImgUrl from './graphql/getImgUrl.gql'
+
+import { SessionSuccess, useRenderSession } from 'vtex.session-client'
+```
+
+Now as the Image component has the imageProtocolId prop if it has an Id and we can get the user Id we can use the query defined in `getImgUrl.gql` that receives these two variables and is skipped if no user id is provided.
+
+We set the src for this imgElement depending on the response of the query and also if this is for mobile or not. Other image elements that don't have the image protocol Id or the result of the query has the URLs as null we then set the default URLs.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
