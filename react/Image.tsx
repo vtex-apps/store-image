@@ -142,14 +142,7 @@ function Image(props: ImageProps) {
       namespaces: { profile },
     } = session as SessionSuccess
     
-    // const isAuthenticated = profile?.isAuthenticated.value === 'true'
-
-    // if (!isAuthenticated) {
-    //   return null
-    // }
-    
     userId = profile?.id?.value
-    console.log("inside if(session) userId: ", userId)
   }
   if (loading2) {
     console.log('loading')
@@ -157,7 +150,6 @@ function Image(props: ImageProps) {
   if (error2) {
     console.log('error: ', error2)
   }
-  console.log("userId: ", userId)
   const query = GET_ImgUrl
   let imgElement, formattedSrc, formattedAlt;
 
@@ -172,15 +164,10 @@ function Image(props: ImageProps) {
     imgElement = (<div>{'Error ' + error}</div>)
   }
   if (data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
-    console.log('inside if(data)')
-    console.log("data.getImage: ", data)
-    console.log('imageProtocolId', imageProtocolId)
     if(isMobile){
       formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
-      console.log("if isMobile formattedSrc: ", formattedSrc)
     }else{
       formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
-      console.log("if not mobile formattedSrc: ", formattedSrc)
     }
     
     formattedAlt = formatIOMessage({ id: alt, intl })
