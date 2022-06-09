@@ -155,7 +155,7 @@ function Image(props: ImageProps) {
   }
   const query = GET_ImgUrl
   let imgElement, formattedSrc, formattedAlt;
-
+  
   const { loading, error, data } = useQuery(query, {
     variables: { userId: userId, imageProtocolId: imageProtocolId},
     skip: !userId
@@ -167,10 +167,13 @@ function Image(props: ImageProps) {
     imgElement = (<div>{error}</div>)
   }
   if (data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
+    console.log('imageProtocolId: ',imageProtocolId)
     if(isMobile){
       formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
+      console.log('urlMobile: ',data.getImage.urlMobile)
     }else{
       formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
+      console.log('urlDesktop: ',data.getImage.url)
     }
     
     formattedAlt = formatIOMessage({ id: alt, intl })
@@ -193,6 +196,7 @@ function Image(props: ImageProps) {
       />
     )
   } else {
+    console.log('inside else imageProtocolId: ',imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
     imgElement = (
