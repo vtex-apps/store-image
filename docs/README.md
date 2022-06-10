@@ -103,7 +103,7 @@ All CSS Handles available for the Image block are the ones available for the `sl
 Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. Take a look at [Slider-Layout](https://vtex.io/docs/app/vtex.slider-layout).
 
 ## Implementing Image Protocol 
-
+The Image Protocol is an app that displays personalized images to use alongside the Store Image app in your store's images. Follow the steps below to implement the Image Protocol in your code.
 In the `manifest.json` we added Session Client app and also the Image Protocol app in the dependency list:
 
 ```json
