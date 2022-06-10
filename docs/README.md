@@ -104,7 +104,7 @@ Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS n
 
 ## Implementing Image Protocol 
 The Image Protocol is an app that displays personalized images to use alongside the Store Image app in your store's images. Follow the steps below to implement the Image Protocol in your code.
-In the `manifest.json` we added Session Client app and also the Image Protocol app in the dependency list:
+1. In your theme's `manifest.json`, add the Session Client app and also the Image Protocol app as a dependency:
 
 ```json
  "dependencies": {
