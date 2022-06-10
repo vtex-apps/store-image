@@ -153,7 +153,9 @@ import GET_ImgUrl from './graphql/getImgUrl.gql'
 import { SessionSuccess, useRenderSession } from 'vtex.session-client'
 ```
 
-Now as the Image component has the imageProtocolId prop if it has an Id and we can get the user Id we can use the query defined in `getImgUrl.gql` that receives these two variables and is skipped if no user id is provided.
+> ⚠️
+> 
+> As the Image component has the `imageProtocolId` prop if it has an Id, you can get the user Id and use the query defined in `getImgUrl.gql` that receives these two variables. If no user id is provided, skip this suggestion.
 
 We set the src for this imgElement depending on the response of the query and also if this is for mobile or not. Other image elements that don't have the image protocol Id or the result of the query has the URLs as null we then set the default URLs.
 
