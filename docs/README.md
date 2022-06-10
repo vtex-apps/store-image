@@ -121,7 +121,7 @@ export interface ImageSchema {
   ...
 }
 ```
-To be able to personalize a specific image the props defined in the interface are also exposed in the Image component: 
+2. To personalize a specific image, the props defined in the interface must be exposed in the Image component as the example below: 
 
 ```tsx
 const{
