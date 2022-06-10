@@ -144,7 +144,7 @@ query getImage($userId: String!, $imageProtocolId: String!) {
 }
 ```
 
-In order to get the user Id we use the useRenderSession and the SessionSuccess from the vtex.session-client package in the `Image.tsx`. Also to use the query created inside the graphq folder we also import it as well as the useQuery.
+4. Get the user Id using the `useRenderSession` and the `SessionSuccess` from the `vtex.session-client `package in the `Image.tsx`. Also, to use the query created inside the GraphQL folder, import the query as well as the `useQuery`.
 
 ```tsx
 import { useQuery } from 'react-apollo'
