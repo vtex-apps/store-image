@@ -111,7 +111,7 @@ The block still does not have CSS handles for its specific customization.
 
 All CSS handles available for the Image block are available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://developers.vtex.com/docs/apps/vtex.slider-layout). Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. See more in [Slider Layout](https://developers.vtex.com/docs/apps/vtex.slider-layout).
 
-## Image Protocol Implementation
+## Implementing Image Protocol 
 
 In the `manifest.json` we added Session Client app and also the Image Protocol app in the dependency list:
 
