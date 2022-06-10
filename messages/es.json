@@ -1,6 +1,6 @@
 {
   "admin/editor.store-image.title": "Imagen",
-  "admin/editor.store-image.imageProtocolId.title": "Protocol Image id",
+  "admin/editor.store-image.imageProtocolId.title": "ID de protocolo de imagen",
   "admin/editor.store-image.src.title": "Imagen",
   "admin/editor.store-image.alt.title": "Texto alternativo",
   "admin/editor.store-image.title.title": "Título de la imagen",
@@ -9,7 +9,7 @@
   "admin/editor.image-list.description": "Mostrar una lista de imágenes",
   "admin/editor.image-list.images.title": "Imágenes",
   "admin/editor.image-list.images.image.title": "Imagen",
-  "admin/editor.image-list.images.imageProtocolId.title": "Protocol Image Id",
+  "admin/editor.image-list.images.imageProtocolId.title": "ID de protocolo de imagen",
   "admin/editor.image-list.images.mobileImage.title": "Imagen para móvil",
   "admin/editor.image-list.images.description.title": "Texto alternativo de la imagen",
   "admin/editor.image-list.images.title.title": "Título de la imagen",

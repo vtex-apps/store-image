@@ -9,7 +9,7 @@ import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
 import type { ImageSchema } from './ImageTypes'
-import GET_ImgUrl from './graphql/getImgUrl.gql'
+import GET_IMAGE_PROTOCOL_IMAGES from './graphql/getImgUrl.gql'
 
 import { SessionSuccess, useRenderSession } from 'vtex.session-client'
 
@@ -120,25 +120,29 @@ function Image(props: ImageProps) {
   }
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
-
-  const { loading2, session, error2 } = useRenderSession()
   let userId = "";
-  if (session) {
-    const {
-      namespaces: { profile },
-    } = session as SessionSuccess
-    
-    userId = profile?.id?.value
-  }
-  if (loading2) {
+
+  if(imageProtocolId !== ''){
+    const { loading2, session, error2 } = useRenderSession()
+    if (session) {
+      const {
+        namespaces: { profile },
+      } = session as SessionSuccess
+      userId = profile?.id?.value
+    }
+  
+    if (loading2) {
     // eslint-disable-next-line no-console
-    console.log('loading')
-  }
-  if (error2) {
+      console.log('loading')
+    }
+  
+    if (error2) {
     // eslint-disable-next-line no-console
-    console.log('error: ', error2)
+      console.log('error: ', error2)
+    }
   }
-  const query = GET_ImgUrl
+  
+  const query = GET_IMAGE_PROTOCOL_IMAGES
   let imgElement, formattedSrc, formattedAlt;
   
   const { loading, error, data } = useQuery(query, {
