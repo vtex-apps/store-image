@@ -167,12 +167,15 @@ function Image(props: ImageProps) {
     imgElement = (<div>{error}</div>)
   }
   if (data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
+    // eslint-disable-next-line no-console
     console.log('imageProtocolId: ',imageProtocolId)
     if(isMobile){
       formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
+      // eslint-disable-next-line no-console
       console.log('urlMobile: ',data.getImage.urlMobile)
     }else{
       formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
+      // eslint-disable-next-line no-console
       console.log('urlDesktop: ',data.getImage.url)
     }
     
@@ -196,6 +199,7 @@ function Image(props: ImageProps) {
       />
     )
   } else {
+    // eslint-disable-next-line no-console
     console.log('inside else imageProtocolId: ',imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
