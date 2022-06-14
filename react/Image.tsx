@@ -123,7 +123,7 @@ function Image(props: ImageProps) {
   let userId = "";
 
   if(imageProtocolId !== ''){
-    const { loading2, session, error2 } = useRenderSession()
+    const {loading: loading2, session, error: error2 } = useRenderSession()
     if (session) {
       const {
         namespaces: { profile },
