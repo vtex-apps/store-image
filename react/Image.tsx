@@ -147,7 +147,7 @@ function Image(props: ImageProps) {
   
   const { loading, error, data } = useQuery(query, {
     variables: { userId: userId, imageProtocolId: imageProtocolId},
-    skip: !userId
+    skip: !userId || !imageProtocolId
   })
   if (loading) {
     imgElement = (<div>{'Loading…'}</div>)
