@@ -109,7 +109,7 @@ The Image Protocol is an app that displays personalized images to use alongside 
 ```json
  "dependencies": {
     "vtex.session-client": "1.x",
-    "vtex.image-protocol": "0.x"
+    "vtex.image-protocol": "1.x"
   }
 ```
 The interface `ImageTypes.ts` is modified to have the isMobile and imageProtocolId props:
@@ -148,14 +148,14 @@ query getImage($userId: String!, $imageProtocolId: String!) {
 
 ```tsx
 import { useQuery } from 'react-apollo'
-import GET_ImgUrl from './graphql/getImgUrl.gql'
+import GET_IMAGE_PROTOCOL_IMAGES from './graphql/getImgUrl.gql'
 
 import { SessionSuccess, useRenderSession } from 'vtex.session-client'
 ```
 
 > ⚠️
 > 
-> As the Image component has the `imageProtocolId` prop if it has an Id, you can get the user Id and use the query defined in `getImgUrl.gql` that receives these two variables. If no user id is provided, skip this suggestion.
+> As the Image component has the `imageProtocolId` prop if it has an Id, you can get the user Id and use the query defined in `getImgUrl.gql` that receives these two variables. If no user id or imageProtocolId is provided, skip this suggestion.
 
 We set the src for this imgElement depending on the response of the query and also if this is for mobile or not. Other image elements that don't have the image protocol Id or the result of the query has the URLs as null we then set the default URLs.
 
