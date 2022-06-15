@@ -139,24 +139,26 @@ function Image(props: ImageProps) {
   const { loading2, session, error2 } = useRenderSession()
   let userId = "";
 
-  if(imageProtocolId !== ''){
-    const {loading: loading2, session, error: error2 } = useRenderSession()
-    if (session) {
-      const {
-        namespaces: { profile },
-      } = session as SessionSuccess
-      userId = profile?.id?.value
-    }
   
-    if (loading2) {
+ 
+ const {loading: loading2, session, error: error2 } = useRenderSession()
+ 
+  if (session) {
+    const {
+      namespaces: { profile },
+    } = session as SessionSuccess
+    userId = profile?.id?.value
+  }
+  console.log('image protocol id:', imageProtocolId)
+  console.log('userId: ',userId)
+  if (loading2) {
     // eslint-disable-next-line no-console
-      console.log('loading')
-    }
+    console.log('loading')
+  }
   
-    if (error2) {
+  if (error2) {
     // eslint-disable-next-line no-console
-      console.log('error: ', error2)
-    }
+    console.log('error: ', error2)
   }
   
   const query = GET_IMAGE_PROTOCOL_IMAGES
@@ -164,15 +166,11 @@ function Image(props: ImageProps) {
   
   const { loading, error, data } = useQuery(query, {
     variables: { userId: userId, imageProtocolId: imageProtocolId},
-    skip: !userId || !imageProtocolId
+    skip: !userId || !imageProtocolId,
+    ssr: false
   })
-  if (loading) {
-    imgElement = (<div>{'Loading…'}</div>)
-  }
-  if (error) {
-    imgElement = (<div>{error}</div>)
-  }
-  if (data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
+
+  if (!error && !loading && data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
     // eslint-disable-next-line no-console
     console.log('imageProtocolId: ',imageProtocolId)
     if(isMobile){
@@ -206,9 +204,12 @@ function Image(props: ImageProps) {
     )
   } else {
     // eslint-disable-next-line no-console
+    console.log('error: ',error)
+    console.log('loading',loading)
     console.log('inside else imageProtocolId: ',imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
+    console.log('src: ',src)
     imgElement = (
       <img
         title={title}
