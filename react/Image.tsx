@@ -139,38 +139,40 @@ function Image(props: ImageProps) {
   const { loading2, session, error2 } = useRenderSession()
   let userId = "";
 
-  
- 
+
+
  const {loading: loading2, session, error: error2 } = useRenderSession()
- 
+
   if (session) {
     const {
       namespaces: { profile },
     } = session as SessionSuccess
     userId = profile?.id?.value
   }
+
+  console.log('session: ', session)
   console.log('image protocol id:', imageProtocolId)
   console.log('userId: ',userId)
   if (loading2) {
     // eslint-disable-next-line no-console
     console.log('loading')
   }
-  
+
   if (error2) {
     // eslint-disable-next-line no-console
     console.log('error: ', error2)
   }
-  
+
   const query = GET_IMAGE_PROTOCOL_IMAGES
   let imgElement, formattedSrc, formattedAlt;
-  
+
   const { loading, error, data } = useQuery(query, {
     variables: { userId: userId, imageProtocolId: imageProtocolId},
     skip: !userId || !imageProtocolId,
     ssr: false
   })
 
-  if (!error && !loading && data && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
+  if (!error && !loading && data && data.getImage && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
     // eslint-disable-next-line no-console
     console.log('imageProtocolId: ',imageProtocolId)
     if(isMobile){
@@ -182,7 +184,7 @@ function Image(props: ImageProps) {
       // eslint-disable-next-line no-console
       console.log('urlDesktop: ',data.getImage.url)
     }
-    
+
     formattedAlt = formatIOMessage({ id: alt, intl })
 
     imgElement = (
