@@ -74,6 +74,17 @@ const useImageLoad = (
   return isLoaded
 }
 
+const handleSuccess = async(position: any)=>{
+  const {latitude, longitude} = position.coords
+  console.log('longitud:'+longitude +' latitud:'+latitude)
+}
+   
+const handleError = () => {
+  console.log('error')      
+  /*get geolocation from user IP address??*/
+}
+
+
 function Image(props: ImageProps) {
   const {
     isMobile=false,
@@ -139,7 +150,12 @@ function Image(props: ImageProps) {
   const { loading2, session, error2 } = useRenderSession()
   let userId = "";
 
-
+  useEffect(() => { 
+    navigator.geolocation.getCurrentPosition(
+      handleSuccess,
+      handleError
+    )
+  }, [ handleSuccess, handleError])
 
  const {loading: loading2, session, error: error2 } = useRenderSession()
 
