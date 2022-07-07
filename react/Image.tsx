@@ -150,6 +150,7 @@ function Image(props: ImageProps) {
   // Image Protocol Start
 
   const { session } = useRenderSession()
+
   const { latitude, longitude, error: positionError } = usePosition()
 
   const [getPersonalizedImages, { data: imageData }] = useLazyQuery(
@@ -274,6 +275,7 @@ function Image(props: ImageProps) {
     formattedSrc = formatIOMessage({ id: src, intl })
     console.log('else src:', formattedSrc)
     formattedAlt = formatIOMessage({ id: alt, intl })
+    console.log('src: ', src)
 
     console.log('src: ', src)
     imgElement = (
