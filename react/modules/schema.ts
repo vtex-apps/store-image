@@ -61,7 +61,7 @@ const IMAGE_LIST_MESSAGES = defineMessages({
   },
   analyticsPromotionPosition: {
     id: 'admin/editor.image.analytics.promotionPosition',
-  }
+  },
 })
 
 export const IMAGE_LIST_SCHEMA = {
