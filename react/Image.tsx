@@ -171,15 +171,31 @@ function Image(props: ImageProps) {
   if (imageData?.getImage) {
     const { urlMobile, url } = imageData.getImage
 
-    if (isMobile) {
-      formattedSrc = formatIOMessage({ id: urlMobile, intl })
-    } else {
-      formattedSrc = formatIOMessage({ id: url, intl })
+  const query = GET_IMAGE_PROTOCOL_IMAGES
+  let imgElement, formattedSrc, formattedAlt, formattedLink, maybeLink
+  const { loading, error, data } = useQuery(query, {
+    variables: { userId: userId, imageProtocolId: imageProtocolId},
+    skip: !userId || !imageProtocolId,
+    ssr: false
+  })
+
+  if (!error && !loading && data && data.getImage && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
+    // eslint-disable-next-line no-console
+    console.log('data: ',data.getImage)
+    console.log('imageProtocolId: ',imageProtocolId)
+    
+    if(isMobile){
+      formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
+      // eslint-disable-next-line no-console
+      console.log('urlMobile: ',data.getImage.urlMobile)
+    }else{
+      formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
+      // eslint-disable-next-line no-console
+      console.log('urlDesktop: ',data.getImage.url)
     }
 
     formattedAlt = formatIOMessage({ id: alt, intl })
-
-    // Image Protocol END
+    formattedLink = formatIOMessage({ id: data.getImage.hrefImg, intl })
 
     imgElement = (
       <img
@@ -198,6 +214,30 @@ function Image(props: ImageProps) {
           : {})}
       />
     )
+    const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
+  const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+
+ maybeLink = data.getImage.hrefImg ? (
+    <Link
+      to={typeof formattedLink === 'string' ? formattedLink : ''}
+      title={typeof formattedTitle === 'string' ? formattedTitle : ''}
+      rel={link?.attributeNofollow ? 'nofollow' : ''}
+      target={shouldOpenLinkInNewTab ? '_blank' : undefined}
+      className={handles.imageElementLink}
+      onClick={() => {
+        if (analyticsProperties === 'none') return
+
+        push({ event: 'promotionClick', promotions: [promotionEventData] })
+      }}
+    >
+      {imgElement}
+    </Link>
+  ) : (
+    <Fragment>{imgElement}</Fragment>
+  )
+
+
   } else {
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
@@ -225,56 +265,52 @@ function Image(props: ImageProps) {
           : {})}
       />
     )
+
+    formattedLink = formatIOMessage({ id: link?.url, intl })
+    const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+
+    const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+    maybeLink = link?.url ? (
+      // The onClick function and the <Link> component are necessary,
+      // knowing this, it seems good to disable the anchor-is-valid rule.
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link
+        to={typeof formattedLink === 'string' ? formattedLink : ''}
+        title={typeof formattedTitle === 'string' ? formattedTitle : ''}
+        rel={link.attributeNofollow ? 'nofollow' : ''}
+        target={shouldOpenLinkInNewTab ? '_blank' : undefined}
+        className={handles.imageElementLink}
+        onClick={() => {
+          if (analyticsProperties === 'none') return
+  
+          push({ event: 'promotionClick', promotions: [promotionEventData] })
+        }}
+      >
+        {imgElement}
+      </Link>
+    ) : (
+      <Fragment>{imgElement}</Fragment>
+    )
+    
   }
 
   /**
    * To understand why we need to check for both newTab and openNewTab
    * properties, check the Image type definition at './typings/image.d.ts'.
    */
-  const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
 
   const { push } = usePixel()
 
   const promotionEventData =
     analyticsProperties === 'provide'
       ? {
-          id: promotionId,
-          name: promotionName,
-          creative: formattedSrc,
-          position: promotionPosition,
-          products: [
-            {
-              productId: promotionProductId,
-              productName: promotionProductName,
-            },
-          ],
-        }
+        id: promotionId,
+        name: promotionName,
+        creative: formattedSrc,
+        position: promotionPosition,
+      }
       : undefined
-
-  const formattedLink = formatIOMessage({ id: link?.url, intl })
-  const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
-
-  const maybeLink = link?.url ? (
-    // The onClick function and the <Link> component are necessary,
-    // knowing this, it seems good to disable the anchor-is-valid rule.
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <Link
-      to={typeof formattedLink === 'string' ? formattedLink : ''}
-      title={typeof formattedTitle === 'string' ? formattedTitle : ''}
-      rel={link.attributeNofollow ? 'nofollow' : ''}
-      target={shouldOpenLinkInNewTab ? '_blank' : undefined}
-      className={handles.imageElementLink}
-      onClick={() => {
-        if (analyticsProperties === 'none') return
-
-        push({ event: 'promotionClick', promotions: [promotionEventData] })
-      }}
-    >
-      {imgElement}
-    </Link>
-  ) : (
-    <Fragment>{imgElement}</Fragment>
-  )
 
   useOnView({
     ref: imageRef,
