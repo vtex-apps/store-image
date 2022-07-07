@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Fragment, useState, useRef, useEffect } from 'react'
 import { useQuery } from 'react-apollo'
 import type { ImgHTMLAttributes, RefObject } from 'react'
@@ -8,17 +9,17 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
+import type { SessionSuccess } from 'vtex.session-client'
+import { useRenderSession } from 'vtex.session-client'
+
 import type { ImageSchema } from './ImageTypes'
 import GET_IMAGE_PROTOCOL_IMAGES from './graphql/getImgUrl.gql'
-
-import { SessionSuccess, useRenderSession } from 'vtex.session-client'
-
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 export interface ImageProps
   extends ImageSchema,
-  ImgHTMLAttributes<HTMLImageElement> {
+    ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
@@ -72,21 +73,21 @@ const useImageLoad = (
   return isLoaded
 }
 
-const handleSuccess = async(position: any)=>{
-  const {latitude, longitude} = position.coords
-  console.log('longitud:'+longitude +' latitud:'+latitude)
-}
-   
-const handleError = () => {
-  console.log('error')      
-  /*get geolocation from user IP address??*/
+const handleSuccess = async (position: any) => {
+  const { latitude, longitude } = position.coords
+
+  console.log(`longitud:${longitude} latitud:${latitude}`)
 }
 
+const handleError = () => {
+  console.log('error')
+  /* get geolocation from user IP address?? */
+}
 
 function Image(props: ImageProps) {
   const {
-    isMobile=false,
-    imageProtocolId='',
+    isMobile = false,
+    imageProtocolId = '',
     src,
     alt = '',
     maxWidth,
@@ -131,27 +132,25 @@ function Image(props: ImageProps) {
   }
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
-  let userId = "";
+  let userId = ''
 
-  useEffect(() => { 
-    navigator.geolocation.getCurrentPosition(
-      handleSuccess,
-      handleError
-    )
-  }, [ handleSuccess, handleError])
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleError)
+  }, [])
 
- const {loading: loading2, session, error: error2 } = useRenderSession()
+  const { loading: loading2, session, error: error2 } = useRenderSession()
 
   if (session) {
     const {
       namespaces: { profile },
     } = session as SessionSuccess
+
     userId = profile?.id?.value
   }
 
   console.log('session: ', session)
   console.log('image protocol id:', imageProtocolId)
-  console.log('userId: ',userId)
+  console.log('userId: ', userId)
   if (loading2) {
     // eslint-disable-next-line no-console
     console.log('loading')
@@ -163,26 +162,48 @@ function Image(props: ImageProps) {
   }
 
   const query = GET_IMAGE_PROTOCOL_IMAGES
-  let imgElement, formattedSrc, formattedAlt, formattedLink, maybeLink
+  let imgElement
+  let formattedSrc
+  let formattedAlt
+  let formattedLink
+  let maybeLink
   const { loading, error, data } = useQuery(query, {
-    variables: { userId: userId, imageProtocolId: imageProtocolId},
+    variables: { userId, imageProtocolId },
     skip: !userId || !imageProtocolId,
-    ssr: false
+    ssr: false,
   })
 
-  if (!error && !loading && data && data.getImage && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
-    // eslint-disable-next-line no-console
-    console.log('data: ',data.getImage)
-    console.log('imageProtocolId: ',imageProtocolId)
-    
-    if(isMobile){
+  const { push } = usePixel()
+  const promotionEventData =
+    analyticsProperties === 'provide'
+      ? {
+          id: promotionId,
+          name: promotionName,
+          creative: formattedSrc,
+          position: promotionPosition,
+        }
+      : undefined
+
+  if (
+    !error &&
+    !loading &&
+    data &&
+    data.getImage &&
+    data.getImage.url !== null &&
+    data.getImage.urlMobile !== null &&
+    imageProtocolId !== ''
+  ) {
+    console.log('data: ', data.getImage)
+    console.log('imageProtocolId: ', imageProtocolId)
+
+    if (isMobile) {
       formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
       // eslint-disable-next-line no-console
-      console.log('urlMobile: ',data.getImage.urlMobile)
-    }else{
+      console.log('urlMobile: ', data.getImage.urlMobile)
+    } else {
       formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
       // eslint-disable-next-line no-console
-      console.log('urlDesktop: ',data.getImage.url)
+      console.log('urlDesktop: ', data.getImage.url)
     }
 
     formattedAlt = formatIOMessage({ id: alt, intl })
@@ -200,43 +221,41 @@ function Image(props: ImageProps) {
         className={handles.imageElement}
         {...(preload
           ? {
-            'data-vtex-preload': 'true',
-          }
+              'data-vtex-preload': 'true',
+            }
           : {})}
       />
     )
     const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
 
-  const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+    const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
 
- maybeLink = data.getImage.hrefImg ? (
-    <Link
-      to={typeof formattedLink === 'string' ? formattedLink : ''}
-      title={typeof formattedTitle === 'string' ? formattedTitle : ''}
-      rel={link?.attributeNofollow ? 'nofollow' : ''}
-      target={shouldOpenLinkInNewTab ? '_blank' : undefined}
-      className={handles.imageElementLink}
-      onClick={() => {
-        if (analyticsProperties === 'none') return
-
-        push({ event: 'promotionClick', promotions: [promotionEventData] })
-      }}
-    >
-      {imgElement}
-    </Link>
-  ) : (
-    <Fragment>{imgElement}</Fragment>
-  )
-
-
+    maybeLink = data.getImage.hrefImg ? (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link
+        to={typeof formattedLink === 'string' ? formattedLink : ''}
+        title={typeof formattedTitle === 'string' ? formattedTitle : ''}
+        rel={link?.attributeNofollow ? 'nofollow' : ''}
+        target={shouldOpenLinkInNewTab ? '_blank' : undefined}
+        className={handles.imageElementLink}
+        onClick={() => {
+          if (analyticsProperties === 'none') return
+          push({ event: 'promotionClick', promotions: [promotionEventData] })
+        }}
+      >
+        {imgElement}
+      </Link>
+    ) : (
+      <Fragment>{imgElement}</Fragment>
+    )
   } else {
     // eslint-disable-next-line no-console
-    console.log('error: ',error)
-    console.log('loading',loading)
-    console.log('inside else imageProtocolId: ',imageProtocolId)
+    console.log('error: ', error)
+    console.log('loading', loading)
+    console.log('inside else imageProtocolId: ', imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
-    console.log('src: ',src)
+    console.log('src: ', src)
     imgElement = (
       <img
         title={title}
@@ -249,8 +268,8 @@ function Image(props: ImageProps) {
         className={handles.imageElement}
         {...(preload
           ? {
-            'data-vtex-preload': 'true',
-          }
+              'data-vtex-preload': 'true',
+            }
           : {})}
       />
     )
@@ -259,6 +278,7 @@ function Image(props: ImageProps) {
     const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
 
     const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
     maybeLink = link?.url ? (
       // The onClick function and the <Link> component are necessary,
       // knowing this, it seems good to disable the anchor-is-valid rule.
@@ -271,7 +291,7 @@ function Image(props: ImageProps) {
         className={handles.imageElementLink}
         onClick={() => {
           if (analyticsProperties === 'none') return
-  
+
           push({ event: 'promotionClick', promotions: [promotionEventData] })
         }}
       >
@@ -280,26 +300,12 @@ function Image(props: ImageProps) {
     ) : (
       <Fragment>{imgElement}</Fragment>
     )
-    
   }
 
   /**
    * To understand why we need to check for both newTab and openNewTab
    * properties, check the Image type definition at './typings/image.d.ts'.
    */
-
-
-  const { push } = usePixel()
-
-  const promotionEventData =
-    analyticsProperties === 'provide'
-      ? {
-        id: promotionId,
-        name: promotionName,
-        creative: formattedSrc,
-        position: promotionPosition,
-      }
-      : undefined
 
   useOnView({
     ref: imageRef,
@@ -331,11 +337,11 @@ function Image(props: ImageProps) {
 const messages = defineMessages({
   title: {
     id: 'admin/editor.store-image.title',
-  }
+  },
 })
 
 Image.schema = {
-  title: messages.title.id
+  title: messages.title.id,
 }
 
 Image.cssHandles = CSS_HANDLES
