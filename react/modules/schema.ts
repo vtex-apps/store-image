@@ -8,9 +8,6 @@ const IMAGE_LIST_MESSAGES = defineMessages({
   imagesImageTitle: {
     id: 'admin/editor.image-list.images.image.title',
   },
-  imagesImageProtocolId: {
-    id: 'admin/editor.image-list.images.imageProtocolId.title',
-  },
   imagesMobileImageTitle: {
     id: 'admin/editor.image-list.images.mobileImage.title',
   },
@@ -67,6 +64,12 @@ const IMAGE_LIST_MESSAGES = defineMessages({
   },
   analyticspromotionProductName: {
     id: 'admin/editor.image.analytics.promotionProductName',
+  },
+  imagesImageProtocolId: {
+    id: 'admin/editor.image-list.images.imageProtocolId.title',
+  },
+  imagesImageProtocolIdDescription: {
+    id: 'admin/editor.image-list.images.imageProtocolId.description',
   },
 })
 
