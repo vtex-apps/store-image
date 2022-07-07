@@ -12,13 +12,18 @@ import { usePixel } from 'vtex.pixel-manager'
 import { useRenderSession } from 'vtex.session-client'
 
 import { usePosition } from './hooks/usePosition'
+import type { SessionSuccess } from 'vtex.session-client'
+import { useRenderSession } from 'vtex.session-client'
+
 import type { ImageSchema } from './ImageTypes'
 import GET_IMAGE_PROTOCOL_QUERY from './graphql/getImgUrl.gql'
+import GET_IMAGE_PROTOCOL_IMAGES from './graphql/getImgUrl.gql'
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 export interface ImageProps
   extends ImageSchema,
+    ImgHTMLAttributes<HTMLImageElement> {
     ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
@@ -75,8 +80,21 @@ const useImageLoad = (
   return isLoaded
 }
 
+const handleSuccess = async (position: any) => {
+  const { latitude, longitude } = position.coords
+
+  console.log(`longitud:${longitude} latitud:${latitude}`)
+}
+
+const handleError = () => {
+  console.log('error')
+  /* get geolocation from user IP address?? */
+}
+
 function Image(props: ImageProps) {
   const {
+    isMobile = false,
+    imageProtocolId = '',
     isMobile = false,
     imageProtocolId = '',
     src,
@@ -150,6 +168,7 @@ function Image(props: ImageProps) {
       ssr: false,
     }
   )
+  let userId = ''
 
   useEffect(() => {
     if (session && imageProtocolId && positionError !== undefined) {
@@ -163,10 +182,30 @@ function Image(props: ImageProps) {
       })
     }
   }, [positionError, session, imageProtocolId])
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(handleSuccess, handleError)
+  }, [])
+
+  const { loading: loading2, session, error: error2 } = useRenderSession()
+
+  if (session) {
+    const {
+      namespaces: { profile },
+    } = session as SessionSuccess
+
+    userId = profile?.id?.value
+  }
 
   let imgElement
   let formattedSrc
   let formattedAlt
+  console.log('session: ', session)
+  console.log('image protocol id:', imageProtocolId)
+  console.log('userId: ', userId)
+  if (loading2) {
+    // eslint-disable-next-line no-console
+    console.log('loading')
+  }
 
   if (imageData?.getImage) {
     const { urlMobile, url } = imageData.getImage
@@ -195,7 +234,6 @@ function Image(props: ImageProps) {
     }
 
     formattedAlt = formatIOMessage({ id: alt, intl })
-    formattedLink = formatIOMessage({ id: data.getImage.hrefImg, intl })
 
     imgElement = (
       <img
@@ -239,9 +277,14 @@ function Image(props: ImageProps) {
 
 
   } else {
+    // eslint-disable-next-line no-console
+    console.log('error: ', error)
+    console.log('loading', loading)
+    console.log('inside else imageProtocolId: ', imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
 
+    console.log('src: ', src)
     imgElement = (
       <img
         title={title}
@@ -266,8 +309,26 @@ function Image(props: ImageProps) {
       />
     )
 
-    formattedLink = formatIOMessage({ id: link?.url, intl })
-    const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+  /**
+   * To understand why we need to check for both newTab and openNewTab
+   * properties, check the Image type definition at './typings/image.d.ts'.
+   */
+  const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
+  const { push } = usePixel()
+
+  const promotionEventData =
+    analyticsProperties === 'provide'
+      ? {
+        id: promotionId,
+        name: promotionName,
+        creative: formattedSrc,
+        position: promotionPosition,
+      }
+      : undefined
+
+  const formattedLink = formatIOMessage({ id: link?.url, intl })
+  const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
 
     const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
     maybeLink = link?.url ? (
