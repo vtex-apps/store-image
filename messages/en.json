@@ -1,6 +1,5 @@
 {
   "admin/editor.store-image.title": "Image",
-  "admin/editor.store-image.imageProtocolId.title": "Image Protocol Id",
   "admin/editor.store-image.src.title": "Image",
   "admin/editor.store-image.alt.title": "Alternative text",
   "admin/editor.store-image.title.title": "Image title",
@@ -37,5 +36,7 @@
   "admin/editor.image.analytics.promotionName": "Promotion name",
   "admin/editor.image.analytics.promotionPosition": "Creative position",
   "admin/editor.image.analytics.promotionProductId": "Product ID",
-  "admin/editor.image.analytics.promotionProductName": "Product Name"
+  "admin/editor.image.analytics.promotionProductName": "Product Name",
+  "admin/editor.store-image.imageProtocolId.title": "Image Protocol Id",
+  "admin/editor.store-image.imageProtocolId.description": "Used to identify the component that will render the personalized content"
 }

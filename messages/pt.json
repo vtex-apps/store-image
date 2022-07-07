@@ -1,6 +1,5 @@
 {
   "admin/editor.store-image.title": "Imagem",
-  "admin/editor.store-image.imageProtocolId.title": "ID do protocolo de imagem",
   "admin/editor.store-image.src.title": "Imagem",
   "admin/editor.store-image.alt.title": "Texto alternativo",
   "admin/editor.store-image.title.title": "Título da imagem",
@@ -37,5 +36,7 @@
   "admin/editor.image.analytics.promotionName": "Nome da promoção",
   "admin/editor.image.analytics.promotionPosition": "Posição do criativo",
   "admin/editor.image.analytics.promotionProductId": "ID do produto",
-  "admin/editor.image.analytics.promotionProductName": "Nome do produto"
+  "admin/editor.image.analytics.promotionProductName": "Nome do produto",
+  "admin/editor.store-image.imageProtocolId.title": "ID do protocolo de imagem",
+  "admin/editor.store-image.imageProtocolId.description": "Usado para identificar o componente que irá renderizar o conteúdo personalizado"
 }
