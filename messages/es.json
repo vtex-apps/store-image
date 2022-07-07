@@ -1,6 +1,5 @@
 {
   "admin/editor.store-image.title": "Imagen",
-  "admin/editor.store-image.imageProtocolId.title": "ID de protocolo de imagen",
   "admin/editor.store-image.src.title": "Imagen",
   "admin/editor.store-image.alt.title": "Texto alternativo",
   "admin/editor.store-image.title.title": "Título de la imagen",
@@ -32,5 +31,7 @@
   "admin/editor.image.analytics.provide": "Sí",
   "admin/editor.image.analytics.promotionId": "ID de la promoción",
   "admin/editor.image.analytics.promotionName": "Nombre de la promoción",
-  "admin/editor.image.analytics.promotionPosition": "Posición creativa"
+  "admin/editor.image.analytics.promotionPosition": "Posición creativa",
+  "admin/editor.store-image.imageProtocolId.title": "Id del protocolo de imágen",
+  "admin/editor.store-image.imageProtocolId.description": "Utilizado para identificar el componente que mostrará el contenido personalizado."
 }
