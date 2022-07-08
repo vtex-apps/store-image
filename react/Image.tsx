@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react'
-import { useQuery } from 'react-apollo'
+import { useLazyQuery } from 'react-apollo'
 import type { ImgHTMLAttributes, RefObject } from 'react'
 import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
@@ -8,17 +8,18 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
+// import type { SessionSuccess } from 'vtex.session-client'
+import { useRenderSession } from 'vtex.session-client'
+
+import { usePosition } from './hooks/usePosition'
 import type { ImageSchema } from './ImageTypes'
-import GET_IMAGE_PROTOCOL_IMAGES from './graphql/getImgUrl.gql'
-
-import { SessionSuccess, useRenderSession } from 'vtex.session-client'
-
+import GET_IMAGE_PROTOCOL_QUERY from './graphql/getImgUrl.gql'
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
 export interface ImageProps
   extends ImageSchema,
-  ImgHTMLAttributes<HTMLImageElement> {
+    ImgHTMLAttributes<HTMLImageElement> {
   maxWidth?: string | number
   maxHeight?: string | number
   minWidth?: string | number
@@ -72,21 +73,10 @@ const useImageLoad = (
   return isLoaded
 }
 
-const handleSuccess = async(position: any)=>{
-  const {latitude, longitude} = position.coords
-  console.log('longitud:'+longitude +' latitud:'+latitude)
-}
-   
-const handleError = () => {
-  console.log('error')      
-  /*get geolocation from user IP address??*/
-}
-
-
 function Image(props: ImageProps) {
   const {
-    isMobile=false,
-    imageProtocolId='',
+    isMobile = false,
+    imageProtocolId = '',
     src,
     alt = '',
     maxWidth,
@@ -131,61 +121,49 @@ function Image(props: ImageProps) {
   }
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
-  let userId = "";
 
-  useEffect(() => { 
-    navigator.geolocation.getCurrentPosition(
-      handleSuccess,
-      handleError
-    )
-  }, [ handleSuccess, handleError])
+  // Image Protocol Start
 
- const {loading: loading2, session, error: error2 } = useRenderSession()
+  const { session } = useRenderSession()
+  const { latitude, longitude, error: positionError } = usePosition()
 
-  if (session) {
-    const {
-      namespaces: { profile },
-    } = session as SessionSuccess
-    userId = profile?.id?.value
-  }
+  const [getPersonalizedImages, { data: imageData }] = useLazyQuery(
+    GET_IMAGE_PROTOCOL_QUERY,
+    {
+      ssr: false,
+    }
+  )
 
-  console.log('session: ', session)
-  console.log('image protocol id:', imageProtocolId)
-  console.log('userId: ',userId)
-  if (loading2) {
-    // eslint-disable-next-line no-console
-    console.log('loading')
-  }
+  useEffect(() => {
+    if (session && imageProtocolId && positionError !== undefined) {
+      getPersonalizedImages({
+        variables: {
+          userId: session?.namespaces?.profile?.id?.value,
+          imageProtocolId,
+          latitude,
+          longitude,
+        },
+      })
+    }
+  }, [positionError, session])
 
-  if (error2) {
-    // eslint-disable-next-line no-console
-    console.log('error: ', error2)
-  }
+  let imgElement
+  let formattedSrc
+  let formattedAlt
 
-  const query = GET_IMAGE_PROTOCOL_IMAGES
-  let imgElement, formattedSrc, formattedAlt;
+  if (imageData?.getImage) {
+    const { urlMobile, url } = imageData.getImage
 
-  const { loading, error, data } = useQuery(query, {
-    variables: { userId: userId, imageProtocolId: imageProtocolId},
-    skip: !userId || !imageProtocolId,
-    ssr: false
-  })
-
-  if (!error && !loading && data && data.getImage && data.getImage.url !== null && data.getImage.urlMobile !== null && imageProtocolId !== '') {
-    // eslint-disable-next-line no-console
-    console.log('imageProtocolId: ',imageProtocolId)
-    if(isMobile){
-      formattedSrc = formatIOMessage({ id: data.getImage.urlMobile, intl })
-      // eslint-disable-next-line no-console
-      console.log('urlMobile: ',data.getImage.urlMobile)
-    }else{
-      formattedSrc = formatIOMessage({ id: data.getImage.url, intl })
-      // eslint-disable-next-line no-console
-      console.log('urlDesktop: ',data.getImage.url)
+    if (isMobile) {
+      formattedSrc = formatIOMessage({ id: urlMobile, intl })
+    } else {
+      formattedSrc = formatIOMessage({ id: url, intl })
     }
 
     formattedAlt = formatIOMessage({ id: alt, intl })
 
+    // Image Protocol END
+
     imgElement = (
       <img
         title={title}
@@ -198,19 +176,15 @@ function Image(props: ImageProps) {
         className={handles.imageElement}
         {...(preload
           ? {
-            'data-vtex-preload': 'true',
-          }
+              'data-vtex-preload': 'true',
+            }
           : {})}
       />
     )
   } else {
-    // eslint-disable-next-line no-console
-    console.log('error: ',error)
-    console.log('loading',loading)
-    console.log('inside else imageProtocolId: ',imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
-    console.log('src: ',src)
+
     imgElement = (
       <img
         title={title}
@@ -223,8 +197,8 @@ function Image(props: ImageProps) {
         className={handles.imageElement}
         {...(preload
           ? {
-            'data-vtex-preload': 'true',
-          }
+              'data-vtex-preload': 'true',
+            }
           : {})}
       />
     )
@@ -241,11 +215,11 @@ function Image(props: ImageProps) {
   const promotionEventData =
     analyticsProperties === 'provide'
       ? {
-        id: promotionId,
-        name: promotionName,
-        creative: formattedSrc,
-        position: promotionPosition,
-      }
+          id: promotionId,
+          name: promotionName,
+          creative: formattedSrc,
+          position: promotionPosition,
+        }
       : undefined
 
   const formattedLink = formatIOMessage({ id: link?.url, intl })
@@ -303,11 +277,11 @@ function Image(props: ImageProps) {
 const messages = defineMessages({
   title: {
     id: 'admin/editor.store-image.title',
-  }
+  },
 })
 
 Image.schema = {
-  title: messages.title.id
+  title: messages.title.id,
 }
 
 Image.cssHandles = CSS_HANDLES
