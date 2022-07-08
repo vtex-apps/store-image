@@ -6,7 +6,7 @@ export { ImageProps, ImageListProps, ImageSliderProps }
 
 export interface ImageSchema {
   isMobile?: boolean
-  imageProtocolId? : string
+  imageProtocolId?: string
   src?: string
   link?: Link
   alt?: string
@@ -20,7 +20,7 @@ export interface ImageSchema {
 }
 
 export type ImagesSchema = Array<{
-  imageProtocolId? : string
+  imageProtocolId?: string
   image: string
   mobileImage: string
   link?: Link

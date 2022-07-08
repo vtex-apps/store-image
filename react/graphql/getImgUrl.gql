@@ -1,5 +1,15 @@
-query getImage($userId: String!, $imageProtocolId: String!) {
-    getImage(userId: $userId, imageProtocolId: $imageProtocolId) @context(provider: "vtex.image-protocol"){
+query getImage(
+  $imageProtocolId: String!
+  $userId: String
+  $latitude: Float
+  $longitude: Float
+) {
+  getImage(
+    userId: $userId
+    imageProtocolId: $imageProtocolId
+    latitude: $latitude
+    longitude: $longitude
+  ) @context(provider: "vtex.image-protocol") {
     url
     urlMobile
   }
