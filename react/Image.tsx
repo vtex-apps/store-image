@@ -162,7 +162,7 @@ function Image(props: ImageProps) {
         },
       })
     }
-  }, [positionError, session])
+  }, [positionError, session, imageProtocolId])
 
   let imgElement
   let formattedSrc
