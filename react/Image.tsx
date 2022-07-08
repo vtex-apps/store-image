@@ -137,7 +137,6 @@ function Image(props: ImageProps) {
 
   useEffect(() => {
     if (session && imageProtocolId && positionError !== undefined) {
-      console.log('IMAGE QUERY MADE')
       getPersonalizedImages({
         variables: {
           userId: session?.namespaces?.profile?.id?.value,
@@ -166,7 +165,6 @@ function Image(props: ImageProps) {
         }
       : undefined
 
-  console.log('IMAGE DATA', imageData)
   if (imageData?.getImage) {
     const { urlMobile, url, hrefImg } = imageData.getImage
 
