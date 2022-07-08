@@ -12,5 +12,6 @@ query getImage(
   ) @context(provider: "vtex.image-protocol") {
     url
     urlMobile
+    hrefImg
   }
 }
