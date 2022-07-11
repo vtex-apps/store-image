@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 
 export const usePosition = () => {
-  const [position, setPosition] = useState<Coordinate>({
+  const [position, setPosition] = useState<LatLong>({
     latitude: undefined,
     longitude: undefined,
   })
 
   const [error, setError] = useState<boolean | undefined>(undefined)
 
-  const onSuccess = (gelocation: Position) => {
+  const onSuccess = (gelocation: LatLongHistory) => {
     const { coords } = gelocation
 
     setPosition({

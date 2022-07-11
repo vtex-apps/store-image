@@ -1,10 +1,10 @@
-interface Coordinate {
+interface LatLong {
   latitude: number | undefined
   longitude: number | undefined
 }
 
-interface Position {
-  coords: Coordinate
+interface LatLongHistory {
+  coords: LatLong
   timestamp: number
 }
 
