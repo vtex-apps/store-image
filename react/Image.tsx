@@ -282,6 +282,7 @@ function Image(props: ImageProps) {
     console.log('loading', loading)
     console.log('inside else imageProtocolId: ', imageProtocolId)
     formattedSrc = formatIOMessage({ id: src, intl })
+    console.log('else src:', formattedSrc)
     formattedAlt = formatIOMessage({ id: alt, intl })
 
     console.log('src: ', src)
