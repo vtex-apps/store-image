@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- Support for `experimentalPreventLayoutShift` prop in `ImageList` which will apply the setting to all child images
+
 ## [0.14.2] - 2021-10-13
 ### Fixed
 - Add Image title removed.
