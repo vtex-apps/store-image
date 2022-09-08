@@ -7,7 +7,8 @@ export const getImagesAsJSXList = (
   images: ImagesSchema,
   isMobile: boolean,
   height: string | number,
-  preload?: boolean
+  preload?: boolean,
+  experimentalPreventLayoutShift?: boolean
 ) => {
   return images.map(
     (
@@ -15,7 +16,7 @@ export const getImagesAsJSXList = (
         image,
         mobileImage,
         description,
-        experimentalPreventLayoutShift,
+        experimentalPreventLayoutShift: experimentalPreventLayoutShiftChild,
         width = '100%',
         ...props
       },
@@ -27,7 +28,9 @@ export const getImagesAsJSXList = (
         alt={description}
         maxHeight={height}
         width={width}
-        experimentalPreventLayoutShift={experimentalPreventLayoutShift}
+        experimentalPreventLayoutShift={
+          experimentalPreventLayoutShift ?? experimentalPreventLayoutShiftChild
+        }
         preload={preload && idx === 0}
         {...props}
       />

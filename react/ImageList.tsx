@@ -11,6 +11,7 @@ export interface ImageListProps {
   images: ImagesSchema
   height?: number
   preload?: boolean
+  experimentalPreventLayoutShift?: boolean
 }
 
 function ImageList({
@@ -18,11 +19,19 @@ function ImageList({
   height = 420,
   children,
   preload,
+  experimentalPreventLayoutShift,
 }: PropsWithChildren<ImageListProps>) {
   const list = useListContext()?.list ?? []
   const { isMobile } = useDevice()
 
-  const imageListContent = getImagesAsJSXList(images, isMobile, height, preload)
+  const imageListContent = getImagesAsJSXList(
+    images,
+    isMobile,
+    height,
+    preload,
+    experimentalPreventLayoutShift
+  )
+
   const newListContextValue = list.concat(imageListContent)
 
   return (
