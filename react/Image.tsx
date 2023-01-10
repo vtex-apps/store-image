@@ -125,6 +125,8 @@ function Image(props: ImageProps) {
       srcSet={srcSet}
       src={typeof formattedSrc === 'string' ? formattedSrc : ''}
       alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
+      width={width}
+      height={width}
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
