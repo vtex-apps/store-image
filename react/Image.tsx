@@ -21,6 +21,7 @@ export interface ImageProps
   minHeight?: string | number
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
+  experimentalSetExplicitDimensions?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   /**
@@ -83,6 +84,7 @@ function Image(props: ImageProps) {
     link,
     title,
     experimentalPreventLayoutShift,
+    experimentalSetExplicitDimensions,
     analyticsProperties = 'none',
     promotionId,
     promotionName,
@@ -128,6 +130,12 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
+      {...(experimentalSetExplicitDimensions
+        ? {
+            width,
+            height,
+          }
+        : {})}
       {...(preload
         ? {
             'data-vtex-preload': 'true',
