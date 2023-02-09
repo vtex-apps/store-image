@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- `experimentalSetExplicitDimensions` prop for `Image`
+- `experimentalSetExplicitDimensions` prop for `Image` and `ImageList`
 
 ## [0.15.0] - 2022-09-08
 
