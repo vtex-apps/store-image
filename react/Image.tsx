@@ -117,6 +117,11 @@ function Image(props: ImageProps) {
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
+  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
+  const heightWithoutUnits = height
+    ? height.toString().replace(/\D/g, '')
+    : null
+
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
 
@@ -130,10 +135,13 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
-      {...(experimentalSetExplicitDimensions
+      {...(experimentalSetExplicitDimensions &&
+      !width?.toString().includes('%') &&
+      !height?.toString().includes('%') &&
+      (widthWithoutUnits || heightWithoutUnits)
         ? {
-            width,
-            height,
+            width: widthWithoutUnits ?? undefined,
+            height: heightWithoutUnits ?? undefined,
           }
         : {})}
       {...(preload
