@@ -21,6 +21,7 @@ export interface ImageProps
   minHeight?: string | number
   blockClass?: string
   experimentalPreventLayoutShift?: boolean
+  experimentalSetExplicitDimensions?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   /**
@@ -83,6 +84,7 @@ function Image(props: ImageProps) {
     link,
     title,
     experimentalPreventLayoutShift,
+    experimentalSetExplicitDimensions,
     analyticsProperties = 'none',
     promotionId,
     promotionName,
@@ -115,6 +117,16 @@ function Image(props: ImageProps) {
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
+  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
+  const heightWithoutUnits = height
+    ? height.toString().replace(/\D/g, '')
+    : null
+
+  const explicitDimensionsAreAvailable =
+    !width?.toString().includes('%') &&
+    !height?.toString().includes('%') &&
+    (widthWithoutUnits || heightWithoutUnits)
+
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
 
@@ -128,6 +140,12 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
+      {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
+        ? {
+            width: widthWithoutUnits ?? undefined,
+            height: heightWithoutUnits ?? undefined,
+          }
+        : {})}
       {...(preload
         ? {
             'data-vtex-preload': 'true',
