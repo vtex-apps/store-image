@@ -122,6 +122,11 @@ function Image(props: ImageProps) {
     ? height.toString().replace(/\D/g, '')
     : null
 
+  const explicitDimensionsAreAvailable =
+    !width?.toString().includes('%') &&
+    !height?.toString().includes('%') &&
+    (widthWithoutUnits || heightWithoutUnits)
+
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
 
@@ -135,10 +140,7 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
-      {...(experimentalSetExplicitDimensions &&
-      !width?.toString().includes('%') &&
-      !height?.toString().includes('%') &&
-      (widthWithoutUnits || heightWithoutUnits)
+      {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
             width: widthWithoutUnits ?? undefined,
             height: heightWithoutUnits ?? undefined,
