@@ -89,6 +89,8 @@ function Image(props: ImageProps) {
     promotionId,
     promotionName,
     promotionPosition,
+    productId,
+    productName,
     classes,
     preload,
     // eslint-disable-next-line
@@ -169,6 +171,7 @@ function Image(props: ImageProps) {
           name: promotionName,
           creative: formattedSrc,
           position: promotionPosition,
+          products: [{ productId, productName }],
         }
       : undefined
 

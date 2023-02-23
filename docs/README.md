@@ -77,13 +77,19 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 - **`images` array:**
 
-| Prop name     | Type                | Description                               | Default value |
-| ------------- | ------------------- | ----------------------------------------- | ------------- |
-| `image`       | `string`            | Image URL.                                | `undefined`   |
-| `mobileImage` | `string`            | Mobile image URL.                         | `undefined`   |
-| `description` | `string`            | Image description.                        | `undefined`   |
-| `link`        | `object`            | Links an URL to the image being rendered. | `undefined`   |
-| `width`       | `string` / `number` | Image width (in `%` or `px`).             | `100%`        |
+| Prop name             | Type                | Description                                                            | Default value |
+|-----------------------|---------------------|------------------------------------------------------------------------|---------------|
+| `image`               | `string`            | Image URL.                                                             | `undefined`   |
+| `mobileImage`         | `string`            | Mobile image URL.                                                      | `undefined`   |
+| `description`         | `string`            | Image description.                                                     | `undefined`   |
+| `link`                | `object`            | Links an URL to the image being rendered.                              | `undefined`   |
+| `width`               | `string` / `number` | Image width (in `%` or `px`).                                          | `100%`        |
+| `analyticsProperties` | `string`            | Whether analytics props should be set (`'provided'`) or not (`'none'`) | `'none'`      |
+| `promotionId`         | `string`            | The ID of the promotion associated with the event.                     | `undefined`   |
+| `promotionName`       | `string`            | The name of the promotion associated with the event.                   | `undefined`   |
+| `promotionPosition`   | `string`            | The name of the promotional creative slot associated with the event.   | `undefined`   |
+| `productId`           | `string`            | The ID of the product associated with the event.                       | `undefined`   |
+| `productName`         | `string`            | The name of the product associated with the event.                     | `undefined`   |
 
 - **`link` object:**
 
