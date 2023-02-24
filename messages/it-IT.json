@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "Immagine",
   "admin/editor.store-image.src.title": "Immagine",
+  "admin/editor.store-image.mobileSrc.title": "Immagine per dispositivi mobili",
   "admin/editor.store-image.alt.title": "Descrizione alternativa",
   "admin/editor.store-image.title.title": "Titolo dell'immagine",
   "admin/editor.store-image.title.description": "Titolo da mostrare al passaggio del mouse",

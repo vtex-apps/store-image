@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "Afbeelding",
   "admin/editor.store-image.src.title": "Afbeelding",
+  "admin/editor.store-image.mobileSrc.title": "Afbeelding voor mobiel",
   "admin/editor.store-image.alt.title": "Alternatieve tekst",
   "admin/editor.store-image.title.title": "Titel van de afbeelding",
   "admin/editor.store-image.title.description": "Titel die moet worden weergegeven bij zweven",

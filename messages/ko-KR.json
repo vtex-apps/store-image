@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "이미지",
   "admin/editor.store-image.src.title": "이미지",
+  "admin/editor.store-image.mobileSrc.title": "모바일용 이미지",
   "admin/editor.store-image.alt.title": "대체 텍스트",
   "admin/editor.store-image.title.title": "이미지 제목",
   "admin/editor.store-image.title.description": "가리키면 표시할 제목",

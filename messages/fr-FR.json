@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "Photo",
   "admin/editor.store-image.src.title": "Photo",
+  "admin/editor.store-image.mobileSrc.title": "Image pour mobile",
   "admin/editor.store-image.alt.title": "Texte alternatif",
   "admin/editor.store-image.title.title": "Titre de l’image",
   "admin/editor.store-image.title.description": "Titre à afficher par pointage",

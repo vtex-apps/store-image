@@ -5,7 +5,6 @@ import type { ImagesSchema } from '../ImageTypes'
 
 export const getImagesAsJSXList = (
   images: ImagesSchema,
-  isMobile: boolean,
   height: string | number,
   preload?: boolean,
   experimentalPreventLayoutShift?: boolean
@@ -24,7 +23,8 @@ export const getImagesAsJSXList = (
     ) => (
       <Image
         key={idx}
-        src={isMobile && mobileImage ? mobileImage : image}
+        src={image}
+        mobileSrc={mobileImage || ''}
         alt={description}
         maxHeight={height}
         width={width}

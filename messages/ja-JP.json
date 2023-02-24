@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "画像",
   "admin/editor.store-image.src.title": "画像",
+  "admin/editor.store-image.mobileSrc.title": "モバイル用画像",
   "admin/editor.store-image.alt.title": "代替テキスト",
   "admin/editor.store-image.title.title": "画像のタイトル",
   "admin/editor.store-image.title.description": "重ねて生じされるタイトル",
