@@ -93,6 +93,7 @@ function Image(props: ImageProps) {
     preload,
     // eslint-disable-next-line
     __isDuplicated,
+    ...rest
   } = props
 
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -151,6 +152,7 @@ function Image(props: ImageProps) {
             'data-vtex-preload': 'true',
           }
         : {})}
+      {...rest}
     />
   )
 
