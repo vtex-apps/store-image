@@ -11,6 +11,7 @@ export interface ImageListProps {
   height?: number
   preload?: boolean
   experimentalPreventLayoutShift?: boolean
+  experimentalSetExplicitDimensions?: boolean
 }
 
 function ImageList({
@@ -19,6 +20,7 @@ function ImageList({
   children,
   preload,
   experimentalPreventLayoutShift,
+  experimentalSetExplicitDimensions,
 }: PropsWithChildren<ImageListProps>) {
   const list = useListContext()?.list ?? []
 
@@ -26,7 +28,8 @@ function ImageList({
     images,
     height,
     preload,
-    experimentalPreventLayoutShift
+    experimentalPreventLayoutShift,
+    experimentalSetExplicitDimensions
   )
 
   const newListContextValue = list.concat(imageListContent)
