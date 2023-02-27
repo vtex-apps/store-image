@@ -85,6 +85,8 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | `link`        | `object`            | Links an URL to the image being rendered. | `undefined`   |
 | `width`       | `string` / `number` | Image width (in `%` or `px`).             | `100%`        |
 
+> They can also receive any image HTML attribute.
+
 - **`link` object:**
 
 | Prop name    | Type      | Description                                                                                                                                                                     | Default value |
