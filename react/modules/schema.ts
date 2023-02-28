@@ -59,11 +59,11 @@ const IMAGE_LIST_MESSAGES = defineMessages({
   analyticsPromotionPosition: {
     id: 'admin/editor.image.analytics.promotionPosition',
   },
-  analyticsProductId: {
-    id: 'admin/editor.image.analytics.productId',
+  analyticspromotionProductId: {
+    id: 'admin/editor.image.analytics.promotionProductId',
   },
-  analyticsProductName: {
-    id: 'admin/editor.image.analytics.productName',
+  analyticspromotionProductName: {
+    id: 'admin/editor.image.analytics.promotionProductName',
   },
 })
 

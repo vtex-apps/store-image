@@ -75,13 +75,13 @@
                   "type": "string",
                   "default": ""
                 },
-                "productId": {
-                  "title": "admin/editor.image.analytics.productId",
+                "promotionProductId": {
+                  "title": "admin/editor.image.analytics.promotionProductId",
                   "type": "string",
                   "default": ""
                 },
-                "productName": {
-                  "title": "admin/editor.image.analytics.productName",
+                "promotionProductName": {
+                  "title": "admin/editor.image.analytics.promotionProductName",
                   "type": "string",
                   "default": ""
                 }
@@ -189,13 +189,13 @@
                     "type": "string",
                     "default": ""
                   },
-                  "productId": {
-                    "title": "admin/editor.image.analytics.productId",
+                  "promotionProductId": {
+                    "title": "admin/editor.image.analytics.promotionProductId",
                     "type": "string",
                     "default": ""
                   },
-                  "productName": {
-                    "title": "admin/editor.image.analytics.productName",
+                  "promotionProductName": {
+                    "title": "admin/editor.image.analytics.promotionProductName",
                     "type": "string",
                     "default": ""
                   }

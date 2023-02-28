@@ -90,8 +90,8 @@ function Image(props: ImageProps) {
     promotionId,
     promotionName,
     promotionPosition,
-    productId,
-    productName,
+    promotionProductId,
+    promotionProductName,
     classes,
     preload,
     loading = 'eager',
@@ -174,7 +174,12 @@ function Image(props: ImageProps) {
           name: promotionName,
           creative: formattedSrc,
           position: promotionPosition,
-          products: [{ productId, productName }],
+          products: [
+            {
+              productId: promotionProductId,
+              productName: promotionProductName,
+            },
+          ],
         }
       : undefined
 

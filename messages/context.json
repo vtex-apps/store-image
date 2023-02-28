@@ -34,6 +34,6 @@
   "admin/editor.image.analytics.promotionId": "Promotion ID",
   "admin/editor.image.analytics.promotionName": "Promotion Name",
   "admin/editor.image.analytics.promotionPosition": "Creative position",
-  "admin/editor.image.analytics.productId": "Product ID",
-  "admin/editor.image.analytics.productName": "Product Name"
+  "admin/editor.image.analytics.promotionProductId": "Product ID",
+  "admin/editor.image.analytics.promotionProductName": "Product Name"
 }

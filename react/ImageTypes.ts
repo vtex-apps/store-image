@@ -13,8 +13,8 @@ export interface ImageSchema {
   promotionId?: string
   promotionName?: string
   promotionPosition?: string
-  productId?: string
-  productName?: string
+  promotionProductId?: string
+  promotionProductName?: string
 }
 
 export type ImagesSchema = Array<{
@@ -31,8 +31,8 @@ export type ImagesSchema = Array<{
   promotionId?: string
   promotionName?: string
   promotionPosition?: string
-  productId?: string
-  productName?: string
+  promotionProductId?: string
+  promotionProductName?: string
 }>
 
 interface Link {
