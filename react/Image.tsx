@@ -30,6 +30,7 @@ export interface ImageProps
    * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
    */
   __isDuplicated?: boolean
+  loading?: "eager" | "lazy" | undefined
 }
 
 const useImageLoad = (
@@ -93,6 +94,7 @@ function Image(props: ImageProps) {
     preload,
     // eslint-disable-next-line
     __isDuplicated,
+    loading = 'eager'
   } = props
 
   const imageRef = useRef<HTMLImageElement | null>(null)
@@ -140,6 +142,7 @@ function Image(props: ImageProps) {
       style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
+      loading={loading}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
             width: widthWithoutUnits ?? undefined,
