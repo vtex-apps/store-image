@@ -8,6 +8,7 @@ export const getImagesAsJSXList = (
   isMobile: boolean,
   height: string | number,
   preload?: boolean,
+  loading?: 'eager' | 'lazy' | undefined,
   experimentalPreventLayoutShift?: boolean,
   experimentalSetExplicitDimensions?: boolean
 ) => {
@@ -38,6 +39,7 @@ export const getImagesAsJSXList = (
           experimentalSetExplicitDimensionsChild
         }
         preload={preload && idx === 0}
+        loading={loading}
         {...props}
       />
     )
