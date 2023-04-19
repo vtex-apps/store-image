@@ -13,7 +13,6 @@ export interface ImageListProps {
   preload?: boolean
   experimentalPreventLayoutShift?: boolean
   experimentalSetExplicitDimensions?: boolean
-  loading?: 'eager' | 'lazy' | undefined
 }
 
 function ImageList({
@@ -21,7 +20,6 @@ function ImageList({
   height = 420,
   children,
   preload,
-  loading,
   experimentalPreventLayoutShift,
   experimentalSetExplicitDimensions,
 }: PropsWithChildren<ImageListProps>) {
@@ -33,7 +31,6 @@ function ImageList({
     isMobile,
     height,
     preload,
-    loading,
     experimentalPreventLayoutShift,
     experimentalSetExplicitDimensions
   )

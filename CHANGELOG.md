@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- `loading` prop for `Image` and `ImageList`
+- `loading` prop for `Image` to allow lazy loading.
 
 ## [0.17.0] - 2023-03-28
 
