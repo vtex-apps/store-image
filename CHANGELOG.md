@@ -45,7 +45,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - `experimentalSetExplicitDimensions` prop for `Image` and `ImageList`
 
-## [0.15.0] - 2022-09-08
+## [0.20.0] - 2023-05-05
+
+### Fixed
+- Bulgarian, German, English, Spanish, Korean, Portuguese and Romanian translations.
+
+### Removed
+- Pseudolanguage translation.
+
+### Added
+- Thai translation.
+
+## [0.19.1] - 2023-05-02
+### Fixed
+- Fixes of i18n on readme.md according to task LOC-10606.
+
+## [0.19.0] - 2023-05-02
+
+### Added
+
+- `promotionProductId` and `promotionProductName` props for `Image` and `ImageList` to be used by promotion analytics events. GA4's [view_promotion](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#view_promotion) event now requires the product's ID or name.
+
+## [0.18.0] - 2023-04-25
 
 ### Added
 - Support for `experimentalPreventLayoutShift` prop in `ImageList` which will apply the setting to all child images
