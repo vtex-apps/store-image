@@ -33,6 +33,7 @@ export interface ImageProps
       * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
       * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
       */
+      // eslint-disable-next-line
       __isDuplicated?: boolean
     }
 
@@ -102,7 +103,6 @@ export interface ImageProps
     classes,
         preload,
         // eslint-disable-next-line
-
         __isDuplicated,
 
       } = props
@@ -187,7 +187,6 @@ export interface ImageProps
     ) {
     const { urlMobile, url, hrefImg } = imageData.getImage
 
-    console.log('inside if: ', url, urlMobile, hrefImg)
     if (isMobile) {
       formattedSrc = formatIOMessage({ id: urlMobile, intl })
     } else {
@@ -248,7 +247,6 @@ export interface ImageProps
 
   } else {
     formattedSrc = formatIOMessage({ id: src, intl })
-    console.log('else src:', formattedSrc)
     formattedAlt = formatIOMessage({ id: alt, intl })
 
     imgElement = (
