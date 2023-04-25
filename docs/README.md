@@ -34,10 +34,12 @@ You are now able to use the `list-context.image-list` block, exported by the Sto
       "height": 650,
       "images": [
         {
+          "loading": "eager",
           "image": "https://storecomponents.vteximg.com.br/arquivos/banner-infocard2.png",
           "description": "something something"
         },
         {
+          "loading": "lazy",
           "image": "https://storecomponents.vteximg.com.br/assets/vtex.file-manager-graphql/images/Group%207%20(1)%20(1)%20(1)%20(1)%20(1)___c6b3ed853fb16a08b265753b50e0c57a.png",
           "description": "something something"
         }
@@ -78,13 +80,14 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 - **`images` array:**
 
-| Prop name     | Type                | Description                               | Default value |
-| ------------- | ------------------- | ----------------------------------------- | ------------- |
-| `image`       | `string`            | Image URL.                                | `undefined`   |
-| `mobileImage` | `string`            | Mobile image URL.                         | `undefined`   |
-| `description` | `string`            | Image description.                        | `undefined`   |
-| `link`        | `object`            | Links an URL to the image being rendered. | `undefined`   |
-| `width`       | `string` / `number` | Image width (in `%` or `px`).             | `100%`        |
+| Prop name     | Type                | Description                                                                                        | Default value |
+|---------------|---------------------|----------------------------------------------------------------------------------------------------|---------------|
+| `image`       | `string`            | Image URL.                                                                                         | `undefined`   |
+| `mobileImage` | `string`            | Mobile image URL.                                                                                  | `undefined`   |
+| `description` | `string`            | Image description.                                                                                 | `undefined`   |
+| `link`        | `object`            | Links an URL to the image being rendered.                                                          | `undefined`   |
+| `width`       | `string` / `number` | Image width (in `%` or `px`).                                                                      | `100%`        |
+| `loading`     | `string`            | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`) | `'eager'`     |
 
 - **`link` object:**
 
