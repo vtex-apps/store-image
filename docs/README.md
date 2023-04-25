@@ -34,10 +34,12 @@ You are now able to use the `list-context.image-list` block, exported by the Sto
       "height": 650,
       "images": [
         {
+          "loading": "eager",
           "image": "https://storecomponents.vteximg.com.br/arquivos/banner-infocard2.png",
           "description": "something something"
         },
         {
+          "loading": "lazy",
           "image": "https://storecomponents.vteximg.com.br/assets/vtex.file-manager-graphql/images/Group%207%20(1)%20(1)%20(1)%20(1)%20(1)___c6b3ed853fb16a08b265753b50e0c57a.png",
           "description": "something something"
         }
