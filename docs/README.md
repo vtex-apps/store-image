@@ -8,13 +8,13 @@
 
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-The Store Image app exports the `list-context.image-list` block, which is responsible for working with image content in the store's theme.
+The Store Image app exports the `list-context.image-list` block, which is responsible for the image content in the store theme.
 
-![store-image](https://user-images.githubusercontent.com/52087100/78939489-a3c69f00-7a8a-11ea-8c66-7475f1a3f69e.png)
+![store-image](https://cdn.jsdelivr.net/gh/vtexdocs/dev-portal-content@main/images/vtex-store-image-0.png)
 
-## Configuration
+## Configurating the store image
 
-1. Add the `store-image` app to your theme's dependencies in the `manifest.json`, for example:
+1. Add the `store-image` app to your theme dependencies in the `manifest.json`. For example:
 
 ```diff
  "dependencies ": {
@@ -22,9 +22,9 @@ The Store Image app exports the `list-context.image-list` block, which is respon
  }
 ```
 
-You are now able to use the `list-context.image-list` block, exported by the Store Image app. The block allows you to display images in your store with a higher degree of composability, since you can use it along with other `list-context` blocks to create a more flexible and customizable image slider.
+You can now use the `list-context.image-list` block exported by the Store Image app. The block allows you to display images in your store with more composability since you can use it along with other `list-context` blocks to create a more flexible and customizable image slider.
 
-2. In any desired theme template, add the `list-context.image-list` block, declaring the `slider-layout` block as child. For example:
+2. In any desired theme template, add the `list-context.image-list` block, declaring the `slider-layout` a child block. For example:
 
 ```json
   "list-context.image-list#demo": {
@@ -57,22 +57,22 @@ You are now able to use the `list-context.image-list` block, exported by the Sto
   },
 ```
 
-Note that the `slider-layout` block, exported from the Slider Layout app, is given as a child of `list-context.image-list`. It is responsible for defining which images will be displayed, as well as their behavior once rendered.
+Note that the `slider-layout` block exported from the Slider Layout app is a child block of `list-context.image-list`. It defines which images will be displayed and their behavior when rendered.
 
 ### `list-context.image-list` props
 
-| Prop name                           | Type      | Description                                                                                                           | Default value |
-| ----------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `images`                            | `array`   | Array of objects declaring all desired images to be rendered.                                                         | `undefined`   |
-| `height`                            | `number`  | Image height for all images declared in the `image` object (in `px`).                                                 | `undefined`   |
-| `preload`                           | `boolean` | Preloads the first image in a list, which helps prioritizing the display of images over other assets                  | `false`       |
-| `experimentalSetExplicitDimensions` | `boolean` | Sets explicit `width` and/or `height` attributes on each image, if `width` and/or `height` props are provided in `px` |
+| Prop name | Type      | Description                                                                           | Default value |
+| --------- | --------- | ------------------------------------------------------------------------------------- | ------------- |
+| `images`  | `array`   | Array of objects declaring all the images to be rendered.                             | `undefined`   |
+| `height`  | `number`  | Image height for all images declared in the `image` object (in `px`).                 | `undefined`   |
+| `preload` | `boolean` | Preloads the first image in a list, prioritizing the image display over other assets. | `false`       |
+| `experimentalSetExplicitDimensions` | `boolean` | Sets explicit `width` and/or `height` attributes for an image, if `width` and/or `height` props are provided in `px`. |
 
 ### `image-list` props
 
 | Prop name | Type     | Description                                                           | Default value |
 | --------- | -------- | --------------------------------------------------------------------- | ------------- |
-| `images`  | `array`  | Array of objects declaring all desired images to be rendered.         | `undefined`   |
+| `images`  | `array`  | Array of objects declaring all the images to be rendered.             | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object (in `px`). | `undefined`   |
 
 - **`images` array:**
@@ -87,21 +87,20 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 - **`link` object:**
 
-| Prop name    | Type      | Description                                                                                                                                                                     | Default value |
-| ------------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `url`        | `string`  | URL users will be redirected to when clicking on the image.                                                                                                                     | `undefined`   |
-| `noFollow`   | `boolean` | Whether the linked URL is endorsed by the owner of the page the user was navigating on i.e. if there is a commercial relationship between both pages (`true`) or not (`false`). | `false`       |
-| `openNewTab` | `string`  | Whether a new tab on browser will be opened (`true`) or not (`false`) .                                                                                                         | `undefined`   |
-| `title`      | `string`  | Text label used to identify the image in the admin's Site Editor.                                                                                                               | `undefined`   |
+| Prop name    | Type      | Description                                                                                                                                                      | Default value |
+| ------------ | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `url`        | `string`  | URL users will be redirected when clicking the image.                                                                                                            | `undefined`   |
+| `noFollow`   | `boolean` | Whether the page owner endorses the linked URL the user was navigating on, i.e., if there is a commercial relationship between both pages (`true`) or (`false`). | `false`       |
+| `openNewTab` | `string`  | Whether a new tab will be opened on the browser (`true`) or (`false`).                                                                                           | `undefined`   |
+| `title`      | `string`  | Text label used to identify the image in the Admin Site Editor.                                                                                                  | `undefined`   |
 
-:information_source: Use the **admin's Site Editor** to manage all images declared in the `list-context.image-list` block.
+> ℹ️ Use the **Admin Site Editor** to manage all images declared in the `list-context.image-list` block.
 
 ## Customization
 
-The block still doesn't have CSS Handles for its specific customization.
+The block still does not have CSS handles for its specific customization.
 
-All CSS Handles available for the Image block are the ones available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://vtex.io/docs/app/vtex.slider-layout).
-Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. Take a look at [Slider-Layout](https://vtex.io/docs/app/vtex.slider-layout).
+All CSS handles available for the Image block are available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://developers.vtex.com/docs/apps/vtex.slider-layout). Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. See more in [Slider Layout](https://developers.vtex.com/docs/apps/vtex.slider-layout).
 
 ## Contributors ✨
 
