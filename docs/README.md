@@ -80,13 +80,13 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 
 - **`images` array:**
 
-| Prop name     | Type                | Description                               | Default value |
-| ------------- | ------------------- | ----------------------------------------- | ------------- |
-| `image`       | `string`            | Image URL.                                | `undefined`   |
-| `mobileImage` | `string`            | Mobile image URL.                         | `undefined`   |
-| `description` | `string`            | Image description.                        | `undefined`   |
-| `link`        | `object`            | Links an URL to the image being rendered. | `undefined`   |
-| `width`       | `string` / `number` | Image width (in `%` or `px`).             | `100%`        |
+| Prop name     | Type                | Description                                                                                        | Default value |
+|---------------|---------------------|----------------------------------------------------------------------------------------------------|---------------|
+| `image`       | `string`            | Image URL.                                                                                         | `undefined`   |
+| `mobileImage` | `string`            | Mobile image URL.                                                                                  | `undefined`   |
+| `description` | `string`            | Image description.                                                                                 | `undefined`   |
+| `link`        | `object`            | Links an URL to the image being rendered.                                                          | `undefined`   |
+| `width`       | `string` / `number` | Image width (in `%` or `px`).                                                                      | `100%`        |
 
 - **`link` object:**
 
