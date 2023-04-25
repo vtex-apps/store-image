@@ -24,13 +24,13 @@ export interface ImageProps
   experimentalSetExplicitDimensions?: boolean
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
+  loading?: 'eager' | 'lazy' | undefined
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
    * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
    */
   __isDuplicated?: boolean
-  loading?: 'eager' | 'lazy' | undefined
 }
 
 const useImageLoad = (
@@ -92,9 +92,9 @@ function Image(props: ImageProps) {
     promotionPosition,
     classes,
     preload,
+    loading = 'eager',
     // eslint-disable-next-line
     __isDuplicated,
-    loading = 'eager',
   } = props
 
   const imageRef = useRef<HTMLImageElement | null>(null)
