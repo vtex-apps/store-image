@@ -68,7 +68,6 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | `images`                            | `array`   | Array of objects declaring all desired images to be rendered.                                                         | `undefined`   |
 | `height`                            | `number`  | Image height for all images declared in the `image` object (in `px`).                                                 | `undefined`   |
 | `preload`                           | `boolean` | Preloads the first image in a list, which helps prioritizing the display of images over other assets                  | `false`       |
-| `loading`                           | `string`  | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`)                    | `'eager'`     |
 | `experimentalSetExplicitDimensions` | `boolean` | Sets explicit `width` and/or `height` attributes on each image, if `width` and/or `height` props are provided in `px` |
 
 ### `image-list` props
@@ -87,6 +86,7 @@ Note that the `slider-layout` block, exported from the Slider Layout app, is giv
 | `description` | `string`            | Image description.                                                                                 | `undefined`   |
 | `link`        | `object`            | Links an URL to the image being rendered.                                                          | `undefined`   |
 | `width`       | `string` / `number` | Image width (in `%` or `px`).                                                                      | `100%`        |
+| `loading`     | `string`            | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`) | `'eager'`     |
 
 - **`link` object:**
 
