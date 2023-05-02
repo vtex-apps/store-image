@@ -25,6 +25,7 @@ export type ImagesSchema = Array<{
   description: string
   experimentalPreventLayoutShift?: boolean
   experimentalSetExplicitDimensions?: boolean
+  loading?: 'eager' | 'lazy'
   width?: number | string
   analyticsProperties?: 'none' | 'provide'
   promotionId?: string
