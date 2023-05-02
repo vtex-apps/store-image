@@ -33,5 +33,7 @@
   "admin/editor.image.analytics.provide": "Sí",
   "admin/editor.image.analytics.promotionId": "ID de la promoción",
   "admin/editor.image.analytics.promotionName": "Nombre de la promoción",
-  "admin/editor.image.analytics.promotionPosition": "Posición creativa"
+  "admin/editor.image.analytics.promotionPosition": "Posición creativa",
+  "admin/editor.image.analytics.promotionProductId": "ID de producto",
+  "admin/editor.image.analytics.promotionProductName": "Nombre de producto"
 }

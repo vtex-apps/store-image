@@ -74,6 +74,16 @@
                   "title": "admin/editor.image.analytics.promotionPosition",
                   "type": "string",
                   "default": ""
+                },
+                "promotionProductId": {
+                  "title": "admin/editor.image.analytics.promotionProductId",
+                  "type": "string",
+                  "default": ""
+                },
+                "promotionProductName": {
+                  "title": "admin/editor.image.analytics.promotionProductName",
+                  "type": "string",
+                  "default": ""
                 }
               }
             },
@@ -176,6 +186,16 @@
                   },
                   "promotionPosition": {
                     "title": "admin/editor.image.analytics.promotionPosition",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "promotionProductId": {
+                    "title": "admin/editor.image.analytics.promotionProductId",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "promotionProductName": {
+                    "title": "admin/editor.image.analytics.promotionProductName",
                     "type": "string",
                     "default": ""
                   }
