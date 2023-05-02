@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.19.0] - 2023-05-02
+
 ### Added
 
 - `promotionProductId` and `promotionProductName` props for `Image` and `ImageList` to be used by promotion analytics events. GA4's [view_promotion](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#view_promotion) event now requires the product's ID or name.
