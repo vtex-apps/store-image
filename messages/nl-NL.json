@@ -4,6 +4,9 @@
   "admin/editor.store-image.alt.title": "Alternatieve tekst",
   "admin/editor.store-image.title.title": "Titel van de afbeelding",
   "admin/editor.store-image.title.description": "Titel die moet worden weergegeven bij zweven",
+  "admin/editor.store-image.loading.title": "Laden van strategie",
+  "admin/editor.store-image.loading.eager": "Wanneer de pagina wordt geladen",
+  "admin/editor.store-image.loading.lazy": "Wanneer dichter bij de viewport",
   "admin/editor.image-list.title": "Afbeeldinglijst",
   "admin/editor.image-list.description": "Toon een lijst van afbeeldingen",
   "admin/editor.image-list.images.title": "Afbeeldingen",
@@ -30,5 +33,7 @@
   "admin/editor.image.analytics.provide": "Ja",
   "admin/editor.image.analytics.promotionId": "Promotie-id",
   "admin/editor.image.analytics.promotionName": "Promotienaam",
-  "admin/editor.image.analytics.promotionPosition": "Creatieve positie"
+  "admin/editor.image.analytics.promotionPosition": "Creatieve positie",
+  "admin/editor.image.analytics.promotionProductId": "Product-ID",
+  "admin/editor.image.analytics.promotionProductName": "Productnaam"
 }
