@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+- Bulgarian, German, English, Spanish, Korean, Portuguese and Romanian translations.
+
+### Removed
+- Pseudolanguage translation.
+
+### Added
+- Thai translation.
+
 ## [0.19.1] - 2023-05-02
 ### Fixed
 - Fixes of i18n on readme.md according to task LOC-10606.

@@ -4,6 +4,9 @@
   "admin/editor.store-image.alt.title": "Алтернативен текст",
   "admin/editor.store-image.title.title": "Заглавие на изображението",
   "admin/editor.store-image.title.description": "Заглавието се показва при задържане на мишката",
+  "admin/editor.store-image.loading.title": "Стратегия за зареждане",
+  "admin/editor.store-image.loading.eager": "При зареждане на страницата",
+  "admin/editor.store-image.loading.lazy": "Когато е по-близо до погледа",
   "admin/editor.image-list.title": "Списък с изображения",
   "admin/editor.image-list.description": "Показва списък с изображения",
   "admin/editor.image-list.images.title": "Изображения",
@@ -30,5 +33,7 @@
   "admin/editor.image.analytics.provide": "Да",
   "admin/editor.image.analytics.promotionId": "ИД на промоция",
   "admin/editor.image.analytics.promotionName": "Име на промоция",
-  "admin/editor.image.analytics.promotionPosition": "Креативно позициониране"
+  "admin/editor.image.analytics.promotionPosition": "Креативно позициониране",
+  "admin/editor.image.analytics.promotionProductId": "ИД на продукт",
+  "admin/editor.image.analytics.promotionProductName": "Име на продукта"
 }
