@@ -4,6 +4,9 @@
   "admin/editor.store-image.alt.title": "Alternativer Text",
   "admin/editor.store-image.title.title": "Bildtitel",
   "admin/editor.store-image.title.description": "Titel, der bei Mausverschiebung angezeigt wird",
+  "admin/editor.store-image.loading.title": "Ladestrategie",
+  "admin/editor.store-image.loading.eager": "Wenn die Seite geladen wird",
+  "admin/editor.store-image.loading.lazy": "Bei Annäherung an das Ansichtsfenster",
   "admin/editor.image-list.title": "Bildliste",
   "admin/editor.image-list.description": "Eine Liste von Bildern anzeigen",
   "admin/editor.image-list.images.title": "Bilder",
@@ -30,5 +33,7 @@
   "admin/editor.image.analytics.provide": "Ja",
   "admin/editor.image.analytics.promotionId": "Promotion-ID",
   "admin/editor.image.analytics.promotionName": "Promotionsname",
-  "admin/editor.image.analytics.promotionPosition": "Kreative Position"
+  "admin/editor.image.analytics.promotionPosition": "Kreative Position",
+  "admin/editor.image.analytics.promotionProductId": "Produkt-ID",
+  "admin/editor.image.analytics.promotionProductName": "Produktname"
 }

@@ -4,6 +4,9 @@
   "admin/editor.store-image.alt.title": "Text alternativ",
   "admin/editor.store-image.title.title": "Titlu imagine",
   "admin/editor.store-image.title.description": "Titlul va fi afișat prin trecere",
+  "admin/editor.store-image.loading.title": "Strategie de încărcare",
+  "admin/editor.store-image.loading.eager": "La încărcarea paginii",
+  "admin/editor.store-image.loading.lazy": "Când este mai aproape de vizualizare",
   "admin/editor.image-list.title": "Listă imagine",
   "admin/editor.image-list.description": "Arată o listă de imagini",
   "admin/editor.image-list.images.title": "Imagini",
@@ -30,5 +33,7 @@
   "admin/editor.image.analytics.provide": "Da",
   "admin/editor.image.analytics.promotionId": "ID Promoție",
   "admin/editor.image.analytics.promotionName": "Denumire Promoție",
-  "admin/editor.image.analytics.promotionPosition": "Poziție creativă"
+  "admin/editor.image.analytics.promotionPosition": "Poziție creativă",
+  "admin/editor.image.analytics.promotionProductId": "ID produs",
+  "admin/editor.image.analytics.promotionProductName": "Denumirea produsului"
 }

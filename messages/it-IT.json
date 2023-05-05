@@ -4,6 +4,9 @@
   "admin/editor.store-image.alt.title": "Descrizione alternativa",
   "admin/editor.store-image.title.title": "Titolo dell'immagine",
   "admin/editor.store-image.title.description": "Titolo da mostrare al passaggio del mouse",
+  "admin/editor.store-image.loading.title": "Strategia di caricamento",
+  "admin/editor.store-image.loading.eager": "Durante il caricamento della pagina",
+  "admin/editor.store-image.loading.lazy": "Quando ci si avvicina al riquadro di visualizzazione",
   "admin/editor.image-list.title": "Elenco di immagini",
   "admin/editor.image-list.description": "Mostra un elenco di immagini",
   "admin/editor.image-list.images.title": "Immagini",
@@ -17,7 +20,7 @@
   "admin/editor.image-list.images.link.title.title": "Titolo del link",
   "admin/editor.image-list.height.title": "Altezza massima per ciascuna immagine (px)",
   "admin/editor.image-list.images.width.title": "Larghezza immagine",
-  "admin/editor.image-list.images.width.description": "Larghezza per una singola immagine (% o px)",
+  "admin/editor.image-list.images.width.description": "Larghezza per singola immagine (% o px)",
   "admin/editor.image-slider.title": "Slider di immagini",
   "admin/editor.image-slider.description": "Slider di immagini",
   "admin/editor.image-slider.slider.title": "Opzioni dello slider",
@@ -30,5 +33,7 @@
   "admin/editor.image.analytics.provide": "Sì",
   "admin/editor.image.analytics.promotionId": "ID della promozione",
   "admin/editor.image.analytics.promotionName": "Nome della promozione",
-  "admin/editor.image.analytics.promotionPosition": "Posizione creativa"
+  "admin/editor.image.analytics.promotionPosition": "Posizione creativa",
+  "admin/editor.image.analytics.promotionProductId": "ID del prodotto",
+  "admin/editor.image.analytics.promotionProductName": "Nome del prodotto"
 }
