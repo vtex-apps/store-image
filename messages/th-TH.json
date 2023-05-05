@@ -4,6 +4,9 @@
   "admin/editor.store-image.alt.title": "ข้อความสำรอง",
   "admin/editor.store-image.title.title": "ชื่อรูป",
   "admin/editor.store-image.title.description": "ชื่อที่จะแสดงเมื่อลากเมาส์ผ่าน",
+  "admin/editor.store-image.loading.title": "กลยุทธ์การโหลด",
+  "admin/editor.store-image.loading.eager": "เมื่อโหลดหน้าเพจ",
+  "admin/editor.store-image.loading.lazy": "เมื่อใกล้เคียงกับขนาด Viewport มากกว่า",
   "admin/editor.image-list.title": "รายการรูป",
   "admin/editor.image-list.description": "แสดงรายการรูป",
   "admin/editor.image-list.images.title": "รูป",
@@ -30,5 +33,7 @@
   "admin/editor.image.analytics.provide": "ใช่",
   "admin/editor.image.analytics.promotionId": "ID โปรโมชัน",
   "admin/editor.image.analytics.promotionName": "ชื่อโปรโมชัน",
-  "admin/editor.image.analytics.promotionPosition": "ตำแหน่งครีเอทีฟ"
+  "admin/editor.image.analytics.promotionPosition": "ตำแหน่งครีเอทีฟ",
+  "admin/editor.image.analytics.promotionProductId": "รหัสผลิตภัณฑ์",
+  "admin/editor.image.analytics.promotionProductName": "ชื่อผลิตภัณฑ์"
 }
