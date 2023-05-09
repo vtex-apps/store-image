@@ -57,6 +57,7 @@ const useImageLoad = (
 
     if (imageElement.complete) {
       setLoaded(true)
+
       return
     }
 
@@ -160,7 +161,14 @@ function Image(props: ImageProps) {
         },
       })
     }
-  }, [positionError, session, imageProtocolId])
+  }, [
+    positionError,
+    session,
+    imageProtocolId,
+    getPersonalizedImages,
+    latitude,
+    longitude,
+  ])
 
   let imgElement
   let formattedSrc
@@ -191,6 +199,7 @@ function Image(props: ImageProps) {
     imageData.getImage.urlMobile !== null
   ) {
     const { urlMobile, url, hrefImg } = imageData.getImage
+
     if (isMobile) {
       formattedSrc = formatIOMessage({ id: urlMobile, intl })
     } else {
