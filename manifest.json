@@ -1,7 +1,7 @@
 {
   "vendor": "vtex",
   "name": "store-image",
-  "version": "0.20.0",
+  "version": "0.20.1.hkignore",
   "title": "VTEX Image",
   "description": "Set of VTEX components to handle images",
   "builders": {
@@ -22,9 +22,7 @@
     "vtex.image-protocol": "1.x",
     "vtex.image-protocol-example": "0.x"
   },
-  "registries": [
-    "smartcheckout"
-  ],
+  "registries": ["smartcheckout"],
   "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }
