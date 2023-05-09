@@ -1,7 +1,7 @@
 {
   "vendor": "kudosio",
   "name": "store-image",
-  "version": "0.20.0",
+  "version": "0.0.1",
   "title": "VTEX Image",
   "description": "Set of VTEX components to handle images with added date functionality",
   "builders": {
