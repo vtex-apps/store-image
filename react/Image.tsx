@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useRef, useEffect } from 'react'
+import { useLazyQuery } from 'react-apollo'
 import type { ImgHTMLAttributes, RefObject } from 'react'
 import { useOnView } from 'vtex.on-view'
 import { useCssHandles } from 'vtex.css-handles'
@@ -7,8 +8,11 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
+import { useRenderSession } from 'vtex.session-client'
 
+import { usePosition } from './hooks/usePosition'
 import type { ImageSchema } from './ImageTypes'
+import GET_IMAGE_PROTOCOL_QUERY from './graphql/getImgUrl.gql'
 
 const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 
@@ -30,6 +34,7 @@ export interface ImageProps
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
    * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
    */
+  // eslint-disable-next-line
   __isDuplicated?: boolean
 }
 
@@ -72,6 +77,8 @@ const useImageLoad = (
 
 function Image(props: ImageProps) {
   const {
+    isMobile = false,
+    imageProtocolId = '',
     src,
     alt = '',
     maxWidth,
@@ -131,42 +138,45 @@ function Image(props: ImageProps) {
     !height?.toString().includes('%') &&
     (widthWithoutUnits || heightWithoutUnits)
 
-  const formattedSrc = formatIOMessage({ id: src, intl })
-  const formattedAlt = formatIOMessage({ id: alt, intl })
+  // Image Protocol Start
 
-  const imgElement = (
-    <img
-      title={title}
-      sizes={sizes}
-      srcSet={srcSet}
-      src={typeof formattedSrc === 'string' ? formattedSrc : ''}
-      alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
-      style={imageDimensions}
-      ref={imageRef}
-      className={handles.imageElement}
-      loading={loading}
-      {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
-        ? {
-            width: widthWithoutUnits ?? undefined,
-            height: heightWithoutUnits ?? undefined,
-          }
-        : {})}
-      {...(preload
-        ? {
-            'data-vtex-preload': 'true',
-          }
-        : {})}
-    />
+  const { session } = useRenderSession()
+  const { latitude, longitude, error: positionError } = usePosition()
+
+  const [getPersonalizedImages, { data: imageData }] = useLazyQuery(
+    GET_IMAGE_PROTOCOL_QUERY,
+    {
+      ssr: false,
+    }
   )
 
-  /**
-   * To understand why we need to check for both newTab and openNewTab
-   * properties, check the Image type definition at './typings/image.d.ts'.
-   */
-  const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+  useEffect(() => {
+    if (session && imageProtocolId && positionError !== undefined) {
+      getPersonalizedImages({
+        variables: {
+          userId: session?.namespaces?.profile?.id?.value,
+          imageProtocolId,
+          latitude,
+          longitude,
+        },
+      })
+    }
+  }, [
+    positionError,
+    session,
+    imageProtocolId,
+    getPersonalizedImages,
+    latitude,
+    longitude,
+  ])
+
+  let imgElement
+  let formattedSrc
+  let formattedAlt
+  let formattedLink
+  let maybeLink
 
   const { push } = usePixel()
-
   const promotionEventData =
     analyticsProperties === 'provide'
       ? {
@@ -183,30 +193,129 @@ function Image(props: ImageProps) {
         }
       : undefined
 
-  const formattedLink = formatIOMessage({ id: link?.url, intl })
-  const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+  if (
+    imageData?.getImage &&
+    imageData.getImage.url !== null &&
+    imageData.getImage.urlMobile !== null
+  ) {
+    const { urlMobile, url, hrefImg } = imageData.getImage
 
-  const maybeLink = link?.url ? (
-    // The onClick function and the <Link> component are necessary,
-    // knowing this, it seems good to disable the anchor-is-valid rule.
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    <Link
-      to={typeof formattedLink === 'string' ? formattedLink : ''}
-      title={typeof formattedTitle === 'string' ? formattedTitle : ''}
-      rel={link.attributeNofollow ? 'nofollow' : ''}
-      target={shouldOpenLinkInNewTab ? '_blank' : undefined}
-      className={handles.imageElementLink}
-      onClick={() => {
-        if (analyticsProperties === 'none') return
+    if (isMobile) {
+      formattedSrc = formatIOMessage({ id: urlMobile, intl })
+    } else {
+      formattedSrc = formatIOMessage({ id: url, intl })
+    }
 
-        push({ event: 'promotionClick', promotions: [promotionEventData] })
-      }}
-    >
-      {imgElement}
-    </Link>
-  ) : (
-    <Fragment>{imgElement}</Fragment>
-  )
+    formattedAlt = formatIOMessage({ id: alt, intl })
+    formattedLink = formatIOMessage({ id: hrefImg, intl })
+    // Image Protocol END
+
+    imgElement = (
+      <img
+        title={title}
+        sizes={sizes}
+        srcSet={srcSet}
+        src={typeof formattedSrc === 'string' ? formattedSrc : ''}
+        alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
+        style={imageDimensions}
+        ref={imageRef}
+        className={handles.imageElement}
+        loading={loading}
+        {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
+          ? {
+              width: widthWithoutUnits ?? undefined,
+              height: heightWithoutUnits ?? undefined,
+            }
+          : {})}
+        {...(preload
+          ? {
+              'data-vtex-preload': 'true',
+            }
+          : {})}
+      />
+    )
+    const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
+    const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+
+    maybeLink = hrefImg ? (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link
+        to={typeof formattedLink === 'string' ? formattedLink : ''}
+        title={typeof formattedTitle === 'string' ? formattedTitle : ''}
+        rel={link?.attributeNofollow ? 'nofollow' : ''}
+        target={shouldOpenLinkInNewTab ? '_blank' : undefined}
+        className={handles.imageElementLink}
+        onClick={() => {
+          if (analyticsProperties === 'none') return
+          push({ event: 'promotionClick', promotions: [promotionEventData] })
+        }}
+      >
+        {imgElement}
+      </Link>
+    ) : (
+      <Fragment>{imgElement}</Fragment>
+    )
+  } else {
+    formattedSrc = formatIOMessage({ id: src, intl })
+    formattedAlt = formatIOMessage({ id: alt, intl })
+
+    imgElement = (
+      <img
+        title={title}
+        sizes={sizes}
+        srcSet={srcSet}
+        src={typeof formattedSrc === 'string' ? formattedSrc : ''}
+        alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
+        style={imageDimensions}
+        ref={imageRef}
+        className={handles.imageElement}
+        loading={loading}
+        {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
+          ? {
+              width: widthWithoutUnits ?? undefined,
+              height: heightWithoutUnits ?? undefined,
+            }
+          : {})}
+        {...(preload
+          ? {
+              'data-vtex-preload': 'true',
+            }
+          : {})}
+      />
+    )
+    formattedLink = formatIOMessage({ id: link?.url, intl })
+    const formattedTitle = formatIOMessage({ id: link?.attributeTitle, intl })
+
+    const shouldOpenLinkInNewTab = link?.newTab ?? link?.openNewTab
+
+    maybeLink = link?.url ? (
+      // The onClick function and the <Link> component are necessary,
+      // knowing this, it seems good to disable the anchor-is-valid rule.
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <Link
+        to={typeof formattedLink === 'string' ? formattedLink : ''}
+        title={typeof formattedTitle === 'string' ? formattedTitle : ''}
+        rel={link.attributeNofollow ? 'nofollow' : ''}
+        target={shouldOpenLinkInNewTab ? '_blank' : undefined}
+        className={handles.imageElementLink}
+        onClick={() => {
+          if (analyticsProperties === 'none') return
+
+          push({ event: 'promotionClick', promotions: [promotionEventData] })
+        }}
+      >
+        {imgElement}
+      </Link>
+    ) : (
+      <Fragment>{imgElement}</Fragment>
+    )
+  }
+
+  /**
+   * To understand why we need to check for both newTab and openNewTab
+   * properties, check the Image type definition at './typings/image.d.ts'.
+   */
 
   useOnView({
     ref: imageRef,

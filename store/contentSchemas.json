@@ -3,6 +3,12 @@
     "Image": {
       "title": "admin/editor.store-image.title",
       "properties": {
+        "id": {
+          "title": "admin/editor.store-image.imageProtocolId.title",
+          "description": "admin/editor.store-image.imageProtocolId.description",
+          "$ref": "app:vtex.native-types#/definitions/text",
+          "default": ""
+        },
         "src": {
           "title": "admin/editor.image.src.title",
           "$ref": "app:vtex.native-types#/definitions/url",
@@ -111,6 +117,11 @@
               "ui:widget": "image-uploader"
             }
           },
+          "imageProtocolId": {
+            "$ref": "app:vtex.native-types#/definitions/text",
+            "default": "",
+            "title": "admin/editor.image-list.images.imageProtocolId.title"
+          },
           "mobileImage": {
             "$ref": "app:vtex.native-types#/definitions/url",
             "default": "",
@@ -164,6 +175,12 @@
               "ui:widget": "radio"
             },
             "default": "none"
+          },
+          "imageProtocolId": {
+            "$ref": "app:vtex.native-types#/definitions/text",
+            "default": "",
+            "title": "admin/editor.image-list.images.imageProtocolId.title",
+            "description": "admin/editor.image-list.images.imageProtocolId.description"
           }
         },
         "dependencies": {

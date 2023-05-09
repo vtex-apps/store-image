@@ -111,6 +111,68 @@ The block still does not have CSS handles for its specific customization.
 
 All CSS handles available for the Image block are available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://developers.vtex.com/docs/apps/vtex.slider-layout). Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. See more in [Slider Layout](https://developers.vtex.com/docs/apps/vtex.slider-layout).
 
+## Implementing Image Protocol
+
+The Image Protocol is an app that displays personalized images to use alongside the Store Image app in your store's images. Follow the steps below to implement the Image Protocol in your code.
+
+1. In your theme's `manifest.json`, add the Session Client app and also the Image Protocol app as a dependency:
+
+```json
+ "dependencies": {
+    "vtex.session-client": "1.x",
+    "vtex.image-protocol": "1.x"
+  }
+```
+
+The interface `ImageTypes.ts` is modified to have the isMobile and imageProtocolId props:
+
+```ts
+export interface ImageSchema {
+  isMobile?: boolean
+  imageProtocolId? : string
+  ...
+}
+```
+
+2. To personalize a specific image, the props defined in the interface must be exposed in the Image component as the example below:
+
+```tsx
+const{
+  isMobile=false,
+  imageProtocolId='',
+  ...
+}=props
+```
+
+> **NOTE**: The prop imageProtocolId can be modified from the Site Editor.
+
+To implement the URLs from the image protocol example we have created inside the `react/graphql` the `getImgUrl.gql` that will use the resolver in the `image-protocol` app.
+
+```graphql
+query getImage($userId: String!, $imageProtocolId: String!) {
+  getImage(userId: $userId, imageProtocolId: $imageProtocolId)
+    @context(provider: "vtex.image-protocol") {
+    url
+    urlMobile
+  }
+}
+```
+
+4. Get the user Id using the `useRenderSession` and the `SessionSuccess` from the `vtex.session-client `package in the `Image.tsx`. Also, to use the query created inside the GraphQL folder, import the query as well as the `useQuery`.
+
+```tsx
+import { useQuery } from 'react-apollo'
+import GET_IMAGE_PROTOCOL_IMAGES from './graphql/getImgUrl.gql'
+
+import { SessionSuccess, useRenderSession } from 'vtex.session-client'
+```
+
+> ⚠️
+>
+> As the Image component has the `imageProtocolId` prop if it has an Id, you can get the user Id and use the query defined in `getImgUrl.gql` that receives these two variables. If no user id or imageProtocolId is provided, skip this suggestion.
+
+We set the src for this imgElement depending on the response of the query and also if this is for mobile or not. Other image elements that don't have the image protocol Id or the result of the query has the URLs as null we then set the default URLs.
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

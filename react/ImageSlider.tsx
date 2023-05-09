@@ -35,7 +35,6 @@ function ImageSlider(props: ImageSliderProps) {
     },
     preload,
   } = props
-
   const { isMobile } = useDevice()
   const intl = useIntl()
 

@@ -65,6 +65,12 @@ const IMAGE_LIST_MESSAGES = defineMessages({
   analyticspromotionProductName: {
     id: 'admin/editor.image.analytics.promotionProductName',
   },
+  imagesImageProtocolId: {
+    id: 'admin/editor.image-list.images.imageProtocolId.title',
+  },
+  imagesImageProtocolIdDescription: {
+    id: 'admin/editor.image-list.images.imageProtocolId.description',
+  },
 })
 
 export const IMAGE_LIST_SCHEMA = {

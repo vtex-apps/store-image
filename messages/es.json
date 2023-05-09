@@ -11,6 +11,7 @@
   "admin/editor.image-list.description": "Mostrar una lista de imágenes",
   "admin/editor.image-list.images.title": "Imágenes",
   "admin/editor.image-list.images.image.title": "Imagen",
+  "admin/editor.image-list.images.imageProtocolId.title": "ID de protocolo de imagen",
   "admin/editor.image-list.images.mobileImage.title": "Imagen para móvil",
   "admin/editor.image-list.images.description.title": "Texto alternativo de la imagen",
   "admin/editor.image-list.images.title.title": "Título de la imagen",
@@ -35,5 +36,7 @@
   "admin/editor.image.analytics.promotionName": "Nombre de la promoción",
   "admin/editor.image.analytics.promotionPosition": "Posición creativa",
   "admin/editor.image.analytics.promotionProductId": "ID del producto",
-  "admin/editor.image.analytics.promotionProductName": "Nombre del producto"
+  "admin/editor.image.analytics.promotionProductName": "Nombre del producto",
+  "admin/editor.store-image.imageProtocolId.title": "Id del protocolo de imágen",
+  "admin/editor.store-image.imageProtocolId.description": "Utilizado para identificar el componente que mostrará el contenido personalizado."
 }

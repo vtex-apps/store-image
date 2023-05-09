@@ -1,0 +1,17 @@
+query getImage(
+  $imageProtocolId: String!
+  $userId: String
+  $latitude: Float
+  $longitude: Float
+) {
+  getImage(
+    userId: $userId
+    imageProtocolId: $imageProtocolId
+    latitude: $latitude
+    longitude: $longitude
+  ) @context(provider: "vtex.image-protocol") {
+    url
+    urlMobile
+    hrefImg
+  }
+}
