@@ -19,136 +19,135 @@ const CSS_HANDLES = ['imageElement', 'imageElementLink'] as const
 export interface ImageProps
   extends ImageSchema,
     ImgHTMLAttributes<HTMLImageElement> {
-      maxWidth?: string | number
-      maxHeight?: string | number
-      minWidth?: string | number
-      minHeight?: string | number
-      blockClass?: string
-      experimentalPreventLayoutShift?: boolean
-      experimentalSetExplicitDimensions?: boolean
-      classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
-      preload?: boolean
-      /**
-      * Warning: This property is for internal usage, please avoid using it.
-      * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
-      * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
-      */
-      // eslint-disable-next-line
-      __isDuplicated?: boolean
+  maxWidth?: string | number
+  maxHeight?: string | number
+  minWidth?: string | number
+  minHeight?: string | number
+  blockClass?: string
+  experimentalPreventLayoutShift?: boolean
+  experimentalSetExplicitDimensions?: boolean
+  classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
+  preload?: boolean
+  loading?: 'eager' | 'lazy'
+  /**
+   * Warning: This property is for internal usage, please avoid using it.
+   * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
+   * https://github.com/vtex-apps/slider-layout/blob/master/react/components/SliderTrack.tsx
+   */
+  // eslint-disable-next-line
+  __isDuplicated?: boolean
+}
+
+const useImageLoad = (
+  imageRef: RefObject<HTMLImageElement | null>,
+  { bailOut = false } = {}
+) => {
+  const [isLoaded, setLoaded] = useState(false)
+
+  useEffect(() => {
+    if (bailOut) {
+      return
     }
 
-    const useImageLoad = (
-      imageRef: RefObject<HTMLImageElement | null>,
-      { 
-        bailOut = false 
-      } = {}
-    ) => {
-      const [isLoaded, setLoaded] = useState(false)
+    const imageElement = imageRef.current
 
-      useEffect(() => {
-        if (bailOut) {
-          return
-        }
-
-        const imageElement = imageRef.current
-
-        if (!imageElement) {
-          return
-        }
-
-        if (imageElement.complete) {
-          setLoaded(true)
-          return
-        }
-
-        const handleLoad = () => {
-          setLoaded(true)
-        }
-    
-        imageElement.addEventListener('load', handleLoad)
-
-        return () => {
-          imageElement.removeEventListener('load', handleLoad)
-        }
-
-      }, [imageRef, bailOut])
-  
-      return isLoaded
+    if (!imageElement) {
+      return
     }
 
-    function Image(props: ImageProps) {
-      const {
-        isMobile = false,
-        imageProtocolId = '',
-        src,
-        alt = '',
-        maxWidth,
-        maxHeight,
-        minWidth,
-        minHeight,
-        width,
-        height,
-        srcSet = '',
-        sizes = '',
-        link,
-        title,
-        experimentalPreventLayoutShift,
-        experimentalSetExplicitDimensions,
-        analyticsProperties = 'none',
-        promotionId,
-        promotionName,
-        promotionPosition,
-        promotionProductId,
+    if (imageElement.complete) {
+      setLoaded(true)
+      return
+    }
+
+    const handleLoad = () => {
+      setLoaded(true)
+    }
+
+    imageElement.addEventListener('load', handleLoad)
+
+    return () => {
+      imageElement.removeEventListener('load', handleLoad)
+    }
+  }, [imageRef, bailOut])
+
+  return isLoaded
+}
+
+function Image(props: ImageProps) {
+  const {
+    isMobile = false,
+    imageProtocolId = '',
+    src,
+    alt = '',
+    maxWidth,
+    maxHeight,
+    minWidth,
+    minHeight,
+    width,
+    height,
+    srcSet = '',
+    sizes = '',
+    link,
+    title,
+    experimentalPreventLayoutShift,
+    experimentalSetExplicitDimensions,
+    analyticsProperties = 'none',
+    promotionId,
+    promotionName,
+    promotionPosition,
+    promotionProductId,
     promotionProductName,
     classes,
-        preload,
-        // eslint-disable-next-line
-        __isDuplicated,
+    preload,
+    loading = 'eager',
+    // eslint-disable-next-line
+    __isDuplicated,
+  } = props
 
-      } = props
+  const imageRef = useRef<HTMLImageElement | null>(null)
+  const isLoaded = useImageLoad(imageRef, {
+    bailOut: !experimentalPreventLayoutShift,
+  })
 
-      const imageRef = useRef<HTMLImageElement | null>(null)
-      const isLoaded = useImageLoad(imageRef, {
-        bailOut: !experimentalPreventLayoutShift,
-      })
+  const intl = useIntl()
+  const { handles } = useCssHandles(CSS_HANDLES, {
+    migrationFrom: 'vtex.store-components@3.x',
+    classes,
+  })
 
-      const intl = useIntl()
-      const { handles } = useCssHandles(CSS_HANDLES, {
-        migrationFrom: 'vtex.store-components@3.x',
-        classes,
-      })
+  const imageDimensions = {
+    minWidth,
+    minHeight,
+    maxWidth,
+    maxHeight,
+    width,
+    height,
+  }
 
-      const imageDimensions = {
-        minWidth,
-        minHeight,
-        maxWidth,
-        maxHeight,
-        width,
-        height,
-      }
+  const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
-      const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
-      const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
-      const heightWithoutUnits = height
-      ? height.toString().replace(/\D/g, '')
-      : null
+  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
+  const heightWithoutUnits = height
+    ? height.toString().replace(/\D/g, '')
+    : null
 
-      const explicitDimensionsAreAvailable =
-      !width?.toString().includes('%') &&
-      !height?.toString().includes('%') &&
-      (widthWithoutUnits || heightWithoutUnits)
+  const explicitDimensionsAreAvailable =
+    !width?.toString().includes('%') &&
+    !height?.toString().includes('%') &&
+    (widthWithoutUnits || heightWithoutUnits)
 
-      // Image Protocol Start
+  // Image Protocol Start
 
-      const { session } = useRenderSession()
-      const { latitude, longitude, error: positionError } = usePosition()
+  const { session } = useRenderSession()
+  const { latitude, longitude, error: positionError } = usePosition()
 
-      const [getPersonalizedImages, { data: imageData }] = useLazyQuery(
-        GET_IMAGE_PROTOCOL_QUERY,
-        {
-          ssr: false,
-        }
-        )
+  const [getPersonalizedImages, { data: imageData }] = useLazyQuery(
+    GET_IMAGE_PROTOCOL_QUERY,
+    {
+      ssr: false,
+    }
+  )
 
   useEffect(() => {
     if (session && imageProtocolId && positionError !== undefined) {
@@ -177,6 +176,12 @@ export interface ImageProps
           name: promotionName,
           creative: formattedSrc,
           position: promotionPosition,
+          products: [
+            {
+              productId: promotionProductId,
+              productName: promotionProductName,
+            },
+          ],
         }
       : undefined
 
@@ -184,9 +189,8 @@ export interface ImageProps
     imageData?.getImage &&
     imageData.getImage.url !== null &&
     imageData.getImage.urlMobile !== null
-    ) {
+  ) {
     const { urlMobile, url, hrefImg } = imageData.getImage
-
     if (isMobile) {
       formattedSrc = formatIOMessage({ id: urlMobile, intl })
     } else {
@@ -195,7 +199,6 @@ export interface ImageProps
 
     formattedAlt = formatIOMessage({ id: alt, intl })
     formattedLink = formatIOMessage({ id: hrefImg, intl })
-
     // Image Protocol END
 
     imgElement = (
@@ -208,13 +211,13 @@ export interface ImageProps
         style={imageDimensions}
         ref={imageRef}
         className={handles.imageElement}
+        loading={loading}
         {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
           ? {
               width: widthWithoutUnits ?? undefined,
               height: heightWithoutUnits ?? undefined,
             }
-          : {})
-        }
+          : {})}
         {...(preload
           ? {
               'data-vtex-preload': 'true',
@@ -244,7 +247,6 @@ export interface ImageProps
     ) : (
       <Fragment>{imgElement}</Fragment>
     )
-
   } else {
     formattedSrc = formatIOMessage({ id: src, intl })
     formattedAlt = formatIOMessage({ id: alt, intl })
@@ -259,13 +261,13 @@ export interface ImageProps
         style={imageDimensions}
         ref={imageRef}
         className={handles.imageElement}
+        loading={loading}
         {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
           ? {
-            width: widthWithoutUnits ?? undefined,
-            height: heightWithoutUnits ?? undefined,
-          }
-          : {})
-        }
+              width: widthWithoutUnits ?? undefined,
+              height: heightWithoutUnits ?? undefined,
+            }
+          : {})}
         {...(preload
           ? {
               'data-vtex-preload': 'true',
@@ -299,10 +301,9 @@ export interface ImageProps
     ) : (
       <Fragment>{imgElement}</Fragment>
     )
-
   }
 
-   /**
+  /**
    * To understand why we need to check for both newTab and openNewTab
    * properties, check the Image type definition at './typings/image.d.ts'.
    */
