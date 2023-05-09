@@ -35,5 +35,7 @@
   "admin/editor.image.analytics.promotionName": "Nombre de la promoción",
   "admin/editor.image.analytics.promotionPosition": "Posición creativa",
   "admin/editor.image.analytics.promotionProductId": "ID del producto",
-  "admin/editor.image.analytics.promotionProductName": "Nombre del producto"
+  "admin/editor.image.analytics.promotionProductName": "Nombre del producto",
+  "admin/editor.image.initialDate.titile": "Mostrar desde",
+  "admin/editor.image.endDate.titile": "Mostrar hasta"
 }

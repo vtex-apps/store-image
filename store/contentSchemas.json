@@ -38,6 +38,24 @@
           },
           "default": "eager"
         },
+        "initialDisplayDate": {
+          "title": "admin/editor.image.initialDate.titile",
+          "description": "none",
+          "type": "string",
+          "widget": {
+            "ui:widget": "date-time"
+          },
+          "default": "12/12/2020"
+        },
+        "endDisplayDate": {
+          "title": "admin/editor.image.endDate.titile",
+          "description": "none",
+          "type": "string",
+          "widget": {
+            "ui:widget": "date-time"
+          },
+          "default": "12/12/2100"
+        },
         "analyticsProperties": {
           "title": "admin/editor.image.analytics.title",
           "description": "admin/editor.image.analytics.description",
@@ -151,6 +169,24 @@
               "ui:widget": "radio"
             },
             "default": "eager"
+          },
+          "initialDisplayDate": {
+            "title": "admin/editor.image.initialDate.titile",
+            "description": "none",
+            "type": "string",
+            "widget": {
+              "ui:widget": "date-time"
+            },
+            "default": "12/12/2020"
+          },
+          "endDisplayDate": {
+            "title": "admin/editor.image.endDate.titile",
+            "description": "none",
+            "type": "string",
+            "widget": {
+              "ui:widget": "date-time"
+            },
+            "default": "12/12/2100"
           },
           "analyticsProperties": {
             "title": "admin/editor.image.analytics.title",

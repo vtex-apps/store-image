@@ -1,9 +1,9 @@
 {
-  "vendor": "vtex",
-  "name": "store-image",
+  "vendor": "facubarril",
+  "name": "vtex-store-image",
   "version": "0.20.0",
   "title": "VTEX Image",
-  "description": "Set of VTEX components to handle images",
+  "description": "Set of VTEX components to handle images with added date functionality",
   "builders": {
     "react": "3.x",
     "store": "0.x",
