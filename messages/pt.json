@@ -37,5 +37,7 @@
   "admin/editor.image.analytics.promotionProductId": "ID do produto",
   "admin/editor.image.analytics.promotionProductName": "Nome do produto",
   "admin/editor.image.initialDate.titile": "Mostrar despois",
-  "admin/editor.image.endDate.titile": "Mostrar antes"
+  "admin/editor.image.endDate.titile": "Mostrar antes",
+  "admin/editor.image.initialDate.description": "Indica a partir de qual data pode ser visualizada",
+  "admin/editor.image.endDate.description": "Indica até que data pode ser visualizada"
 }

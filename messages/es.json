@@ -37,5 +37,7 @@
   "admin/editor.image.analytics.promotionProductId": "ID del producto",
   "admin/editor.image.analytics.promotionProductName": "Nombre del producto",
   "admin/editor.image.initialDate.titile": "Mostrar desde",
-  "admin/editor.image.endDate.titile": "Mostrar hasta"
+  "admin/editor.image.endDate.titile": "Mostrar hasta",
+  "admin/editor.image.initialDate.description": "Indica desde que fecha se debe mostrar",
+  "admin/editor.image.endDate.description": "Indica hasta que fecha se debe mostrar"
 }

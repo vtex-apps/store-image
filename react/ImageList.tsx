@@ -26,8 +26,13 @@ function ImageList({
   const list = useListContext()?.list ?? []
   const { isMobile } = useDevice()
 
+  const imageFilter = () => images.filter(img => {
+    return new Date(`${img.initialDisplayDate}`) < new Date()
+        && new Date(`${img.endDisplayDate}`) > new Date()
+  })
+
   const imageListContent = getImagesAsJSXList(
-    images,
+    imageFilter(),
     isMobile,
     height,
     preload,

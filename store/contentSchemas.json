@@ -26,6 +26,24 @@
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": ""
         },
+        "initialDisplayDate": {
+          "title": "admin/editor.image.initialDate.titile",
+          "description": "admin/editor.image.initialDate.description",
+          "type": "string",
+          "widget": {
+            "ui:widget": "date-time"
+          },
+          "default": "12/12/2020"
+        },
+        "endDisplayDate": {
+          "title": "admin/editor.image.endDate.titile",
+          "description": "admin/editor.image.endDate.description",
+          "type": "string",
+          "widget": {
+            "ui:widget": "date-time"
+          },
+          "default": "12/12/2200"
+        },
         "loading": {
           "title": "admin/editor.store-image.loading.title",
           "enum": ["eager", "lazy"],
@@ -37,24 +55,6 @@
             "ui:widget": "radio"
           },
           "default": "eager"
-        },
-        "initialDisplayDate": {
-          "title": "admin/editor.image.initialDate.titile",
-          "description": "none",
-          "type": "string",
-          "widget": {
-            "ui:widget": "date-time"
-          },
-          "default": "12/12/2020"
-        },
-        "endDisplayDate": {
-          "title": "admin/editor.image.endDate.titile",
-          "description": "none",
-          "type": "string",
-          "widget": {
-            "ui:widget": "date-time"
-          },
-          "default": "12/12/2100"
         },
         "analyticsProperties": {
           "title": "admin/editor.image.analytics.title",
@@ -158,18 +158,6 @@
             "$ref": "app:vtex.native-types#/definitions/text",
             "default": "100%"
           },
-          "loading": {
-            "title": "admin/editor.store-image.loading.title",
-            "enum": ["eager", "lazy"],
-            "enumNames": [
-              "admin/editor.store-image.loading.eager",
-              "admin/editor.store-image.loading.lazy"
-            ],
-            "widget": {
-              "ui:widget": "radio"
-            },
-            "default": "eager"
-          },
           "initialDisplayDate": {
             "title": "admin/editor.image.initialDate.titile",
             "description": "none",
@@ -187,6 +175,18 @@
               "ui:widget": "date-time"
             },
             "default": "12/12/2100"
+          },
+          "loading": {
+            "title": "admin/editor.store-image.loading.title",
+            "enum": ["eager", "lazy"],
+            "enumNames": [
+              "admin/editor.store-image.loading.eager",
+              "admin/editor.store-image.loading.lazy"
+            ],
+            "widget": {
+              "ui:widget": "radio"
+            },
+            "default": "eager"
           },
           "analyticsProperties": {
             "title": "admin/editor.image.analytics.title",
