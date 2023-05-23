@@ -5,6 +5,9 @@
   "admin/editor.store-image.alt.title": "대체 텍스트",
   "admin/editor.store-image.title.title": "이미지 제목",
   "admin/editor.store-image.title.description": "가리키면 표시할 제목",
+  "admin/editor.store-image.loading.title": "로드 전략",
+  "admin/editor.store-image.loading.eager": "페이지 로드 시",
+  "admin/editor.store-image.loading.lazy": "뷰포트에 가까워질시",
   "admin/editor.image-list.title": "이미지 목록",
   "admin/editor.image-list.description": "이미지 목록 표시",
   "admin/editor.image-list.images.title": "이미지",
@@ -31,5 +34,7 @@
   "admin/editor.image.analytics.provide": "예",
   "admin/editor.image.analytics.promotionId": "프로모션 ID",
   "admin/editor.image.analytics.promotionName": "프로모션 이름",
-  "admin/editor.image.analytics.promotionPosition": "창의적 위치"
+  "admin/editor.image.analytics.promotionPosition": "창의적 위치",
+  "admin/editor.image.analytics.promotionProductId": "제품 ID",
+  "admin/editor.image.analytics.promotionProductName": "제품 이름"
 }

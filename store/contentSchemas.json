@@ -34,6 +34,18 @@
           "$ref": "app:vtex.native-types#/definitions/text",
           "default": ""
         },
+        "loading": {
+          "title": "admin/editor.store-image.loading.title",
+          "enum": ["eager", "lazy"],
+          "enumNames": [
+            "admin/editor.store-image.loading.eager",
+            "admin/editor.store-image.loading.lazy"
+          ],
+          "widget": {
+            "ui:widget": "radio"
+          },
+          "default": "eager"
+        },
         "analyticsProperties": {
           "title": "admin/editor.image.analytics.title",
           "description": "admin/editor.image.analytics.description",
@@ -73,6 +85,16 @@
                 },
                 "promotionPosition": {
                   "title": "admin/editor.image.analytics.promotionPosition",
+                  "type": "string",
+                  "default": ""
+                },
+                "promotionProductId": {
+                  "title": "admin/editor.image.analytics.promotionProductId",
+                  "type": "string",
+                  "default": ""
+                },
+                "promotionProductName": {
+                  "title": "admin/editor.image.analytics.promotionProductName",
                   "type": "string",
                   "default": ""
                 }
@@ -133,6 +155,18 @@
             "$ref": "app:vtex.native-types#/definitions/text",
             "default": "100%"
           },
+          "loading": {
+            "title": "admin/editor.store-image.loading.title",
+            "enum": ["eager", "lazy"],
+            "enumNames": [
+              "admin/editor.store-image.loading.eager",
+              "admin/editor.store-image.loading.lazy"
+            ],
+            "widget": {
+              "ui:widget": "radio"
+            },
+            "default": "eager"
+          },
           "analyticsProperties": {
             "title": "admin/editor.image.analytics.title",
             "description": "admin/editor.image.analytics.description",
@@ -172,6 +206,16 @@
                   },
                   "promotionPosition": {
                     "title": "admin/editor.image.analytics.promotionPosition",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "promotionProductId": {
+                    "title": "admin/editor.image.analytics.promotionProductId",
+                    "type": "string",
+                    "default": ""
+                  },
+                  "promotionProductName": {
+                    "title": "admin/editor.image.analytics.promotionProductName",
                     "type": "string",
                     "default": ""
                   }

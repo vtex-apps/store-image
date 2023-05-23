@@ -7,6 +7,38 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.20.0] - 2023-05-05
+
+### Fixed
+- Bulgarian, German, English, Spanish, Korean, Portuguese and Romanian translations.
+
+### Removed
+- Pseudolanguage translation.
+
+### Added
+- Thai translation.
+
+## [0.19.1] - 2023-05-02
+### Fixed
+- Fixes of i18n on readme.md according to task LOC-10606.
+
+## [0.19.0] - 2023-05-02
+
+### Added
+
+- `promotionProductId` and `promotionProductName` props for `Image` and `ImageList` to be used by promotion analytics events. GA4's [view_promotion](https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtag#view_promotion) event now requires the product's ID or name.
+
+## [0.18.0] - 2023-04-25
+
+### Added
+
+- `loading` prop for `Image` to allow lazy loading.
+
+## [0.17.0] - 2023-03-28
+
+### Added
+- German translation.
+
 ## [0.16.0] - 2023-02-13
 
 ### Added
@@ -98,7 +130,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `list-context.image-list` has been refactored to use the `image-list` with a `list-context`
 
 ### Added
-- `image-list` a new block that renders a simple list of images that can be editable via the Site Editor 
+- `image-list` a new block that renders a simple list of images that can be editable via the Site Editor
 
 ## [0.5.3] - 2020-10-07
 ### Removed
@@ -144,7 +176,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.4.2] - 2020-04-14
 
 ### Fixed
-- README.md documentation 
+- README.md documentation
 
 ## [0.4.1] - 2020-03-04
 ### Fixed
