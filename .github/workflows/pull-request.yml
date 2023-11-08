@@ -3,6 +3,9 @@ name: PR actions
   pull_request:
     branches:
       - master
+
+permissions: write-all
+
 jobs:
   danger-ci:
     name: Danger CI
