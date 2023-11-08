@@ -3,7 +3,7 @@
   "name": "store-image",
   "version": "0.20.0",
   "title": "VTEX Image",
-  "description": "Set of VTEX components to handle images",
+  "description": "Set of VTEX components to handle image",
   "builders": {
     "react": "3.x",
     "store": "0.x",
