@@ -5,6 +5,7 @@ name: PR actions
       - master
 jobs:
   danger-ci:
+    permissions: write-all
     name: Danger CI
     runs-on: ubuntu-latest
     steps:
