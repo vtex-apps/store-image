@@ -38,6 +38,19 @@
           },
           "default": "eager"
         },
+        "fetchpriority": {
+          "title": "admin/editor.store-image.fetchpriority.title",
+          "enum": ["high", "low", "auto"],
+          "enumNames": [
+            "admin/editor.store-image.fetchpriority.high",
+            "admin/editor.store-image.fetchpriority.low",
+            "admin/editor.store-image.fetchpriority.auto"
+          ],
+          "widget": {
+            "ui:widget": "radio"
+          },
+          "default": "auto"
+        },
         "analyticsProperties": {
           "title": "admin/editor.image.analytics.title",
           "description": "admin/editor.image.analytics.description",
