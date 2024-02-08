@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "Изображение",
   "admin/editor.store-image.src.title": "Изображение",
+  "admin/editor.store-image.mobileSrc.title": "Изображение за мобилно устройство",
   "admin/editor.store-image.alt.title": "Алтернативен текст",
   "admin/editor.store-image.title.title": "Заглавие на изображението",
   "admin/editor.store-image.title.description": "Заглавието се показва при задържане на мишката",

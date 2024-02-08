@@ -6,6 +6,7 @@ export { ImageProps, ImageListProps, ImageSliderProps }
 
 export interface ImageSchema {
   src?: string
+  mobileSrc?: string
   link?: Link
   alt?: string
   title?: string

@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "Imagine",
   "admin/editor.store-image.src.title": "Imagine",
+  "admin/editor.store-image.mobileSrc.title": "Imagini pentru mobil",
   "admin/editor.store-image.alt.title": "Text alternativ",
   "admin/editor.store-image.title.title": "Titlu imagine",
   "admin/editor.store-image.title.description": "Titlul va fi afișat prin trecere",

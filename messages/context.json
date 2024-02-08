@@ -1,6 +1,7 @@
 {
   "admin/editor.store-image.title": "Image",
   "admin/editor.store-image.src.title": "Image",
+  "admin/editor.store-image.mobileSrc.title": "Image for mobile",
   "admin/editor.store-image.alt.title": "Alternative text",
   "admin/editor.store-image.title.title": "Image title",
   "admin/editor.store-image.title.description": "Title to be shown on hover",

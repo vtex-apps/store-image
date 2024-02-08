@@ -7,6 +7,7 @@ import { useIntl, defineMessages } from 'react-intl'
 import { formatIOMessage } from 'vtex.native-types'
 import { Link } from 'vtex.render-runtime'
 import { usePixel } from 'vtex.pixel-manager'
+import { useDevice } from 'vtex.device-detector'
 
 import type { ImageSchema } from './ImageTypes'
 
@@ -74,6 +75,7 @@ const useImageLoad = (
 function Image(props: ImageProps) {
   const {
     src,
+    mobileSrc,
     alt = '',
     maxWidth,
     maxHeight,
@@ -133,7 +135,10 @@ function Image(props: ImageProps) {
     !height?.toString().includes('%') &&
     (widthWithoutUnits || heightWithoutUnits)
 
-  const formattedSrc = formatIOMessage({ id: src, intl })
+  const { isMobile } = useDevice()
+  const responsiveSrc = isMobile && mobileSrc ? mobileSrc : src
+
+  const formattedSrc = formatIOMessage({ id: responsiveSrc, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
 
   const imgElement = (
