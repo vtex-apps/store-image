@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- height field in the site editor
+
 ## [0.21.0] - 2023-11-13
 
 ### Added

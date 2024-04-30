@@ -25,7 +25,9 @@ export interface ImageProps
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   loading?: 'eager' | 'lazy'
-  fetchpriority?: 'high' | 'low' | 'auto' 
+  fetchpriority?: 'high' | 'low' | 'auto'
+  width?: string | number
+  height?: string | number
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -129,7 +131,7 @@ function Image(props: ImageProps) {
     : null
 
   const explicitDimensionsAreAvailable =
-    !width?.toString().includes('%') &&
+    width?.toString() &&
     !height?.toString().includes('%') &&
     (widthWithoutUnits || heightWithoutUnits)
 
