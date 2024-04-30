@@ -12,8 +12,6 @@ export const getImagesAsJSXList = (
   experimentalSetExplicitDimensions?: boolean
 ) => {
 
-  console.log(images)
-
   return images.map(
     (
       {
