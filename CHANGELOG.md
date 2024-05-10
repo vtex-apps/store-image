@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - height field in the site editor
 
+
+### Fixed
+
+- Bulgarian, German, English, Spanish, French, Italian, Japanese, Korean, Dutch, Portuguese, Romanian and Thai translations
+
 ## [0.21.0] - 2023-11-13
 
 ### Added
