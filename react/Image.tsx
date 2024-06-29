@@ -149,7 +149,6 @@ function Image(props: ImageProps) {
       ref={imageRef}
       className={handles.imageElement}
       loading={loading}
-      fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
             width: widthWithoutUnits ?? undefined,
@@ -196,6 +195,7 @@ function Image(props: ImageProps) {
     // knowing this, it seems good to disable the anchor-is-valid rule.
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <Link
+      fetchpriority={fetchpriority}
       to={typeof formattedLink === 'string' ? formattedLink : ''}
       title={typeof formattedTitle === 'string' ? formattedTitle : ''}
       rel={link.attributeNofollow ? 'nofollow' : ''}
