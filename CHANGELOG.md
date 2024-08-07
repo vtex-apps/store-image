@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.22.1] - 2024-08-07
+
 ### Fixed
 
 - Adds the height prop to the image but without adding the maxHeight as default value
