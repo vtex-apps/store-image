@@ -76,7 +76,7 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 | --------- | -------- | --------------------------------------------------------------------- | ------------- |
 | `images`  | `array`  | Array of objects declaring all the images to be rendered.             | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object (in `px`). | `undefined`   |
-| `experimentalPreventLayoutShift` | `boolean` | Wraps the image in a `<span>` with a pre-set `width` and/or `height` to minimize layout shift while loading. |
+| `experimentalPreventLayoutShift` | `boolean` | Wraps the image in a `<span>` tag with a pre-set `width` and/or `height` to minimize layout shift during page loading. |
 
 - **`images` array:**
 
