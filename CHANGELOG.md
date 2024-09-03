@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- `experimentalPreventLayoutShift` was added as an `image-list` prop within the `store-image` component.
+
 ## [0.22.1] - 2024-08-07
 
 ### Fixed
