@@ -12,7 +12,7 @@ The Store Image app exports the `list-context.image-list` block, which is respon
 
 ![store-image](https://cdn.jsdelivr.net/gh/vtexdocs/dev-portal-content@main/images/vtex-store-image-0.png)
 
-## Configurating the store image
+## Configuring the store image
 
 1. Add the `store-image` app to your theme dependencies in the `manifest.json`. For example:
 
@@ -22,9 +22,9 @@ The Store Image app exports the `list-context.image-list` block, which is respon
  }
 ```
 
-You can now use the `list-context.image-list` block exported by the Store Image app. The block allows you to display images in your store with more composability since you can use it along with other `list-context` blocks to create a more flexible and customizable image slider.
+You can now use the `list-context.image-list` block exported by the Store Image app. This block allows you to display images in your store with more composability since you can use it along with other `list-context` blocks to create a more flexible and customizable image slider.
 
-2. In any desired theme template, add the `list-context.image-list` block, declaring the `slider-layout` a child block. For example:
+2. In any desired theme template, add the `list-context.image-list` block, declaring the `slider-layout` as a child block. For example:
 
 ```json
   "list-context.image-list#demo": {
@@ -65,7 +65,7 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 
 | Prop name | Type      | Description                                                                           | Default value |
 | --------- | --------- | ------------------------------------------------------------------------------------- | ------------- |
-| `images`  | `array`   | Array of objects declaring all the images to be rendered.                             | `undefined`   |
+| `images`  | `array`   | Array of objects that declares all the images to be rendered.                             | `undefined`   |
 | `height`  | `number`  | Image height for all images declared in the `image` object (in `px`).                 | `undefined`   |
 | `preload` | `boolean` | Preloads the first image in a list, prioritizing the image display over other assets. | `false`       |
 | `experimentalSetExplicitDimensions` | `boolean` | Sets explicit `width` and/or `height` attributes for an image, if `width` and/or `height` props are provided in `px`. |
@@ -74,9 +74,9 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 
 | Prop name | Type     | Description                                                           | Default value |
 | --------- | -------- | --------------------------------------------------------------------- | ------------- |
-| `images`  | `array`  | Array of objects declaring all the images to be rendered.             | `undefined`   |
+| `images`  | `array`  | Array of objects that declares all the images to be rendered.             | `undefined`   |
 | `height`  | `number` | Image height for all images declared in the `image` object (in `px`). | `undefined`   |
-| `experimentalPreventLayoutShift` | `boolean` | Wraps the image in a `<span>` tag with a pre-set `width` and/or `height` to minimize layout shift during page loading. |
+| `experimentalPreventLayoutShift` | `boolean` | Wraps the image in a `<span>` tag with a preset `width` and/or `height` to minimize layout shift during page loading. |
 
 - **`images` array:**
 
@@ -85,11 +85,11 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 | `image`                | `string`            | Image URL.                                                                                         | `undefined`   |
 | `mobileImage`          | `string`            | Mobile image URL.                                                                                  | `undefined`   |
 | `description`          | `string`            | Image description.                                                                                 | `undefined`   |
-| `link`                 | `object`            | Links an URL to the image being rendered.                                                          | `undefined`   |
+| `link`                 | `object`            | Links a URL to the image being rendered.                                                          | `undefined`   |
 | `width`                | `string` / `number` | Image width (in `%` or `px`).                                                                      | `100%`        |
-| `loading`              | `string`            | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`) | `'eager'`     |
-| `fetchpriority`        | `string`            | The fetch priority hint (`'high'`, `'low'` or `'auto'`)                                            | `'auto'`      |
-| `analyticsProperties`  | `string`            | Whether analytics props should be set (`'provided'`) or not (`'none'`)                             | `'none'`      |
+| `loading`              | `string`            | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`). | `'eager'`     |
+| `fetchpriority`        | `string`            | The fetch priority hint (`'high'`, `'low'`, or `'auto'`).                                            | `'auto'`      |
+| `analyticsProperties`  | `string`            | Whether analytics props should be set (`'provided'`) or not (`'none'`).                             | `'none'`      |
 | `promotionId`          | `string`            | The ID of the promotion associated with the event.                                                 | `undefined`   |
 | `promotionName`        | `string`            | The name of the promotion associated with the event.                                               | `undefined`   |
 | `promotionPosition`    | `string`            | The name of the promotional creative slot associated with the event.                               | `undefined`   |
@@ -100,8 +100,8 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 
 | Prop name    | Type      | Description                                                                                                                                                      | Default value |
 | ------------ | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `url`        | `string`  | URL users will be redirected when clicking the image.                                                                                                            | `undefined`   |
-| `noFollow`   | `boolean` | Whether the page owner endorses the linked URL the user was navigating on, i.e., if there is a commercial relationship between both pages (`true`) or (`false`). | `false`       |
+| `url`        | `string`  | URL users will be redirected to when they click the image.                                                                                                            | `undefined`   |
+| `noFollow`   | `boolean` | Whether the page owner endorses the linked URL the user was navigating on, i.e., if there is a business relationship between both pages (`true`) or (`false`). | `false`       |
 | `openNewTab` | `string`  | Whether a new tab will be opened on the browser (`true`) or (`false`).                                                                                           | `undefined`   |
 | `title`      | `string`  | Text label used to identify the image in the Admin Site Editor.                                                                                                  | `undefined`   |
 
@@ -109,9 +109,9 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 
 ## Customization
 
-The block still does not have CSS handles for its specific customization.
+The block does not have CSS handles for specific customization.
 
-All CSS handles available for the Image block are available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://developers.vtex.com/docs/apps/vtex.slider-layout). Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. See more in [Slider Layout](https://developers.vtex.com/docs/apps/vtex.slider-layout).
+All CSS handles available for the Image block are available for the `slider-layout` block. Take a look at the Customization section in the [**Slider Layout documentation**](https://developers.vtex.com/docs/apps/vtex.slider-layout). Note that the `image-slider` uses our `vtex.slider-layout` app, so all the CSS namespaces defined by it are also available for `image-slider`. Learn more in [Slider Layout](https://developers.vtex.com/docs/apps/vtex.slider-layout).
 
 ## Contributors ✨
 
@@ -125,4 +125,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind are welcome!
