@@ -7,9 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### Yanked
+### Removed
 
-- Remove v0.22.1 and v0.22.0
+- v0.22.1 and v0.22.0
 
 ## [0.22.2] - 2024-09-03
 
