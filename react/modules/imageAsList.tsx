@@ -11,7 +11,6 @@ export const getImagesAsJSXList = (
   experimentalPreventLayoutShift?: boolean,
   experimentalSetExplicitDimensions?: boolean
 ) => {
-
   return images.map(
     (
       {
@@ -21,7 +20,6 @@ export const getImagesAsJSXList = (
         experimentalPreventLayoutShift: experimentalPreventLayoutShiftChild,
         experimentalSetExplicitDimensions: experimentalSetExplicitDimensionsChild,
         width = '100%',
-        height: _height,
         ...props
       },
       idx
@@ -32,7 +30,6 @@ export const getImagesAsJSXList = (
         alt={description}
         maxHeight={height}
         width={width}
-        height={_height ?? height}
         experimentalPreventLayoutShift={
           experimentalPreventLayoutShift ?? experimentalPreventLayoutShiftChild
         }

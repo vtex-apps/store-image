@@ -153,12 +153,6 @@
             "$ref": "app:vtex.native-types#/definitions/text",
             "default": "100%"
           },
-          "height": {
-            "title": "admin/editor.image-list.images.height.title",
-            "description": "admin/editor.image-list.images.height.description",
-            "$ref": "app:vtex.native-types#/definitions/text",
-            "default": ""
-          },
           "loading": {
             "title": "admin/editor.store-image.loading.title",
             "enum": ["eager", "lazy"],
