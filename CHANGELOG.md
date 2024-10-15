@@ -7,9 +7,34 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.22.3] - 2024-09-04
+
+### Removed
+
+- v0.22.1 and v0.22.0
+
+## [0.22.2] - 2024-09-03
+
+### Added
+
+- `experimentalPreventLayoutShift` was added as an `image-list` prop within the `store-image` component.
+
+## [0.22.1] - 2024-08-07
+
+### Fixed
+
+- Adds the height prop to the image but without adding the maxHeight as default value
+
+## [0.22.0] - 2024-06-25
+
 ### Added
 
 - height field in the site editor
+
+
+### Fixed
+
+- Bulgarian, German, English, Spanish, French, Italian, Japanese, Korean, Dutch, Portuguese, Romanian and Thai translations
 
 ## [0.21.0] - 2023-11-13
 
