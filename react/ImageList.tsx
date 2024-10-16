@@ -17,7 +17,7 @@ export interface ImageListProps {
 
 function ImageList({
   images,
-  height = 420,
+  height = "auto",
   children,
   preload,
   experimentalPreventLayoutShift,
