@@ -76,7 +76,7 @@ export const IMAGE_LIST_SCHEMA = {
       default: 420,
       isLayout: false,
       title: IMAGE_LIST_MESSAGES.heightTitle.id,
-      type: 'number',
+      type: 'string',
     },
   },
 }

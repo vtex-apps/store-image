@@ -120,12 +120,11 @@ function Image(props: ImageProps) {
     maxWidth,
     maxHeight,
     width,
-    height,
   }
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
-  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
+  const widthWithoutUnits = width ? (width.toString().includes('%') ? width : width.toString().replace(/\D/g, '')) : null
   const heightWithoutUnits = height
     ? height.toString().replace(/\D/g, '')
     : null
@@ -145,17 +144,18 @@ function Image(props: ImageProps) {
       srcSet={srcSet}
       src={typeof formattedSrc === 'string' ? formattedSrc : ''}
       alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
-      style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
       loading={loading}
       fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
-            width: widthWithoutUnits ?? undefined,
-            height: heightWithoutUnits ?? undefined,
+            width: widthWithoutUnits || imageDimensions.width || undefined,
+            height: heightWithoutUnits || height || undefined,
           }
-        : {})}
+        : {
+          style: imageDimensions
+        })}
       {...(preload
         ? {
             'data-vtex-preload': 'true',
