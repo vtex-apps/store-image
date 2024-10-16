@@ -9,7 +9,7 @@ import type { ImagesSchema } from './ImageTypes'
 
 export interface ImageListProps {
   images: ImagesSchema
-  height?: number
+  height?: string
   preload?: boolean
   experimentalPreventLayoutShift?: boolean
   experimentalSetExplicitDimensions?: boolean
@@ -17,7 +17,7 @@ export interface ImageListProps {
 
 function ImageList({
   images,
-  height = 420,
+  height = "auto",
   children,
   preload,
   experimentalPreventLayoutShift,

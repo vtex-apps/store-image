@@ -25,7 +25,9 @@ export interface ImageProps
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   loading?: 'eager' | 'lazy'
-  fetchpriority?: 'high' | 'low' | 'auto' 
+  fetchpriority?: 'high' | 'low' | 'auto'
+  width?: string | number
+  height?: string | number
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -118,18 +120,17 @@ function Image(props: ImageProps) {
     maxWidth,
     maxHeight,
     width,
-    height,
   }
 
   const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
 
-  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
+  const widthWithoutUnits = width ? (width.toString().includes('%') ? width : width.toString().replace(/\D/g, '')) : null
   const heightWithoutUnits = height
     ? height.toString().replace(/\D/g, '')
     : null
 
   const explicitDimensionsAreAvailable =
-    !width?.toString().includes('%') &&
+    width?.toString() &&
     !height?.toString().includes('%') &&
     (widthWithoutUnits || heightWithoutUnits)
 
@@ -143,17 +144,18 @@ function Image(props: ImageProps) {
       srcSet={srcSet}
       src={typeof formattedSrc === 'string' ? formattedSrc : ''}
       alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
-      style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
       loading={loading}
       fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
-            width: widthWithoutUnits ?? undefined,
-            height: heightWithoutUnits ?? undefined,
+            width: widthWithoutUnits || imageDimensions.width || undefined,
+            height: heightWithoutUnits || height || undefined,
           }
-        : {})}
+        : {
+          style: imageDimensions
+        })}
       {...(preload
         ? {
             'data-vtex-preload': 'true',
