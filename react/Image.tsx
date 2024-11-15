@@ -25,6 +25,7 @@ export interface ImageProps
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   loading?: 'eager' | 'lazy'
+  fetchpriority?: 'high' | 'low' | 'auto' 
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -95,6 +96,7 @@ function Image(props: ImageProps) {
     classes,
     preload,
     loading = 'eager',
+    fetchpriority = 'auto',
     // eslint-disable-next-line
     __isDuplicated,
   } = props
@@ -145,6 +147,7 @@ function Image(props: ImageProps) {
       ref={imageRef}
       className={handles.imageElement}
       loading={loading}
+      fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
             width: widthWithoutUnits ?? undefined,

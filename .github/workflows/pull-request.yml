@@ -3,6 +3,9 @@ name: PR actions
   pull_request:
     branches:
       - master
+
+permissions: write-all
+
 jobs:
   danger-ci:
     name: Danger CI
@@ -17,7 +20,7 @@ jobs:
       - name: Danger CI
         uses: vtex/danger@master
         env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REQUIRE_CHANGELOG_VERSION: false
   io-app-test:
     name: IO app test
