@@ -12,15 +12,15 @@
     "@types/react": "^16.9.34",
     "@vtex/test-tools": "^3.1.0",
     "typescript": "3.9.7",
-    "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.0/public/@types/vtex.css-handles",
+    "vtex.css-handles": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.css-handles@1.0.1/public/@types/vtex.css-handles",
     "vtex.device-detector": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.device-detector@0.2.6/public/@types/vtex.device-detector",
     "vtex.list-context": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.list-context@0.2.0/public/@types/vtex.list-context",
-    "vtex.native-types": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.native-types@0.7.5/public/@types/vtex.native-types",
+    "vtex.native-types": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.native-types@0.10.1/public/@types/vtex.native-types",
     "vtex.on-view": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.on-view@1.0.0/public/@types/vtex.on-view",
-    "vtex.pixel-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.8.0/public/@types/vtex.pixel-manager",
-    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.132.3/public/@types/vtex.render-runtime",
-    "vtex.slider-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.22.0/public/@types/vtex.slider-layout",
-    "vtex.store-image": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-image@0.14.1/public/@types/vtex.store-image"
+    "vtex.pixel-manager": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.pixel-manager@1.9.0/public/@types/vtex.pixel-manager",
+    "vtex.render-runtime": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.render-runtime@8.135.1/public/@types/vtex.render-runtime",
+    "vtex.slider-layout": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.slider-layout@0.24.6/public/@types/vtex.slider-layout",
+    "vtex.store-image": "http://vtex.vtexassets.com/_v/public/typings/v1/vtex.store-image@0.22.3/public/@types/vtex.store-image"
   },
   "version": "0.22.3"
 }

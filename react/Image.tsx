@@ -28,6 +28,7 @@ export interface ImageProps
   fetchpriority?: 'high' | 'low' | 'auto'
   width?: string | number
   height?: string | number
+  explicitHeight?: string | number
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -82,7 +83,8 @@ function Image(props: ImageProps) {
     minWidth,
     minHeight,
     width,
-    height,
+    height: genericHeight,
+    explicitHeight,
     srcSet = '',
     sizes = '',
     link,
@@ -114,25 +116,32 @@ function Image(props: ImageProps) {
     classes,
   })
 
-  const imageDimensions = {
+  const imageDimensionsWithoutExplicitDimensions = {
     minWidth,
     minHeight,
     maxWidth,
     maxHeight,
+  }
+
+  const imageDimensionsWithExplicitDimensions = {
+    ...imageDimensionsWithoutExplicitDimensions,
+    genericHeight,
     width,
   }
 
-  const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
+  const placeholderSize =
+    genericHeight ?? explicitHeight ?? minHeight ?? maxHeight ?? 'auto'
 
-  const widthWithoutUnits = width ? (width.toString().includes('%') ? width : width.toString().replace(/\D/g, '')) : null
-  const heightWithoutUnits = height
-    ? height.toString().replace(/\D/g, '')
-    : null
+  const widthWithoutUnits = width?.toString().replace(/\D/g, '')
+
+  const heightWithoutUnits = genericHeight
+    ? genericHeight.toString().replace(/\D/g, '')
+    : explicitHeight ?? maxHeight
 
   const explicitDimensionsAreAvailable =
-    width?.toString() &&
-    !height?.toString().includes('%') &&
-    (widthWithoutUnits || heightWithoutUnits)
+    !!width &&
+    !width?.toString().includes('%') &&
+    (!!explicitHeight || !genericHeight?.toString().includes('%'))
 
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
@@ -150,12 +159,12 @@ function Image(props: ImageProps) {
       fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
-            width: widthWithoutUnits || imageDimensions.width || undefined,
-            height: heightWithoutUnits || height || undefined,
+            width:
+              widthWithoutUnits !== '' ? widthWithoutUnits : width ?? 'auto',
+            height: heightWithoutUnits,
+            style: imageDimensionsWithoutExplicitDimensions,
           }
-        : {
-          style: imageDimensions
-        })}
+        : { style: imageDimensionsWithExplicitDimensions })}
       {...(preload
         ? {
             'data-vtex-preload': 'true',
