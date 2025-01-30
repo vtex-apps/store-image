@@ -28,7 +28,7 @@ export interface ImageProps
   fetchpriority?: 'high' | 'low' | 'auto'
   width?: string | number
   height?: string | number
-  explicitHeight?: string | number
+  specificHeight?: string | number
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -84,7 +84,7 @@ function Image(props: ImageProps) {
     minHeight,
     width,
     height: genericHeight,
-    explicitHeight,
+    specificHeight,
     srcSet = '',
     sizes = '',
     link,
@@ -130,18 +130,32 @@ function Image(props: ImageProps) {
   }
 
   const placeholderSize =
-    genericHeight ?? explicitHeight ?? minHeight ?? maxHeight ?? 'auto'
+    genericHeight ?? specificHeight ?? minHeight ?? maxHeight ?? 'auto'
 
-  const widthWithoutUnits = width?.toString().replace(/\D/g, '')
+  const allowedExplicitDimensionsRegex = /(auto|inherit|initial|unset)|[^\d]/g
 
-  const heightWithoutUnits = genericHeight
-    ? genericHeight.toString().replace(/\D/g, '')
-    : explicitHeight ?? maxHeight
+  const explicitDimensions = (dimension: string | number | undefined) =>
+    dimension !== '' && dimension
+      ? dimension.toString().replace(allowedExplicitDimensionsRegex, '$1')
+      : null
+
+  const widthWithoutUnits = explicitDimensions(width)
+
+  const heightWithoutUnits =
+    explicitDimensions(specificHeight) ??
+    explicitDimensions(maxHeight) ??
+    explicitDimensions(genericHeight)
+
+  const hasPercentage = (dimension: string | number | undefined) =>
+    dimension?.toString().includes('%')
 
   const explicitDimensionsAreAvailable =
     !!width &&
-    !width?.toString().includes('%') &&
-    (!!explicitHeight || !genericHeight?.toString().includes('%'))
+    (!!specificHeight || !!maxHeight || !!genericHeight) &&
+    !hasPercentage(width) &&
+    (!hasPercentage(specificHeight) ||
+      !hasPercentage(maxHeight) ||
+      !hasPercentage(genericHeight))
 
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
@@ -159,9 +173,8 @@ function Image(props: ImageProps) {
       fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
-            width:
-              widthWithoutUnits !== '' ? widthWithoutUnits : width ?? 'auto',
-            height: heightWithoutUnits,
+            width: widthWithoutUnits ?? width ?? 'auto',
+            height: heightWithoutUnits ?? 'auto',
             style: imageDimensionsWithoutExplicitDimensions,
           }
         : { style: imageDimensionsWithExplicitDimensions })}

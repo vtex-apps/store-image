@@ -21,7 +21,7 @@ export const getImagesAsJSXList = (
         experimentalPreventLayoutShift: experimentalPreventLayoutShiftChild,
         experimentalSetExplicitDimensions: experimentalSetExplicitDimensionsChild,
         width = '100%',
-        height: explicitHeight,
+        height: specificHeight,
         ...props
       },
       idx
@@ -32,7 +32,7 @@ export const getImagesAsJSXList = (
         alt={description}
         maxHeight={height}
         width={width}
-        explicitHeight={explicitHeight}
+        specificHeight={specificHeight}
         experimentalPreventLayoutShift={
           experimentalPreventLayoutShift ?? experimentalPreventLayoutShiftChild
         }

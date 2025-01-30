@@ -87,7 +87,6 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 | `description`          | `string`            | Image description.                                                                                  | `undefined`   |
 | `link`                 | `object`            | Links a URL to the image being rendered.                                                            | `undefined`   |
 | `width`                | `string` / `number` | Image width (in `%` or `px`).                                                                       | `100%`        |
-| `height`               | `string` / `number` | Image height (in `%` or `px`).                                                                      | `undefined`   |
 | `loading`              | `string`            | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`). | `'eager'`     |
 | `fetchpriority`        | `string`            | The fetch priority hint (`'high'`, `'low'`, or `'auto'`).                                           | `'auto'`      |
 | `analyticsProperties`  | `string`            | Whether analytics props should be set (`'provided'`) or not (`'none'`).                             | `'none'`      |
