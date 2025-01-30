@@ -130,7 +130,7 @@ function Image(props: ImageProps) {
   }
 
   const placeholderSize =
-    genericHeight ?? specificHeight ?? minHeight ?? maxHeight ?? 'auto'
+    specificHeight ?? genericHeight ?? maxHeight ?? minHeight ?? 'auto'
 
   const allowedExplicitDimensionsRegex = /(auto|inherit|initial|unset)|[^\d]/g
 
@@ -143,8 +143,8 @@ function Image(props: ImageProps) {
 
   const heightWithoutUnits =
     explicitDimensions(specificHeight) ??
-    explicitDimensions(maxHeight) ??
-    explicitDimensions(genericHeight)
+    explicitDimensions(genericHeight) ??
+    explicitDimensions(maxHeight)
 
   const hasPercentage = (dimension: string | number | undefined) =>
     dimension?.toString().includes('%')
