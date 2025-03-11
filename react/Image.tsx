@@ -25,7 +25,10 @@ export interface ImageProps
   classes?: CssHandlesTypes.CustomClasses<typeof CSS_HANDLES>
   preload?: boolean
   loading?: 'eager' | 'lazy'
-  fetchpriority?: 'high' | 'low' | 'auto' 
+  fetchpriority?: 'high' | 'low' | 'auto'
+  width?: string | number
+  height?: string | number
+  specificHeight?: string | number
   /**
    * Warning: This property is for internal usage, please avoid using it.
    * This property is used when the Image is children of the SliderTrack component and it prevents triggering the promoView event twice for cloned images.
@@ -80,7 +83,8 @@ function Image(props: ImageProps) {
     minWidth,
     minHeight,
     width,
-    height,
+    height: genericHeight,
+    specificHeight,
     srcSet = '',
     sizes = '',
     link,
@@ -112,26 +116,46 @@ function Image(props: ImageProps) {
     classes,
   })
 
-  const imageDimensions = {
+  const imageDimensionsWithoutExplicitDimensions = {
     minWidth,
     minHeight,
     maxWidth,
     maxHeight,
-    width,
-    height,
   }
 
-  const placeholderSize = height ?? minHeight ?? maxHeight ?? 'auto'
+  const imageDimensionsWithExplicitDimensions = {
+    ...imageDimensionsWithoutExplicitDimensions,
+    genericHeight,
+    width,
+  }
 
-  const widthWithoutUnits = width ? width.toString().replace(/\D/g, '') : null
-  const heightWithoutUnits = height
-    ? height.toString().replace(/\D/g, '')
-    : null
+  const placeholderSize =
+    specificHeight ?? genericHeight ?? maxHeight ?? minHeight ?? 'auto'
+
+  const allowedExplicitDimensionsRegex = /(auto|inherit|initial|unset)|[^\d]/g
+
+  const explicitDimensions = (dimension: string | number | undefined) =>
+    dimension !== '' && dimension
+      ? dimension.toString().replace(allowedExplicitDimensionsRegex, '$1')
+      : null
+
+  const widthWithoutUnits = explicitDimensions(width)
+
+  const heightWithoutUnits =
+    explicitDimensions(specificHeight) ??
+    explicitDimensions(genericHeight) ??
+    explicitDimensions(maxHeight)
+
+  const hasPercentage = (dimension: string | number | undefined) =>
+    dimension?.toString().includes('%')
 
   const explicitDimensionsAreAvailable =
-    !width?.toString().includes('%') &&
-    !height?.toString().includes('%') &&
-    (widthWithoutUnits || heightWithoutUnits)
+    !!width &&
+    (!!specificHeight || !!maxHeight || !!genericHeight) &&
+    !hasPercentage(width) &&
+    (!hasPercentage(specificHeight) ||
+      !hasPercentage(maxHeight) ||
+      !hasPercentage(genericHeight))
 
   const formattedSrc = formatIOMessage({ id: src, intl })
   const formattedAlt = formatIOMessage({ id: alt, intl })
@@ -143,17 +167,17 @@ function Image(props: ImageProps) {
       srcSet={srcSet}
       src={typeof formattedSrc === 'string' ? formattedSrc : ''}
       alt={typeof formattedAlt === 'string' ? formattedAlt : ''}
-      style={imageDimensions}
       ref={imageRef}
       className={handles.imageElement}
       loading={loading}
       fetchpriority={fetchpriority}
       {...(experimentalSetExplicitDimensions && explicitDimensionsAreAvailable
         ? {
-            width: widthWithoutUnits ?? undefined,
-            height: heightWithoutUnits ?? undefined,
+            width: widthWithoutUnits ?? width ?? 'auto',
+            height: heightWithoutUnits ?? 'auto',
+            style: imageDimensionsWithoutExplicitDimensions,
           }
-        : {})}
+        : { style: imageDimensionsWithExplicitDimensions })}
       {...(preload
         ? {
             'data-vtex-preload': 'true',

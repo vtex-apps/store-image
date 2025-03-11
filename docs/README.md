@@ -63,47 +63,47 @@ Note that the `slider-layout` block exported from the Slider Layout app is a chi
 
 ### `list-context.image-list` props
 
-| Prop name | Type      | Description                                                                           | Default value |
-| --------- | --------- | ------------------------------------------------------------------------------------- | ------------- |
-| `images`  | `array`   | Array of objects that declares all the images to be rendered.                             | `undefined`   |
-| `height`  | `number`  | Image height for all images declared in the `image` object (in `px`).                 | `undefined`   |
-| `preload` | `boolean` | Preloads the first image in a list, prioritizing the image display over other assets. | `false`       |
+| Prop name                           | Type      | Description                                                                                                           | Default value |
+| ----------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `images`                            | `array`   | Array of objects that declares all the images to be rendered.                                                         | `undefined`   |
+| `height`                            | `number`  | Image height for all images declared in the `image` object (in `px`).                                                 | `undefined`   |
+| `preload`                           | `boolean` | Preloads the first image in a list, prioritizing the image display over other assets.                                 | `false`       |
 | `experimentalSetExplicitDimensions` | `boolean` | Sets explicit `width` and/or `height` attributes for an image, if `width` and/or `height` props are provided in `px`. |
 
 ### `image-list` props
 
-| Prop name | Type     | Description                                                           | Default value |
-| --------- | -------- | --------------------------------------------------------------------- | ------------- |
-| `images`  | `array`  | Array of objects that declares all the images to be rendered.             | `undefined`   |
-| `height`  | `number` | Image height for all images declared in the `image` object (in `px`). | `undefined`   |
+| Prop name                        | Type      | Description                                                                                                           | Default value |
+| -------------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `images`                         | `array`   | Array of objects that declares all the images to be rendered.                                                         | `undefined`   |
+| `height`                         | `number`  | Image height for all images declared in the `image` object (in `px`).                                                 | `undefined`   |
 | `experimentalPreventLayoutShift` | `boolean` | Wraps the image in a `<span>` tag with a preset `width` and/or `height` to minimize layout shift during page loading. |
 
 - **`images` array:**
 
-| Prop name              | Type                | Description                                                                                        | Default value |
-|------------------------|---------------------|----------------------------------------------------------------------------------------------------|---------------|
-| `image`                | `string`            | Image URL.                                                                                         | `undefined`   |
-| `mobileImage`          | `string`            | Mobile image URL.                                                                                  | `undefined`   |
-| `description`          | `string`            | Image description.                                                                                 | `undefined`   |
-| `link`                 | `object`            | Links a URL to the image being rendered.                                                          | `undefined`   |
-| `width`                | `string` / `number` | Image width (in `%` or `px`).                                                                      | `100%`        |
+| Prop name              | Type                | Description                                                                                         | Default value |
+| ---------------------- | ------------------- | --------------------------------------------------------------------------------------------------- | ------------- |
+| `image`                | `string`            | Image URL.                                                                                          | `undefined`   |
+| `mobileImage`          | `string`            | Mobile image URL.                                                                                   | `undefined`   |
+| `description`          | `string`            | Image description.                                                                                  | `undefined`   |
+| `link`                 | `object`            | Links a URL to the image being rendered.                                                            | `undefined`   |
+| `width`                | `string` / `number` | Image width (in `%` or `px`).                                                                       | `100%`        |
 | `loading`              | `string`            | Loading strategy, either when the page loads (`'eager'`) or when closer to the viewport (`'lazy'`). | `'eager'`     |
-| `fetchpriority`        | `string`            | The fetch priority hint (`'high'`, `'low'`, or `'auto'`).                                            | `'auto'`      |
+| `fetchpriority`        | `string`            | The fetch priority hint (`'high'`, `'low'`, or `'auto'`).                                           | `'auto'`      |
 | `analyticsProperties`  | `string`            | Whether analytics props should be set (`'provided'`) or not (`'none'`).                             | `'none'`      |
-| `promotionId`          | `string`            | The ID of the promotion associated with the event.                                                 | `undefined`   |
-| `promotionName`        | `string`            | The name of the promotion associated with the event.                                               | `undefined`   |
-| `promotionPosition`    | `string`            | The name of the promotional creative slot associated with the event.                               | `undefined`   |
-| `promotionProductId`   | `string`            | The ID of the product associated with the event.                                                   | `undefined`   |
-| `promotionProductName` | `string`            | The name of the product associated with the event.                                                 | `undefined`   |
+| `promotionId`          | `string`            | The ID of the promotion associated with the event.                                                  | `undefined`   |
+| `promotionName`        | `string`            | The name of the promotion associated with the event.                                                | `undefined`   |
+| `promotionPosition`    | `string`            | The name of the promotional creative slot associated with the event.                                | `undefined`   |
+| `promotionProductId`   | `string`            | The ID of the product associated with the event.                                                    | `undefined`   |
+| `promotionProductName` | `string`            | The name of the product associated with the event.                                                  | `undefined`   |
 
 - **`link` object:**
 
-| Prop name    | Type      | Description                                                                                                                                                      | Default value |
-| ------------ | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `url`        | `string`  | URL users will be redirected to when they click the image.                                                                                                            | `undefined`   |
+| Prop name    | Type      | Description                                                                                                                                                    | Default value |
+| ------------ | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `url`        | `string`  | URL users will be redirected to when they click the image.                                                                                                     | `undefined`   |
 | `noFollow`   | `boolean` | Whether the page owner endorses the linked URL the user was navigating on, i.e., if there is a business relationship between both pages (`true`) or (`false`). | `false`       |
-| `openNewTab` | `string`  | Whether a new tab will be opened on the browser (`true`) or (`false`).                                                                                           | `undefined`   |
-| `title`      | `string`  | Text label used to identify the image in the Admin Site Editor.                                                                                                  | `undefined`   |
+| `openNewTab` | `string`  | Whether a new tab will be opened on the browser (`true`) or (`false`).                                                                                         | `undefined`   |
+| `title`      | `string`  | Text label used to identify the image in the Admin Site Editor.                                                                                                | `undefined`   |
 
 > ℹ️ Use the **Admin Site Editor** to manage all images declared in the `list-context.image-list` block.
 

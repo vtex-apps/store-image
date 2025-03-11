@@ -9,7 +9,7 @@ import type { ImagesSchema } from './ImageTypes'
 
 export interface ImageListProps {
   images: ImagesSchema
-  height?: number
+  height?: number | string
   preload?: boolean
   experimentalPreventLayoutShift?: boolean
   experimentalSetExplicitDimensions?: boolean

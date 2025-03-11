@@ -73,10 +73,10 @@ export const IMAGE_LIST_SCHEMA = {
   type: 'object',
   properties: {
     height: {
-      default: 420,
+      default: '420',
       isLayout: false,
       title: IMAGE_LIST_MESSAGES.heightTitle.id,
-      type: 'number',
+      type: 'string',
     },
   },
 }

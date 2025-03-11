@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Possibility to explicit set height for images
+
 ## [0.22.3] - 2024-09-04
 
 ### Removed
