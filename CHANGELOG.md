@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Fixed
+
+- Genericheight typo in style
+
 ## [0.23.0] - 2025-03-11
 
 ### Added

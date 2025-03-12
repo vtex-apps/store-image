@@ -125,7 +125,7 @@ function Image(props: ImageProps) {
 
   const imageDimensionsWithExplicitDimensions = {
     ...imageDimensionsWithoutExplicitDimensions,
-    genericHeight,
+    height: genericHeight,
     width,
   }
 
