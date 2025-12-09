@@ -171,7 +171,7 @@
             },
             "default": "eager"
           },
-            "fetchpriority": {
+          "fetchpriority": {
             "title": "admin/editor.store-image.fetchpriority.title",
             "enum": ["high", "low", "auto"],
             "enumNames": [
