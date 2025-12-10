@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: store-image
+  description: VTEX components for dealing with images
+  tags:
+    - typescript
+    - react
+  annotations:
+    vtex.com/janus-acronym: ""
+    vtex.com/o11y-os-index: ""
+    grafana/dashboard-selector: ""
+    github.com/project-slug: vtex-apps/store-image
+    vtex.com/platform-flow-id: ""
+    backstage.io/techdocs-ref: dir:../
+    vtex.com/application-id: 9R38AHI2
+spec:
+  system: store-framework
+  lifecycle: stable
+  owner: te-0013
+  type: frontend-ui
+  dependsOn: []
